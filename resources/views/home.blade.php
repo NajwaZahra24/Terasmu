@@ -954,7 +954,7 @@
     <section class="reviews-section">
         <div class="reviews-container">
             <div class="section-title-container">
-                <h2 class="section-title">Revie Pembeli</h2>
+                <h2 class="section-title">Review Pembeli</h2>
             </div>
             
             <div class="reviews-grid">
