@@ -137,6 +137,11 @@
             
             .form-section {
                 max-width: 500px;
+                margin: 0 auto; /* Centering the form */
+            }
+
+            .signup-container {
+                max-width: 100%;
             }
         }
     </style>
@@ -144,29 +149,30 @@
 <body>
     <div class="signup-container">
         <div class="form-section">
-            <a href="#" class="back-arrow">←</a>
+            <a href="javascript:history.back()" class="back-arrow">←</a>
             
             <h1 class="title">Sign Up</h1>
             <h2 class="subtitle">Bikin akun baru</h2>
             <p class="description">Silahkan masukkan data anda yang sesuai yaa!</p>
             
-            <form>
+            <form action="{{ route('signup') }}" method="POST">
+                @csrf
                 <div class="form-group">
                     <label for="fullname">Nama Lengkap</label>
                     <div class="name-row">
-                        <input type="text" id="firstname" class="form-control" placeholder="Nama depan">
-                        <input type="text" id="lastname" class="form-control" placeholder="Nama akhir">
+                        <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Nama depan">
+                        <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Nama akhir">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" class="form-control" placeholder="emailanda@gmail.com">
+                    <input type="email" id="email" name="email" class="form-control" placeholder="emailanda@gmail.com">
                 </div>
                 
                 <div class="form-group">
                     <label for="password">Kata Sandi</label>
-                    <input type="password" id="password" class="form-control" placeholder="Masukkan kata sandi anda">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Masukkan kata sandi anda">
                 </div>
                 
                 <p class="info-text">

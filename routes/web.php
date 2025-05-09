@@ -8,8 +8,8 @@ use App\Http\Controllers\PaymentController;
 // Homepage
 Route::get('/', [HomeController::class, 'index']);
 
-// halaman signin
-Route::get('/signin', [AuthController::class, 'showSignInForm'])->name('signin');
+// Halaman signup
+Route::get('/signup', [AuthController::class, 'showSignupForm'])->name('signup');
 
 // Halaman katalog
 Route::get('/katalog', [ProductController::class, 'index'])->name('katalog');
