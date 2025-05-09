@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terasmu - Furniture Modern</title>
+    <title>FurniStyle - Modern Furniture</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #A67C52;  /* Warna elemen utama */
-            --secondary: #F7F3EE;  /* Warna latar utama */
-            --accent: #2E2E2E;  /* Warna aksen dan teks */
+            --primary: #2a2a2a;
+            --secondary: #f8f8f8;
+            --accent: #e67e22;
             --light-gray: #e0e0e0;
             --white: #ffffff;
-            --text-color: #2E2E2E;
         }
 
         * {
@@ -24,7 +23,7 @@
 
         body {
             background-color: var(--secondary);
-            color: var(--text-color);
+            color: var(--primary);
             line-height: 1.6;
             display: flex;
             flex-direction: column;
@@ -56,14 +55,14 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--accent);
+            color: var(--primary);
             text-decoration: none;
             display: flex;
             align-items: center;
         }
 
         .logo i {
-            color: var(--primary);
+            color: var(--accent);
             margin-right: 0.5rem;
         }
 
@@ -76,7 +75,7 @@
         .nav-item {
             position: relative;
             padding: 0.5rem 0;
-            color: var(--accent);
+            color: var(--primary);
             text-decoration: none;
             font-weight: 500;
             overflow: hidden;
@@ -90,13 +89,13 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: var(--primary);
+            background: var(--accent);
             transform: translateX(-100%);
             transition: transform 0.3s ease;
         }
 
         .nav-item:hover {
-            color: var(--primary);
+            color: var(--accent);
         }
 
         .nav-item:hover::after {
@@ -114,13 +113,13 @@
         }
 
         .icons a {
-            color: var(--accent);
+            color: var(--primary);
             font-size: 1.2rem;
             transition: color 0.3s;
         }
 
         .icons a:hover {
-            color: var(--primary);
+            color: var(--accent);
         }
 
         .cart-count {
@@ -131,7 +130,7 @@
             position: absolute;
             top: -8px;
             right: -8px;
-            background-color: var(--primary);
+            background-color: var(--accent);
             color: white;
             border-radius: 50%;
             width: 18px;
@@ -174,7 +173,7 @@
             }
 
             .nav-item:hover {
-                background: rgba(166, 124, 82, 0.1);
+                background: rgba(230, 126, 34, 0.1);
             }
 
             #menu-btn {
@@ -207,7 +206,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(46, 46, 46, 0.6); /* Overlay dengan warna aksen */
+            background: rgba(0, 0, 0, 0.5);
         }
 
         .hero-container {
@@ -238,7 +237,7 @@
 
         .btn {
             display: inline-block;
-            background-color: var(--primary);
+            background-color: var(--accent);
             color: white;
             padding: 14px 32px;
             border-radius: 6px;
@@ -272,7 +271,7 @@
             text-align: center;
             font-size: 32px;
             margin-bottom: 50px;
-            color: var(--accent);
+            color: var(--primary);
             position: relative;
             display: inline-block;
             padding-bottom: 10px;
@@ -290,7 +289,7 @@
             left: 25%;
             width: 50%;
             height: 3px;
-            background: var(--primary);
+            background: var(--accent);
         }
 
         .product-row {
@@ -339,7 +338,7 @@
         .product-name {
             font-size: 20px;
             margin-bottom: 10px;
-            color: var(--accent);
+            color: var(--primary);
         }
 
         .product-description {
@@ -355,11 +354,11 @@
             align-items: center;
             font-size: 18px;
             font-weight: 600;
-            color: var(--primary);
+            color: var(--accent);
         }
 
         .add-to-cart {
-            background: var(--primary);
+            background: var(--accent);
             color: white;
             border: none;
             width: 40px;
@@ -373,7 +372,7 @@
         }
 
         .add-to-cart:hover {
-            background: #8a6543;
+            background: #d35400;
         }
 
         /* Best Seller Section */
@@ -425,7 +424,7 @@
         .best-seller-name {
             font-size: 24px;
             margin-bottom: 15px;
-            color: var(--accent);
+            color: var(--primary);
         }
 
         .best-seller-description {
@@ -438,14 +437,14 @@
         .best-seller-price {
             font-size: 22px;
             font-weight: bold;
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 15px;
         }
 
         .cashback {
             display: flex;
             align-items: center;
-            background-color: rgba(166, 124, 82, 0.1);
+            background-color: #f9f1e7;
             padding: 12px 18px;
             border-radius: 8px;
             margin-top: 18px;
@@ -453,12 +452,12 @@
 
         .voucher-icon {
             margin-right: 12px;
-            color: var(--primary);
+            color: var(--accent);
             font-size: 22px;
         }
 
         .cashback-text {
-            color: var(--primary);
+            color: var(--accent);
             font-weight: bold;
         }
 
@@ -506,7 +505,7 @@
             border-radius: 50%;
             overflow: hidden;
             margin-right: 15px;
-            border: 3px solid var(--primary);
+            border: 3px solid var(--accent);
         }
 
         .user-avatar img {
@@ -522,7 +521,7 @@
         .user-name {
             font-size: 18px;
             font-weight: 600;
-            color: var(--accent);
+            color: var(--primary);
             margin-bottom: 3px;
         }
 
@@ -537,7 +536,7 @@
         }
 
         .star {
-            color: var(--primary);
+            color: #f39c12;
             font-size: 18px;
             margin-right: 2px;
         }
@@ -549,7 +548,7 @@
         }
 
         .review-text {
-            color: var(--accent);
+            color: var(--primary);
             line-height: 1.6;
             font-size: 15px;
         }
@@ -557,8 +556,8 @@
         .verified-buyer {
             display: inline-flex;
             align-items: center;
-            background-color: rgba(166, 124, 82, 0.1);
-            color: var(--primary);
+            background-color: #e3f2fd;
+            color: #1976d2;
             font-size: 13px;
             padding: 3px 8px;
             border-radius: 4px;
@@ -572,7 +571,7 @@
 
         /* Footer Styles */
         footer {
-            background-color: var(--accent);
+            background-color: var(--primary);
             color: var(--secondary);
             padding: 60px 0 0;
             margin-top: auto;
@@ -592,7 +591,6 @@
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
-            color: var(--secondary);
         }
 
         .footer-column h3::after {
@@ -602,7 +600,7 @@
             bottom: 0;
             width: 50px;
             height: 2px;
-            background-color: var(--primary);
+            background-color: var(--accent);
         }
 
         .footer-column p, 
@@ -615,7 +613,7 @@
         }
 
         .footer-column a:hover {
-            color: var(--primary);
+            color: var(--accent);
             padding-left: 5px;
         }
 
@@ -630,7 +628,7 @@
         }
 
         .footer-logo i {
-            color: var(--primary);
+            color: var(--accent);
             margin-right: 10px;
         }
 
@@ -653,7 +651,7 @@
         }
 
         .social-links a:hover {
-            background-color: var(--primary);
+            background-color: var(--accent);
             transform: translateY(-3px);
         }
 
@@ -671,7 +669,7 @@
         }
 
         .newsletter-form button {
-            background-color: var(--primary);
+            background-color: var(--accent);
             color: white;
             border: none;
             padding: 0 20px;
@@ -681,7 +679,7 @@
         }
 
         .newsletter-form button:hover {
-            background-color: #8a6543;
+            background-color: #d35400;
         }
 
         .footer-bottom {
@@ -694,102 +692,6 @@
         .footer-bottom p {
             color: #aaa;
             font-size: 14px;
-        }
-
-        /* Product Badges */
-        .product-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: var(--primary);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: bold;
-            z-index: 2;
-        }
-
-        .product-image-container {
-            position: relative;
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .product-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover .product-image {
-            transform: scale(1.05);
-        }
-
-        /* Product Info Styles */
-        .product-category {
-            display: block;
-            color: var(--primary);
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-
-        .product-title {
-            font-size: 18px;
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-
-        .product-price {
-            margin-bottom: 15px;
-        }
-
-        .current-price {
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .original-price {
-            color: #999;
-            text-decoration: line-through;
-            font-size: 15px;
-            margin-left: 8px;
-        }
-
-        .product-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .product-rating {
-            color: var(--primary);
-        }
-
-        .product-rating span {
-            color: #7f8c8d;
-            font-size: 14px;
-            margin-left: 5px;
-        }
-
-        .product-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .wishlist-btn, .cart-btn {
-            background: none;
-            border: none;
-            color: var(--accent);
-            cursor: pointer;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-
-        .wishlist-btn:hover, .cart-btn:hover {
-            color: var(--primary);
         }
 
         /* Responsive Adjustments */
@@ -887,15 +789,16 @@
         <div class="header-container">
             <a href="#" class="logo">
                 <i class="fas fa-couch"></i>
-                TerasMu
+                Terasmu
             </a>
 
             <nav class="nav-links">
-                <a href="/" class="nav-item">Beranda</a>
-                <a href="{{ route('katalog') }}" class="nav-item">Katalog</a>
+                <a href="#" class="nav-item">Beranda</a>
+                <a href="katalog.blade.php" class="nav-item">Beli</a>
+                <a href="#" class="nav-item">Koleksi</a>
                 <a href="#" class="nav-item">Tentang kami</a>
                 <a href="#" class="nav-item">Kontak</a>
-            </nav>            
+            </nav>
 
             <div class="icons">
                 <a href="#" id="search-btn"><i class="fas fa-search"></i></a>
@@ -903,7 +806,7 @@
                     <i class="fas fa-shopping-cart"></i>
                     <span id="cart-counter">0</span>
                 </a>
-                <a href="{{ route('signup')}}" id="user-btn"><i class="fas fa-user"></i></a>
+                <a href="#" id="user-btn"><i class="fas fa-user"></i></a>
                 <a href="#" id="menu-btn"><i class="fas fa-bars"></i></a>
             </div>
         </div>
@@ -954,7 +857,7 @@
     <section class="reviews-section">
         <div class="reviews-container">
             <div class="section-title-container">
-                <h2 class="section-title">Review Pembeli</h2>
+                <h2 class="section-title">Revie Pembeli</h2>
             </div>
             
             <div class="reviews-grid">
@@ -1056,133 +959,139 @@
                 <h2 class="section-title">Produk Unggulan Kami</h2>
             </div>
             <div class="product-row">
-                <!-- Produk 1 -->
+                <!-- Product 1 - Chair -->
                 <div class="product-card">
-                    <div class="product-badge">Terlaris</div>
-                    <div class="product-image-container">
-                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Sofa Minimalis" class="product-image">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="Modern Chair">
                     </div>
                     <div class="product-info">
-                        <span class="product-category">Sofa</span>
-                        <h3 class="product-title">Sofa Minimalis Linen</h3>
+                        <h3 class="product-name">Kursi Elegan</h3>
+                        <p class="product-description">Kursi berlapis kain premium dengan kaki kayu, cocok untuk ruang tamu anda.</p>
                         <div class="product-price">
-                            <span class="current-price">Rp 8.499.000</span>
-                            <span class="original-price">Rp 9.999.000</span>
-                        </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span>(24)</span>
-                            </div>
-                            <div class="product-actions">
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
+                            <span>Rp390.000</span>
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Produk 2 -->
+                <!-- Product 2 - Table -->
                 <div class="product-card">
-                    <div class="product-badge">Baru</div>
-                    <div class="product-image-container">
-                        <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Meja Makan" class="product-image">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Wooden Table">
                     </div>
                     <div class="product-info">
-                        <span class="product-category">Meja</span>
-                        <h3 class="product-title">Meja Makan Kayu Jati</h3>
+                        <h3 class="product-name">Kursi</h3>
+                        <p class="product-description">Kursi empuk dan nyaman yang dapat membuat ruang tamu anda lebih elegan.</p>
                         <div class="product-price">
-                            <span class="current-price">Rp 12.750.000</span>
-                        </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(18)</span>
-                            </div>
-                            <div class="product-actions">
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
+                            <span>Rp 500.000</span>
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Produk 3 -->
+                <!-- Product 3 - Wardrobe -->
                 <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kursi Kantor" class="product-image">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Modern Wardrobe">
                     </div>
                     <div class="product-info">
-                        <span class="product-category">Kursi</span>
-                        <h3 class="product-title">Kursi Kerja Ergonomis</h3>
+                        <h3 class="product-name">Kaca minimalis</h3>
+                        <p class="product-description">Membuat ruangan anda lebih elegan, dan lebih indah untuk dipandang.</p>
                         <div class="product-price">
-                            <span class="current-price">Rp 3.299.000</span>
-                            <span class="original-price">Rp 3.999.000</span>
-                        </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(42)</span>
-                            </div>
-                            <div class="product-actions">
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
+                            <span>Rp645.000</span>
+                            <button class="add-to-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
-            <!-- Footer Section -->
+    <!-- Footer Section -->
     <footer>
         <div class="footer-container">
+            <!-- Company Info Column -->
             <div class="footer-column">
                 <a href="#" class="footer-logo">
                     <i class="fas fa-couch"></i>
                     Terasmu
                 </a>
-                <p>Temukan furnitur modern yang sempurna untuk rumah Anda.</p>
+                <p>Kami menciptakan ruang yang indah dan fungsional dengan koleksi furnitur buatan tangan yang dirancang untuk kehidupan modern.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-pinterest"></i></a>
                 </div>
             </div>
 
+            <!-- Quick Links Column -->
             <div class="footer-column">
-                <h3>Informasi</h3>
-                <a href="#">Tentang Kami</a>
-                <a href="#">Kebijakan Privasi</a>
-                <a href="#">Syarat dan Ketentuan</a>
-                <a href="#">Kontak</a>
+                <h3>Link Kami</h3>
+                <a href="#">Home</a>
+                <a href="#">Shop</a>
+                <a href="#">Collections</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Blog</a>
             </div>
 
+            <!-- Customer Service Column -->
             <div class="footer-column">
-                <h3>Bantuan</h3>
+                <h3>Layanan Kami</h3>
+                <a href="#">My Account</a>
+                <a href="#">Order Tracking</a>
+                <a href="#">Wishlist</a>
+                <a href="#">Shipping Policy</a>
+                <a href="#">Returns & Refunds</a>
                 <a href="#">FAQ</a>
-                <a href="#">Pengembalian</a>
-                <a href="#">Pengiriman</a>
-                <a href="#">Pelacakan Pesanan</a>
+            </div>
+
+            <!-- Contact & Newsletter Column -->
+            <div class="footer-column">
+                <h3>Kontak Kami</h3>
+                <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Terasmu St, Design District, Jakarta</p>
+                <p><i class="fas fa-phone" style="margin-right: 10px;"></i> (021) 1234-5678</p>
+                <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@terasmu.com</p>
+                
+                <h3 style="margin-top: 20px;">Newsletter</h3>
+                <p>Subscribe to get updates on new arrivals and special offers.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2025 Terasmu. Semua hak dilindungi.</p>
+            <p>&copy; 2025 FurniStyle. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: #e67e22;"></i> by FurniStyle Team</p>
         </div>
     </footer>
 
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth click animation for nav items
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                this.style.transform = 'translateY(2px)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+    </script>
 </body>
 </html>

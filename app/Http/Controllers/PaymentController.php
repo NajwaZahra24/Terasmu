@@ -8,6 +8,6 @@ class PaymentController extends Controller
 {
     public function index()
     {
-        return view('user.payment');
+        return view('payment');
     }
 }
