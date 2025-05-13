@@ -893,8 +893,8 @@
             <nav class="nav-links">
                 <a href="/" class="nav-item">Beranda</a>
                 <a href="{{ route('katalog') }}" class="nav-item">Katalog</a>
-                <a href="#" class="nav-item">Tentang kami</a>
-                <a href="#" class="nav-item">Kontak</a>
+                <a href="{{ route('tentangkami') }}"class="nav-item">Tentang kami</a>
+                <a href="{{ route( 'kontak')}}"  class="nav-item">Kontak</a>
             </nav>            
 
             <div class="icons">
