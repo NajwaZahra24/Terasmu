@@ -927,7 +927,6 @@
             <div class="section-title-container">
                 <h2 class="section-title">Produk Terlaris Kami</h2>
             </div>
-            
             <div class="best-seller-card">
                 <div class="best-seller-image">
                     <img src="/api/placeholder/800/400" alt="Modern Scandinavian Armchair">
