@@ -17,5 +17,10 @@ Route::get('/katalog', [ProductController::class, 'index'])->name('katalog');
 // Halaman detail produk
 Route::get('/produk/{id}', [ProductController::class, 'show'])->name('produk.detail');
 
+// Halaman Kontak
+Route::get('/kontak', function () {
+    return view('kontak');
+})->name('kontak');
+
 // Halaman payment
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
