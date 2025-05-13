@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog Produk - Terasmu</title>
+    <title>Tentang Kami - Terasmu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #A67C52;  /* Warna elemen utama */
-            --secondary: #F7F3EE;  /* Warna latar utama */
-            --accent: #2E2E2E;  /* Warna aksen dan teks */
+            --primary: #A67C52;
+            --secondary: #F7F3EE;
+            --accent: #2E2E2E;
             --light-gray: #e0e0e0;
             --white: #ffffff;
             --text-color: #2E2E2E;
@@ -26,9 +26,16 @@
             background-color: var(--secondary);
             color: var(--text-color);
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* Header/Navbar Styles */
+        main {
+            flex: 1;
+        }
+
+        /* Header/Navbar Styles - Diambil dari kode Anda */
         header {
             background-color: var(--white);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -96,8 +103,12 @@
             transform: translateX(0);
         }
 
-        .nav-item:active {
-            transform: translateY(2px);
+        .nav-item.active {
+            color: var(--primary);
+        }
+
+        .nav-item.active::after {
+            transform: translateX(0);
         }
 
         /* Icons */
@@ -140,77 +151,142 @@
             cursor: pointer;
         }
 
-        /* Kontak Kami Section */
-        .contact-container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 40px;
-            background: var(--white);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .contact-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .contact-header h1 {
-            font-size: 2.5em;
-            color: var(--accent);
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .contact-item {
+        /* About Us Custom Styles - Sesuai yang Anda minta */
+        .about-hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1556909212-d5b604d0c90d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
             display: flex;
             align-items: center;
-            padding: 20px 30px;
-            background: var(--white);
-            border-radius: 12px;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-bottom: 60px;
         }
 
-        .contact-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
 
-        .phone-number {
-            font-size: 1.8em;
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .about-section {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        .about-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h2 {
+            font-size: 2.2rem;
             color: var(--primary);
-            font-weight: 500;
-        }
-
-        .social-media {
-            font-size: 1.4em;
-            color: var(--accent);
+            margin-bottom: 20px;
             position: relative;
-            padding-left: 40px;
+            padding-bottom: 10px;
         }
 
-        .social-media::before {
-            content: '@';
+        .about-content h2::after {
+            content: '';
             position: absolute;
             left: 0;
-            color: var(--primary);
-            font-weight: 600;
+            bottom: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
         }
 
-        /* Footer Styles */
+        .about-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .values-section {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .values-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--accent);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        /* Footer Styles - Diambil dari kode Anda */
         footer {
             background-color: var(--accent);
             color: var(--secondary);
             padding: 60px 0 0;
-            margin-top: 50px;
+            margin-top: auto;
         }
 
         .footer-container {
@@ -305,6 +381,17 @@
         }
 
         /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .about-section {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
@@ -338,15 +425,23 @@
                 display: block;
             }
 
-            .contact-container {
-                margin: 20px;
-                padding: 30px;
+            .about-hero {
+                height: 300px;
+                padding: 0 20px;
+            }
+            
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-hero p {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header with Enhanced Navbar -->
+    <!-- Header with Enhanced Navbar - Diambil dari kode Anda -->
     <header>
         <div class="header-container">
             <a href="#" class="logo">
@@ -357,9 +452,9 @@
             <nav class="nav-links">
                 <a href="/" class="nav-item">Beranda</a>
                 <a href="{{ route('katalog') }}" class="nav-item">Katalog</a>
-                <a href="{{ route('tentangkami') }}"class="nav-item">Tentang kami</a>
-                <a href="{{ route( 'kontak')}}"  class="nav-item">Kontak</a>
-            </nav>           
+                <a href="#" class="nav-item active">Tentang kami</a>
+                <a href="{{ route('kontak') }}" class="nav-item">Kontak</a>
+            </nav>            
 
             <div class="icons">
                 <a href="#" id="search-btn"><i class="fas fa-search"></i></a>
@@ -373,28 +468,74 @@
         </div>
     </header>
 
-    <!-- Kontak Kami Section -->
-    <div class="contact-container">
-        <div class="contact-header">
-            <h1>Kontak Kami</h1>
+    <!-- About Us Hero Section -->
+    <section class="about-hero">
+        <div>
+            <h1>Tentang Terasmu</h1>
+            <p>Menghadirkan furnitur berkualitas dengan desain modern untuk membuat rumah Anda lebih nyaman dan elegan</p>
         </div>
-        <div class="contact-info">
-            <div class="contact-item">
-                <div class="phone-number">+62 123 456</div>
+    </section>
+
+    <!-- About Us Content -->
+    <div class="about-container">
+        <section class="about-section">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Sejarah Terasmu">
             </div>
-            <div class="contact-item">
-                <div class="social-media">Terasmu</div>
+            <div class="about-content">
+                <h2>Deskripsi Terasmu</h2>
+                <p>Terasmu hadir untuk membawa kenyamanan dan gaya ke dalam rumah Anda. Kami adalah brand furnitur lokal yang didirikan dengan visi untuk menyediakan furnitur berkualitas tinggi, fungsional, dan terjangkau untuk setiap rumah di Indonesia. Dengan desain yang modern dan perhatian pada detail, setiap produk kami dirancang untuk memenuhi kebutuhan dan gaya hidup Anda.</p>
+                <p>Dari ruang tamu hingga kamar tidur, Terasmu menawarkan berbagai pilihan furnitur yang dapat mempercantik dan membuat rumah Anda lebih nyaman. Kami berkomitmen untuk memberikan pengalaman belanja yang mudah, aman, dan memuaskan. Temukan furnitur impian Anda hanya di Terasmu.</p>
             </div>
-            <div class="contact-item">
-                <div class="social-media">Terasmu</div>
+        </section>
+
+        <section class="about-section reverse">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Proses Produksi">
             </div>
-            <div class="contact-item">
-                <div class="social-media">Terasmu</div>
+            <div class="about-content">
+                <h2>Kualitas yang Kami Tawarkan</h2>
+                <p>Kami menggunakan bahan-bahan terbaik yang dipilih dengan cermat untuk memastikan daya tahan dan keindahan produk kami. Kayu solid berkualitas tinggi, kain tahan lama, dan material premium lainnya menjadi pilihan utama kami.</p>
+                <p>Setiap produk Terasmu melalui proses kontrol kualitas yang ketat sebelum sampai ke tangan Anda. Tim ahli kami memastikan bahwa setiap detail, mulai dari sambungan kayu hingga finishing, memenuhi standar tertinggi.</p>
             </div>
-        </div>
+        </section>
+
+        <section class="values-section">
+            <h2>Nilai-Nilai Kami</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Ramah Lingkungan</h3>
+                    <p>Kami berkomitmen untuk menggunakan bahan yang berkelanjutan dan proses produksi yang ramah lingkungan.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Pelanggan Pertama</h3>
+                    <p>Kepuasan pelanggan adalah prioritas utama kami. Kami selalu mendengarkan dan berinovasi berdasarkan kebutuhan Anda.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Kualitas Premium</h3>
+                    <p>Kami tidak pernah berkompromi dengan kualitas. Setiap produk dibuat untuk bertahan lama dan tetap indah.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Desain Inovatif</h3>
+                    <p>Tim desainer kami terus menciptakan solusi furnitur kreatif yang memadukan gaya dan fungsi.</p>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <!-- Footer Section -->
+    <!-- Footer Section - Diambil dari kode Anda -->
     <footer>
         <div class="footer-container">
             <div class="footer-column">
@@ -434,7 +575,7 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle - Diambil dari kode Anda
         const menuBtn = document.getElementById('menu-btn');
         const navLinks = document.querySelector('.nav-links');
 

@@ -22,5 +22,10 @@ Route::get('/kontak', function () {
     return view('kontak');
 })->name('kontak');
 
+// Halaman Tentang Kami
+Route::get('/tentangkami', function () {
+    return view('tentangkami');
+})->name('tentangkami');
+
 // Halaman payment
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
