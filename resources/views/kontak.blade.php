@@ -380,16 +380,16 @@
         </div>
         <div class="contact-info">
             <div class="contact-item">
-                <div class="phone-number">+62 123 456</div>
+                <div class="WhatsApp"><i class="fa-brands fa-whatsapp"></i>  terasmu</div>
             </div>
             <div class="contact-item">
-                <div class="social-media">Terasmu</div>
+                <div class="instagram"><i class="fab fa-instagram"></i> terasmu</div>
             </div>
             <div class="contact-item">
-                <div class="social-media">Terasmu</div>
+                <div class="Facebook"><i class="fa-brands fa-facebook-f"></i>  terasmu</div>
             </div>
             <div class="contact-item">
-                <div class="social-media">Terasmu</div>
+                <div class="Email"><i class="fa-regular fa-envelope"></i>  terasmu</div>
             </div>
         </div>
     </div>
@@ -404,10 +404,10 @@
                 </a>
                 <p>Temukan furnitur modern yang sempurna untuk rumah Anda.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="https://www.instagram.com/smktelkomsda/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/smktelkomsda/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/smktelkomsda/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/smktelkomsda/"><i class="fab fa-pinterest"></i></a>
                 </div>
             </div>
 
@@ -424,7 +424,6 @@
                 <a href="#">FAQ</a>
                 <a href="#">Pengembalian</a>
                 <a href="#">Pengiriman</a>
-                <a href="#">Pelacakan Pesanan</a>
             </div>
         </div>
 

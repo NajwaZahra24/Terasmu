@@ -1079,7 +1079,6 @@
                                 <span>(24)</span>
                             </div>
                             <div class="product-actions">
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
                                 <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
                             </div>
                         </div>
@@ -1108,7 +1107,6 @@
                                 <span>(18)</span>
                             </div>
                             <div class="product-actions">
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
                                 <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
                             </div>
                         </div>
@@ -1137,7 +1135,6 @@
                                 <span>(42)</span>
                             </div>
                             <div class="product-actions">
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
                                 <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
                             </div>
                         </div>
@@ -1175,7 +1172,6 @@
                 <a href="#">FAQ</a>
                 <a href="#">Pengembalian</a>
                 <a href="#">Pengiriman</a>
-                <a href="#">Pelacakan Pesanan</a>
             </div>
         </div>
 

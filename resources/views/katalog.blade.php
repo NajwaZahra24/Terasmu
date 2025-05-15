@@ -738,7 +738,6 @@
                                 <span>(24)</span>
                             </div>
                             <div class="product-actions">
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
                                 <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
                             </div>
                         </div>
@@ -767,7 +766,6 @@
                                 <span>(18)</span>
                             </div>
                             <div class="product-actions">
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
                                 <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
                             </div>
                         </div>
@@ -796,7 +794,6 @@
                                 <span>(42)</span>
                             </div>
                             <div class="product-actions">
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
                                 <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
                             </div>
                         </div>
@@ -826,7 +823,6 @@
                                 <span>(36)</span>
                             </div>
                             <div class="product-actions">
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
                                 <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
                             </div>
                         </div>
@@ -854,7 +850,6 @@
                                 <span>(15)</span>
                             </div>
                             <div class="product-actions">
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
                                 <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
                             </div>
                         </div>
@@ -884,7 +879,6 @@
                                 <span>(28)</span>
                             </div>
                             <div class="product-actions">
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
                                 <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
                             </div>
                         </div>
@@ -912,7 +906,6 @@
                                 <span>(31)</span>
                             </div>
                             <div class="product-actions">
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
                                 <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
                             </div>
                         </div>
@@ -941,7 +934,6 @@
                                 <span>(12)</span>
                             </div>
                             <div class="product-actions">
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
                                 <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
                             </div>
                         </div>
@@ -972,10 +964,10 @@
                 </a>
                 <p>Temukan furnitur modern yang sempurna untuk rumah Anda.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="https://www.instagram.com/smktelkomsda/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/smktelkomsda/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/smktelkomsda/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/smktelkomsda/"><i class="fab fa-pinterest"></i></a>
                 </div>
             </div>
 
@@ -992,7 +984,6 @@
                 <a href="#">FAQ</a>
                 <a href="#">Pengembalian</a>
                 <a href="#">Pengiriman</a>
-                <a href="#">Pelacakan Pesanan</a>
             </div>
         </div>
 
