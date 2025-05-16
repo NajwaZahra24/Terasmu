@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #A67C52;  /* Warna elemen utama */
-            --secondary: #F7F3EE;  /* Warna latar utama */
-            --accent: #2E2E2E;  /* Warna aksen dan teks */
+            --primary: #A67C52;
+            /* Warna elemen utama */
+            --secondary: #F7F3EE;
+            /* Warna latar utama */
+            --accent: #2E2E2E;
+            /* Warna aksen dan teks */
             --light-gray: #e0e0e0;
             --white: #ffffff;
             --text-color: #2E2E2E;
@@ -38,7 +42,7 @@
         /* Header/Navbar Styles */
         header {
             background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -157,7 +161,7 @@
                 flex-direction: column;
                 background: var(--white);
                 padding: 1rem 0;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
                 transform: translateY(-150%);
                 opacity: 0;
                 transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -315,7 +319,8 @@
             transition: all 0.3s;
         }
 
-        .view-btn.active, .view-btn:hover {
+        .view-btn.active,
+        .view-btn:hover {
             background-color: var(--primary);
             color: white;
             border-color: var(--primary);
@@ -332,14 +337,14 @@
             background: var(--white);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
         }
 
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
         .product-badge {
@@ -428,7 +433,8 @@
             gap: 10px;
         }
 
-        .wishlist-btn, .cart-btn {
+        .wishlist-btn,
+        .cart-btn {
             background: none;
             border: none;
             color: var(--accent);
@@ -437,7 +443,8 @@
             transition: color 0.3s;
         }
 
-        .wishlist-btn:hover, .cart-btn:hover {
+        .wishlist-btn:hover,
+        .cart-btn:hover {
             color: var(--primary);
         }
 
@@ -468,7 +475,8 @@
             border: 1px solid var(--light-gray);
         }
 
-        .page-link:hover, .page-link.active {
+        .page-link:hover,
+        .page-link.active {
             background-color: var(--primary);
             color: white;
             border-color: var(--primary);
@@ -509,7 +517,7 @@
             background-color: var(--primary);
         }
 
-        .footer-column p, 
+        .footer-column p,
         .footer-column a {
             color: #ddd;
             margin-bottom: 15px;
@@ -638,6 +646,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header with Enhanced Navbar -->
     <header>
@@ -650,9 +659,9 @@
             <nav class="nav-links">
                 <a href="/" class="nav-item">Beranda</a>
                 <a href="{{ route('katalog') }}" class="nav-item">Katalog</a>
-                <a href="{{ route('tentangkami') }}"class="nav-item">Tentang kami</a>
-                <a href="{{ route( 'kontak')}}"  class="nav-item">Kontak</a>
-            </nav>            
+                <a href="{{ route('tentangkami') }}" class="nav-item">Tentang kami</a>
+                <a href="{{ route('kontak')}}" class="nav-item">Kontak</a>
+            </nav>
 
             <div class="icons">
                 <a href="#" id="search-btn"><i class="fas fa-search"></i></a>
@@ -716,242 +725,58 @@
 
             <div class="products-grid">
                 <!-- Produk 1 -->
-                <div class="product-card">
-                    <div class="product-badge">Terlaris</div>
-                    <div class="product-image-container">
-                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Sofa Minimalis" class="product-image">
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">Sofa</span>
-                        <h3 class="product-title">Sofa Minimalis Linen</h3>
-                        <div class="product-price">
-                            <span class="current-price">Rp 8.499.000</span>
-                            <span class="original-price">Rp 9.999.000</span>
-                        </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span>(24)</span>
-                            </div>
-                            <div class="product-actions">
-                                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @foreach ($furniturItems as $item)
+                    <div class="product-card">
+                        @if ($item->label)
+                            <div class="product-badge">{{ $item->label }}</div>
+                        @endif
 
-                <!-- Produk 2 -->
-                <div class="product-card">
-                    <div class="product-badge">Baru</div>
-                    <div class="product-image-container">
-                        <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Meja Makan" class="product-image">
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">Meja</span>
-                        <h3 class="product-title">Meja Makan Kayu Jati</h3>
-                        <div class="product-price">
-                            <span class="current-price">Rp 12.750.000</span>
-                        </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(18)</span>
-                            </div>
-                            <div class="product-actions">
-                                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        <div class="product-image-container">
+                            <img src="{{ asset($item->image_path) }}" alt="{{ $item->name }}" class="product-image">
 
-                <!-- Produk 3 -->
-                <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kursi Kantor" class="product-image">
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">Kursi</span>
-                        <h3 class="product-title">Kursi Kerja Ergonomis</h3>
-                        <div class="product-price">
-                            <span class="current-price">Rp 3.299.000</span>
-                            <span class="original-price">Rp 3.999.000</span>
                         </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(42)</span>
-                            </div>
-                            <div class="product-actions">
-                                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Produk 4 -->
-                <div class="product-card">
-                    <div class="product-badge">Diskon</div>
-                    <div class="product-image-container">
-                        <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lemari Pakaian" class="product-image">
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">Lemari</span>
-                        <h3 class="product-title">Lemari Pakaian Minimalis</h3>
-                        <div class="product-price">
-                            <span class="current-price">Rp 5.999.000</span>
-                            <span class="original-price">Rp 7.500.000</span>
-                        </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(36)</span>
-                            </div>
-                            <div class="product-actions">
-                                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        <div class="product-info">
+                            <span class="product-category">{{ $item->category }}</span>
+                            <h3 class="product-title">{{ $item->name }}</h3>
 
-                <!-- Produk 5 -->
-                <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Meja Kerja" class="product-image">
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">Meja</span>
-                        <h3 class="product-title">Meja Kerja Modern</h3>
-                        <div class="product-price">
-                            <span class="current-price">Rp 2.850.000</span>
-                        </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <i class="far fa-star"></i>
-                                <span>(15)</span>
+                            <div class="product-price">
+                                <span class="current-price">Rp {{ number_format($item->price, 0, ',', '.') }}</span>
+                                @if ($item->original_price)
+                                    <span class="original-price">Rp
+                                        {{ number_format($item->original_price, 0, ',', '.') }}</span>
+                                @endif
                             </div>
-                            <div class="product-actions">
-                                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Produk 6 -->
-                <div class="product-card">
-                    <div class="product-badge">Terbatas</div>
-                    <div class="product-image-container">
-                        <img src="https://images.unsplash.com/photo-1567538096631-e0de8a1e6a1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Rak Buku" class="product-image">
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">Rak</span>
-                        <h3 class="product-title">Rak Buku Kayu Oak</h3>
-                        <div class="product-price">
-                            <span class="current-price">Rp 1.750.000</span>
-                            <span class="original-price">Rp 2.200.000</span>
-                        </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(28)</span>
-                            </div>
-                            <div class="product-actions">
-                                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            <div class="product-meta">
+                                <div class="product-rating">
+                                    @php
+                                        $fullStars = floor($item->rating);
+                                        $halfStar = ($item->rating - $fullStars) >= 0.5 ? 1 : 0;
+                                        $emptyStars = 5 - $fullStars - $halfStar;
+                                    @endphp
 
-                <!-- Produk 7 -->
-                <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lampu Meja" class="product-image">
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">Lampu</span>
-                        <h3 class="product-title">Lampu Meja Industrial</h3>
-                        <div class="product-price">
-                            <span class="current-price">Rp 1.250.000</span>
-                        </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span>(31)</span>
-                            </div>
-                            <div class="product-actions">
-                                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                    @for ($i = 0; $i < $fullStars; $i++)
+                                        <i class="fas fa-star"></i>
+                                    @endfor
+                                    @if ($halfStar)
+                                        <i class="fas fa-star-half-alt"></i>
+                                    @endif
+                                    @for ($i = 0; $i < $emptyStars; $i++)
+                                        <i class="far fa-star"></i>
+                                    @endfor
 
-                <!-- Produk 8 -->
-                <div class="product-card">
-                    <div class="product-badge">Baru</div>
-                    <div class="product-image-container">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kursi Santai" class="product-image">
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">Kursi</span>
-                        <h3 class="product-title">Kursi Santai Eksklusif</h3>
-                        <div class="product-price">
-                            <span class="current-price">Rp 4.500.000</span>
-                        </div>
-                        <div class="product-meta">
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(12)</span>
-                            </div>
-                            <div class="product-actions">
-                                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
+                                    <span>({{ $item->rating_count }})</span>
+                                </div>
+
+                                <div class="product-actions">
+                                    <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
-
-            <!-- Pagination -->
-            <ul class="pagination">
-                <li class="page-item"><a href="#" class="page-link"><i class="fas fa-chevron-left"></i></a></li>
-                <li class="page-item"><a href="#" class="page-link active">1</a></li>
-                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                <li class="page-item"><a href="#" class="page-link">3</a></li>
-                <li class="page-item"><a href="#" class="page-link">4</a></li>
-                <li class="page-item"><a href="#" class="page-link">5</a></li>
-                <li class="page-item"><a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a></li>
-            </ul>
-        </div>
     </section>
 
     <!-- Footer Section -->
@@ -1009,7 +834,7 @@
             btn.addEventListener('click', () => {
                 viewBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                
+
                 if (btn.querySelector('i').classList.contains('fa-list')) {
                     productsGrid.classList.add('list-view');
                 } else {
@@ -1019,4 +844,5 @@
         });
     </script>
 </body>
+
 </html>
