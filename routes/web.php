@@ -5,11 +5,22 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FurniturController;
 use App\Http\Controllers\PaymentController;
 
+// Halaman form registrasi
+Route::get('/regist', [AuthController::class, 'showRegister'])->name('regist');
+Route::post('/regist', [AuthController::class, 'register']);
+
+// Halaman form login
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
+// Dashboard setelah login
+Route::get('/dashboard', [AuthController::class, 'dashboard'])->middleware('auth')->name('dashboard');
+
+// Logout
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 // Homepage
 Route::get('/', [HomeController::class, 'index']);
-
-// Halaman signup
-Route::get('/signup', [AuthController::class, 'showSignupForm'])->name('signup');
 
 // Halaman katalog
 Route::get('/katalog', [FurniturController::class, 'index'])->name('katalog');
