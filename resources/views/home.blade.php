@@ -903,7 +903,7 @@
                     <i class="fas fa-shopping-cart"></i>
                     <span id="cart-counter">0</span>
                 </a>
-                <a href="{{ route('signup')}}" id="user-btn"><i class="fas fa-user"></i></a>
+                <a href="{{ route('regist')}}" id="user-btn"><i class="fas fa-user"></i></a>
                 <a href="#" id="menu-btn"><i class="fas fa-bars"></i></a>
             </div>
         </div>

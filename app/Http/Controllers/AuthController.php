@@ -9,11 +9,13 @@ use App\Models\Regist;
 
 class AuthController extends Controller
 {
+    // Menampilkan halaman register
     public function showRegister()
     {
-        return view('auth.register');
+        return view('auth.regist');  // arahkan ke auth/regist.blade.php
     }
 
+    // Proses register
     public function register(Request $request)
     {
         $request->validate([
@@ -28,17 +30,19 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Auto login setelah registrasi berhasil (opsional, bisa dihapus jika tidak mau)
+        // Auto login setelah registrasi
         Auth::login($user);
 
         return redirect()->route('dashboard')->with('success', 'Akun berhasil dibuat dan Anda sudah login!');
     }
 
+    // Menampilkan halaman login
     public function showLogin()
     {
-        return view('auth.login');
+        return view('auth.login');  // arahkan ke auth/login.blade.php
     }
 
+    // Proses login
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -53,11 +57,13 @@ class AuthController extends Controller
         ])->withInput($request->only('email'));
     }
 
+    // Dashboard
     public function dashboard()
     {
         return view('dashboard');
     }
 
+    // Logout
     public function logout(Request $request)
     {
         Auth::logout();
