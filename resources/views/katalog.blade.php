@@ -758,7 +758,7 @@
 
                                     @for ($i = 0; $i < $fullStars; $i++)
                                         <i class="fas fa-star"></i>
-                                    @endfor
+                                    @endfor 
                                     @if ($halfStar)
                                         <i class="fas fa-star-half-alt"></i>
                                     @endif
