@@ -7,6 +7,10 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
+// Halaman detailproduk
+Route::get('/detailproduk', function () {
+    return view('detailproduk');
+});
 
 
 // Halaman form registrasi
