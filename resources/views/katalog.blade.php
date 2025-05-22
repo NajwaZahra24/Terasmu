@@ -660,7 +660,7 @@
                 <a href="/" class="nav-item">Beranda</a>
                 <a href="{{ route('katalog') }}" class="nav-item">Katalog</a>
                 <a href="{{ route('tentangkami') }}" class="nav-item">Tentang kami</a>
-                <a href="{{ route('kontak')}}" class="nav-item">Kontak</a>
+                <a href="{{ route('kontak') }}" class="nav-item">Kontak</a>
             </nav>
 
             <div class="icons">
@@ -725,7 +725,7 @@
 
             <div class="products-grid">
                 <!-- Produk 1 -->
-                @foreach ($furniturItems as $item)
+                @foreach ($furniturs as $item)
                     <div class="product-card">
                         @if ($item->label)
                             <div class="product-badge">{{ $item->label }}</div>
@@ -752,13 +752,13 @@
                                 <div class="product-rating">
                                     @php
                                         $fullStars = floor($item->rating);
-                                        $halfStar = ($item->rating - $fullStars) >= 0.5 ? 1 : 0;
+                                        $halfStar = $item->rating - $fullStars >= 0.5 ? 1 : 0;
                                         $emptyStars = 5 - $fullStars - $halfStar;
                                     @endphp
 
                                     @for ($i = 0; $i < $fullStars; $i++)
                                         <i class="fas fa-star"></i>
-                                    @endfor 
+                                    @endfor
                                     @if ($halfStar)
                                         <i class="fas fa-star-half-alt"></i>
                                     @endif
