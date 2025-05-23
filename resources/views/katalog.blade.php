@@ -800,7 +800,7 @@
                 <a href="#">Tentang Kami</a>
                 <a href="#">Kebijakan Privasi</a>
                 <a href="#">Syarat dan Ketentuan</a>
-                <a href="#">Kontak</a>
+                <a href="{{ route( 'kontak')}}">Kontak</a>
             </div>
 
             <div class="footer-column">
