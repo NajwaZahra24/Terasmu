@@ -12,4 +12,9 @@ class FurniturController extends Controller
 
         return view('katalog', compact('furniturs'));
     }
+    public function show($id)
+{
+    $produk = Furnitur::findOrFail($id); // or use your actual model
+    return view('detailproduk', compact('produk'));
+}
 }
