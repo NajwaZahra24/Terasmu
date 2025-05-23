@@ -693,20 +693,19 @@
                 <div class="filter-group">
                     <span class="filter-label">Filter:</span>
                     <select class="filter-select">
-                        <option value="">Semua Kategori</option>
-                        <option value="sofa">Sofa</option>
-                        <option value="kursi">Kursi</option>
-                        <option value="meja">Meja</option>
-                        <option value="lemari">Lemari</option>
-                        <option value="aksesoris">Aksesoris</option>
+                        <option value="">Kategori Produk</option>
+                        <option value="sofa">Nakas</option>
+                        <option value="kursi">Tempat Tidur</option>
+                        <option value="meja">Buffet</option>
+                        <option value="lemari">Meja</option>
+                        <option value="lemari">Kursi</option>
+                        <option value="lemari">Sofa</option>
                     </select>
                     <select class="filter-select">
-                        <option value="">Semua Harga</option>
-                        <option value="0-1">Rp 0 - 1.000.000</option>
-                        <option value="1-3">Rp 1.000.000 - 3.000.000</option>
-                        <option value="3-5">Rp 3.000.000 - 5.000.000</option>
-                        <option value="5-10">Rp 5.000.000 - 10.000.000</option>
-                        <option value="10+">> Rp 10.000.000</option>
+                        <option value="">Produk Kami</option>
+                        <option value="0-1">Baru</option>
+                        <option value="1-3">Diskon</option>
+                        <option value="3-5">Terbatas</option>
                     </select>
                     <select class="filter-select">
                         <option value="">Urutkan</option>

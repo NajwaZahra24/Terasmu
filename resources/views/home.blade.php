@@ -929,12 +929,12 @@
             </div>
             <div class="best-seller-card">
                 <div class="best-seller-image">
-                    <img src="/api/placeholder/800/400" alt="Modern Scandinavian Armchair">
+                    <img src="images/homepagechair.jpeg" alt="Kursi Teras">
                 </div>
                 <div class="best-seller-info">
-                    <h2 class="best-seller-name">Kursi Moderen</h2>
+                    <h2 class="best-seller-name">Kursi Santai Ruang Tamu</h2>
                     <p class="best-seller-description">
-                        Kursi kayu berkualitas premium dengan desain Scandinavian yang elegan. 
+                        Kursi kayu berkualitas premium dengan desain yang elegan. 
                         Dibuat dari kayu jati pilihan dan dilapisi dengan busa yang nyaman, 
                         kursi ini akan menjadi tambahan sempurna untuk ruang tamu Anda. 
                         Desainnya yang minimalis cocok untuk berbagai dekorasi interior.
@@ -961,11 +961,11 @@
                 <div class="review-card">
                     <div class="user-profile">
                         <div class="user-avatar">
-                            <img src="/api/placeholder/100/100" alt="Dewi Susanti">
+                            <img src="images/profile/ariana.jpeg" alt="Ariana">
                         </div>
                         <div class="user-info">
-                            <h3 class="user-name">Dewi Susanti</h3>
-                            <p class="user-username">@dewisusanti</p>
+                            <h3 class="user-name">Ariana</h3>
+                            <p class="user-username">@arianacute</p>
                         </div>
                     </div>
                     <div class="rating">
@@ -990,11 +990,11 @@
                 <div class="review-card">
                     <div class="user-profile">
                         <div class="user-avatar">
-                            <img src="/api/placeholder/100/100" alt="Budi Prakoso">
+                            <img src="images/profile/JB.jpeg" alt="Budi Prakoso">
                         </div>
                         <div class="user-info">
-                            <h3 class="user-name">Budi Prakoso</h3>
-                            <p class="user-username">@budiprakoso</p>
+                            <h3 class="user-name">Justin Sangar</h3>
+                            <p class="user-username">@masjustin</p>
                         </div>
                     </div>
                     <div class="rating">
@@ -1019,11 +1019,11 @@
                 <div class="review-card">
                     <div class="user-profile">
                         <div class="user-avatar">
-                            <img src="/api/placeholder/100/100" alt="Rina Wijaya">
+                            <img src="images/profile/starboy.jpeg" alt="starboy">
                         </div>
                         <div class="user-info">
-                            <h3 class="user-name">Rina Wijaya</h3>
-                            <p class="user-username">@rinawijaya</p>
+                            <h3 class="user-name">Starboy Darjo</h3>
+                            <p class="user-username">@theweeknd</p>
                         </div>
                     </div>
                     <div class="rating">
