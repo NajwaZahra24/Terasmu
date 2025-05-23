@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('furnitur_id')->constrained('furnitur')->onDelete('cascade');
             $table->longText('full_description')->nullable(); // In-depth marketing babble or specs
-            $table->json('specifications')->nullable(); // e.g., {"Material": "Kayu Jati", "Warna": "Coklat Muda"}
+            $table->text('material')->nullable();
+            $table->text('dimensi')->nullable();
+            $table->integer('berat')->nullable();
+            $table->text('warna')->nullable();
             $table->timestamps();
         });
     }

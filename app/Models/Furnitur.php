@@ -12,4 +12,5 @@ class Furnitur extends Model
         'name', 'category', 'price', 'original_price', 'label',
         'rating', 'rating_count', 'image_path', 'is_available'
     ];
+    
 }

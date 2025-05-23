@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,10 @@
     <style>
         /* Global Styles */
         :root {
-            --primary: #4a6f28; /* Warna hijau alam */
-            --secondary: #d2b48c; /* Warna kayu natural */
+            --primary: #4a6f28;
+            /* Warna hijau alam */
+            --secondary: #d2b48c;
+            /* Warna kayu natural */
             --dark: #333;
             --light: #f9f9f9;
             --gray: #e0e0e0;
@@ -281,7 +284,7 @@
             transition: border 0.3s;
         }
 
-        .colors input[type="radio"]:checked + label {
+        .colors input[type="radio"]:checked+label {
             border-color: var(--primary);
         }
 
@@ -350,7 +353,8 @@
             margin: 25px 0;
         }
 
-        .btn-add-to-cart, .btn-buy-now {
+        .btn-add-to-cart,
+        .btn-buy-now {
             padding: 12px 25px;
             border: none;
             border-radius: 5px;
@@ -544,7 +548,8 @@
                 flex-direction: column;
             }
 
-            .btn-add-to-cart, .btn-buy-now {
+            .btn-add-to-cart,
+            .btn-buy-now {
                 width: 100%;
                 justify-content: center;
             }
@@ -561,6 +566,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -587,71 +593,89 @@
     <!-- Breadcrumb Navigation -->
     <section class="breadcrumb">
         <div class="container">
-            <a href="index.html">Beranda</a> &gt; 
-            <a href="katalog.html">Katalog</a> &gt; 
-            <span>Kursi Teras Minimalis</span>
+            <a href="/">Beranda</a> &gt;
+            <a href="/katalog">Katalog</a> &gt;
+            <span>{{ $produk->name }}</span>
         </div>
     </section>
 
     <!-- Product Detail Section -->
     <section class="product-detail">
         <div class="container">
+
+            {{-- Gallery --}}
             <div class="product-gallery">
                 <div class="main-image">
-                    <img src="https://via.placeholder.com/800x600?text=Kursi+Teras+Minimalis" alt="Kursi Teras Minimalis" id="mainImg">
+                    <img src="{{ asset($produk->image_path) }}" alt="{{ $produk->name }}" id="mainImg">
                 </div>
                 <div class="thumbnail-grid">
-                    <img src="https://via.placeholder.com/200x150?text=Thumb+1" alt="Thumbnail 1" onclick="changeImage(this)">
-                    <img src="https://via.placeholder.com/200x150?text=Thumb+2" alt="Thumbnail 2" onclick="changeImage(this)">
-                    <img src="https://via.placeholder.com/200x150?text=Thumb+3" alt="Thumbnail 3" onclick="changeImage(this)">
-                    <img src="https://via.placeholder.com/200x150?text=Thumb+4" alt="Thumbnail 4" onclick="changeImage(this)">
+                    @if($produk->images && $produk->images->count())
+                        @foreach($produk->images as $img)
+                            <img src="{{ asset($img->url) }}" alt="Thumbnail {{ $loop->iteration }}"
+                                onclick="changeImage(this)">
+                        @endforeach
+                    @else
+                        {{-- fallback to main image --}}
+                        <img src="{{ asset($produk->image_path) }}" alt="{{ $produk->name }}" onclick="changeImage(this)">
+                    @endif
                 </div>
             </div>
 
+            {{-- Info --}}
             <div class="product-info">
-                <h1>Kursi Teras Minimalis – SERI ALAMI</h1>
-                <p class="product-code">Kode Produk: TRS-ALM-001</p>
+                <h1>{{ $produk->name }} &ndash; {{ $produk->label }}</h1>
+                <p class="product-code">Kode Produk: {{ $produk->code ?? $produk->id }}</p>
 
+                {{-- Price & Discount --}}
                 <div class="price">
-                    <span class="original-price">Rp 1.500.000</span>
-                    <span class="discounted-price">Rp 1.199.000</span>
-                    <span class="discount-badge">Diskon 20%</span>
+                    @if(!is_null($produk->original_price))
+                        <span class="original-price">
+                            Rp {{ number_format($produk->original_price, 0, ',', '.') }}
+                        </span>
+                        <span class="discounted-price">
+                            Rp {{ number_format($produk->price, 0, ',', '.') }}
+                        </span>
+                        @php
+                            $discount = round((($produk->original_price - $produk->price) / $produk->original_price) * 100);
+                        @endphp
+                        @if($discount > 0)
+                            <span class="discount-badge">Diskon {{ $discount }}%</span>
+                        @endif
+                    @else
+                        <span class="discounted-price">
+                            Rp {{ number_format($produk->price, 0, ',', '.') }}
+                        </span>
+                    @endif
                 </div>
 
+                {{-- Rating --}}
                 <div class="rating">
-                    <span class="stars">★★★★★</span>
-                    <span class="review-count">(128 ulasan)</span>
+                    <span class="stars">
+                        {{-- simple full‐star loop --}}
+                        @for($i = 0; $i < floor($produk->rating); $i++) ★ @endfor
+                        @for($i = 0; $i < 5 - floor($produk->rating); $i++) ☆ @endfor
+                    </span>
+                    <span class="review-count">({{ $produk->rating_count }} ulasan)</span>
                 </div>
 
+                {{-- Description --}}
                 <div class="description">
-                    <p>Kursi teras minimalis dari <strong>SERI ALAMI</strong> memberikan kesan elegan dan nyaman untuk area santai di rumah Anda. Dibuat dari material kayu jati berkualitas tinggi dengan finishing natural, kursi ini tahan cuaca dan cocok untuk penggunaan indoor maupun outdoor.</p>
+                    <h3>Deskripsi Lengkap</h3>
+                    <p>{!! nl2br(e($produk->detail->full_description ?? '—')) !!}</p>
                 </div>
 
+                {{-- Specs --}}
                 <div class="specs">
                     <h3>Spesifikasi Produk</h3>
                     <ul>
-                        <li><strong>Material:</strong> Kayu jati solid + anyaman rotan sintetis</li>
-                        <li><strong>Dimensi:</strong> 60 cm (P) x 55 cm (L) x 75 cm (T)</li>
-                        <li><strong>Berat:</strong> 8 kg</li>
-                        <li><strong>Warna:</strong> Natural wood, Dark oak, Walnut</li>
-                        <li><strong>Kapasitas Beban:</strong> 120 kg</li>
+                        <li><strong>Material:</strong> {{ $produk->material }}</li>
+                        <li><strong>Dimensi:</strong> {{ $produk->dimensions }}</li>
+                        <li><strong>Berat:</strong> {{ $produk->weight }} kg</li>
+                        <li><strong>Warna:</strong> {{ $produk->colors }}</li>
                     </ul>
                 </div>
 
-                <div class="color-options">
-                    <h3>Pilih Warna:</h3>
-                    <div class="colors">
-                        <input type="radio" id="natural" name="color" checked>
-                        <label for="natural" style="background-color: #d2b48c;" title="Natural Wood"></label>
-                        
-                        <input type="radio" id="dark-oak" name="color">
-                        <label for="dark-oak" style="background-color: #654321;" title="Dark Oak"></label>
-                        
-                        <input type="radio" id="walnut" name="color">
-                        <label for="walnut" style="background-color: #5c4033;" title="Walnut"></label>
-                    </div>
-                </div>
-
+                {{-- Quantity --}}
                 <div class="quantity">
                     <h3>Jumlah:</h3>
                     <div class="qty-selector">
@@ -661,14 +685,17 @@
                     </div>
                 </div>
 
+                {{-- Shipping & Actions --}}
                 <div class="shipping-info">
-                    <p><i class="fas fa-truck"></i> <strong>Gratis Ongkir</strong> (Jabodetabek, min. pembelian Rp 500.000)</p>
-                    <p><i class="fas fa-bolt"></i> <strong>Pengiriman Cepat</strong> (1-3 hari kerja)</p>
-                    <p><i class="fas fa-store"></i> <strong>Ambil di Toko</strong> (Tersedia di outlet Terasmu terdekat)</p>
+                    <p><i class="fas fa-truck"></i> <strong>Gratis Ongkir</strong> (Jabodetabek, min. Rp 500.000)</p>
+                    <p><i class="fas fa-bolt"></i> <strong>Pengiriman Cepat</strong> (1–3 hari kerja)</p>
+                    <p><i class="fas fa-store"></i> <strong>Ambil di Toko</strong> (Outlet Terasmu terdekat)</p>
                 </div>
 
                 <div class="action-buttons">
-                    <button class="btn-add-to-cart"><i class="fas fa-shopping-cart"></i> Tambah ke Keranjang</button>
+                    <button class="btn-add-to-cart">
+                        <i class="fas fa-shopping-cart"></i> Tambah ke Keranjang
+                    </button>
                     <button class="btn-buy-now">Beli Sekarang</button>
                 </div>
             </div>
@@ -745,24 +772,25 @@
         }
 
         // Fungsi untuk menambah/mengurangi jumlah produk
-        document.querySelector('.qty-btn.minus').addEventListener('click', function() {
+        document.querySelector('.qty-btn.minus').addEventListener('click', function () {
             const input = this.nextElementSibling;
             if (input.value > 1) input.value--;
         });
 
-        document.querySelector('.qty-btn.plus').addEventListener('click', function() {
+        document.querySelector('.qty-btn.plus').addEventListener('click', function () {
             const input = this.previousElementSibling;
             if (input.value < 10) input.value++;
         });
 
         // Fungsi untuk tombol beli/tambah ke keranjang (simulasi)
-        document.querySelector('.btn-add-to-cart').addEventListener('click', function() {
+        document.querySelector('.btn-add-to-cart').addEventListener('click', function () {
             alert('Produk telah ditambahkan ke keranjang!');
         });
 
-        document.querySelector('.btn-buy-now').addEventListener('click', function() {
+        document.querySelector('.btn-buy-now').addEventListener('click', function () {
             alert('Redirect ke halaman checkout...');
         });
     </script>
 </body>
+
 </html>

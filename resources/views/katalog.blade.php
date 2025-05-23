@@ -664,13 +664,13 @@
             </nav>
 
             <div class="icons">
-                <a href="#" id="search-btn"><i class="fas fa-search"></i></a>
-                <a href="#" class="cart-count" id="cart-btn">
+                <a href="" id="search-btn"><i class="fas fa-search"></i></a>
+                <a href="" class="cart-count" id="cart-btn">
                     <i class="fas fa-shopping-cart"></i>
                     <span id="cart-counter">0</span>
                 </a>
-                <a href="#" id="user-btn"><i class="fas fa-user"></i></a>
-                <a href="#" id="menu-btn"><i class="fas fa-bars"></i></a>
+                <a href="" id="user-btn"><i class="fas fa-user"></i></a>
+                <a href="" id="menu-btn"><i class="fas fa-bars"></i></a>
             </div>
         </div>
     </header>
@@ -726,55 +726,57 @@
             <div class="products-grid">
                 <!-- Produk 1 -->
                 @foreach ($furniturs as $item)
-                    <div class="product-card">
-                        @if ($item->label)
-                            <div class="product-badge">{{ $item->label }}</div>
-                        @endif
+                    <a href="{{ url('/detailproduk/' . $item->id) }}" class="no-underline">
+                        <div class="product-card">
+                            @if ($item->label)
+                                <div class="product-badge">{{ $item->label }}</div>
+                            @endif
 
-                        <div class="product-image-container">
-                            <img src="{{ asset($item->image_path) }}" alt="{{ $item->name }}" class="product-image">
+                            <div class="product-image-container">
+                                <img src="{{ asset($item->image_path) }}" alt="{{ $item->name }}" class="product-image">
 
-                        </div>
-
-                        <div class="product-info">
-                            <span class="product-category">{{ $item->category }}</span>
-                            <h3 class="product-title">{{ $item->name }}</h3>
-
-                            <div class="product-price">
-                                <span class="current-price">Rp {{ number_format($item->price, 0, ',', '.') }}</span>
-                                @if ($item->original_price)
-                                    <span class="original-price">Rp
-                                        {{ number_format($item->original_price, 0, ',', '.') }}</span>
-                                @endif
                             </div>
 
-                            <div class="product-meta">
-                                <div class="product-rating">
-                                    @php
-                                        $fullStars = floor($item->rating);
-                                        $halfStar = $item->rating - $fullStars >= 0.5 ? 1 : 0;
-                                        $emptyStars = 5 - $fullStars - $halfStar;
-                                    @endphp
+                            <div class="product-info">
+                                <span class="product-category">{{ $item->category }}</span>
+                                <h3 class="product-title">{{ $item->name }}</h3>
 
-                                    @for ($i = 0; $i < $fullStars; $i++)
-                                        <i class="fas fa-star"></i>
-                                    @endfor
-                                    @if ($halfStar)
-                                        <i class="fas fa-star-half-alt"></i>
+                                <div class="product-price">
+                                    <span class="current-price">Rp {{ number_format($item->price, 0, ',', '.') }}</span>
+                                    @if ($item->original_price)
+                                        <span class="original-price">Rp
+                                            {{ number_format($item->original_price, 0, ',', '.') }}</span>
                                     @endif
-                                    @for ($i = 0; $i < $emptyStars; $i++)
-                                        <i class="far fa-star"></i>
-                                    @endfor
-
-                                    <span>({{ $item->rating_count }})</span>
                                 </div>
 
-                                <div class="product-actions">
-                                    <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
+                                <div class="product-meta">
+                                    <div class="product-rating">
+                                        @php
+                                            $fullStars = floor($item->rating);
+                                            $halfStar = $item->rating - $fullStars >= 0.5 ? 1 : 0;
+                                            $emptyStars = 5 - $fullStars - $halfStar;
+                                        @endphp
+
+                                        @for ($i = 0; $i < $fullStars; $i++)
+                                            <i class="fas fa-star"></i>
+                                        @endfor
+                                        @if ($halfStar)
+                                            <i class="fas fa-star-half-alt"></i>
+                                        @endif
+                                        @for ($i = 0; $i < $emptyStars; $i++)
+                                            <i class="far fa-star"></i>
+                                        @endfor
+
+                                        <span>({{ $item->rating_count }})</span>
+                                    </div>
+
+                                    <div class="product-actions">
+                                        <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
     </section>
