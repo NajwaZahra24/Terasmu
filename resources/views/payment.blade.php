@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Furniro - Checkout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #B88E2F;
+            --secondary: #fff;
+            --accent: #2c2c2c;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,6 +21,9 @@
 
         body {
             color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Header Styles */
@@ -105,6 +115,7 @@
             padding: 0 20px;
             display: flex;
             gap: 40px;
+            flex: 1;
         }
 
         .billing-section {
@@ -207,7 +218,132 @@
             color: #B88E2F;
             text-decoration: none;
         }
-      
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--accent);
+            color: var(--secondary);
+            padding: 60px 0 0;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-column p, 
+        .footer-column a {
+            color: #ddd;
+            margin-bottom: 15px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .footer-logo i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--secondary);
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 14px;
+        }
+
+        .newsletter-form button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #8a6543;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: #aaa;
+            font-size: 14px;
+        }
         
     </style>
 </head>
@@ -223,7 +359,7 @@
     <div class="banner">
         <div class="banner-overlay"></div>
         <div class="banner-content">
-            <h1>Checkout</h1>
+            <h1>Payment</h1>
             <div class="breadcrumb">
                 <a href="#">Home</a> > Payment
             </div>
@@ -301,6 +437,45 @@
 
                 <button class="place-order-btn">Place order</button>
             </div>
+        </div>
     </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <a href="#" class="footer-logo">
+                    <i class="fas fa-couch"></i>
+                    Terasmu
+                </a>
+                <p>Temukan furnitur modern yang sempurna untuk rumah Anda.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/p/SMK-Telkom-Sidoarjo-100047190761645/?locale=id_ID"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/smktelkomsda/reels/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/SMKTelkomSDA"><i class="fab fa-twitter"></i></a>
+                    <a href="https://id.pinterest.com/"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Informasi</h3>
+                <a href="{{ route('tentangkami') }}">Tentang Kami</a>
+                <a href="#">Kebijakan Privasi</a>
+                <a href="#">Syarat dan Ketentuan</a>
+                <a href="{{ route( 'kontak')}}">Kontak</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Bantuan</h3>
+                <a href="#">FAQ</a>
+                <a href="#">Pengembalian</a>
+                <a href="#">Pengiriman</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Terasmu. Semua hak dilindungi.</p>
+        </div>
+    </footer>
 </body>
 </html>
