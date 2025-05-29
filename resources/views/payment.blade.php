@@ -406,15 +406,15 @@
             <h2>Product</h2>
             <div class="summary-item">
                 <div>Asgaard sofa × 1</div>
-                <div>Rs. 250,000.00</div>
+                <div>Rp. 250,000.00</div>
             </div>
             <div class="summary-item">
                 <div>Subtotal</div>
-                <div>Rs. 250,000.00</div>
+                <div>Rp. 250,000.00</div>
             </div>
             <div class="summary-total">
                 <div>Total</div>
-                <div>Rs. 250,000.00</div>
+                <div>Rp. 250,000.00</div>
             </div>
 
             <div style="margin-top: 30px;">
