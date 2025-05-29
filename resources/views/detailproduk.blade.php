@@ -38,58 +38,6 @@
             padding: 0 15px;
         }
 
-        /* Header Styles */
-        .header {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            padding: 15px 0;
-        }
-
-        .header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo img {
-            height: auto;
-            width: 120px;
-        }
-
-        .navbar ul {
-            display: flex;
-            list-style: none;
-        }
-
-        .navbar ul li {
-            margin: 0 15px;
-        }
-
-        .navbar ul li a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .navbar ul li a:hover {
-            color: var(--primary);
-        }
-
-        .icons a {
-            color: var(--text-color);
-            margin-left: 15px;
-            font-size: 18px;
-            transition: color 0.3s;
-        }
-
-        .icons a:hover {
-            color: var(--primary);
-        }
-
         /* Breadcrumb */
         .breadcrumb {
             padding: 15px 0;
@@ -448,148 +396,134 @@
         }
 
         /* Footer Styles */
-        .footer {
+        footer {
             background-color: var(--accent);
-            color: var(--white);
-            padding: 50px 0 20px;
+            color: var(--secondary);
+            padding: 60px 0 0;
+            margin-top: auto;
         }
 
-        .footer .container {
-            display: flex;
-            flex-wrap: wrap;
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
         }
 
-        .footer-logo {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .footer-logo img {
-            margin-bottom: 15px;
-            width: 120px;
-        }
-
-        .footer-logo p {
-            color: #bbb;
-        }
-
-        .footer-links {
-            flex: 1;
-            min-width: 150px;
-        }
-
-        .footer-links h3 {
+        .footer-column h3 {
+            font-size: 1.3rem;
             margin-bottom: 20px;
-            font-size: 18px;
+            position: relative;
+            padding-bottom: 10px;
+            color: var(--secondary);
         }
 
-        .footer-links ul {
-            list-style: none;
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
         }
 
-        .footer-links ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links ul li a {
-            color: #bbb;
+        .footer-column p, 
+        .footer-column a {
+            color: #ddd;
+            margin-bottom: 15px;
+            display: block;
             text-decoration: none;
             transition: color 0.3s;
         }
 
-        .footer-links ul li a:hover {
-            color: var(--white);
+        .footer-column a:hover {
+            color: var(--primary);
+            padding-left: 5px;
         }
 
-        .footer-contact {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .footer-contact h3 {
-            margin-bottom: 20px;
-            font-size: 18px;
-        }
-
-        .footer-contact p {
-            margin-bottom: 10px;
+        .footer-logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            color: #bbb;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
         }
 
-        .footer-contact i {
-            width: 20px;
-            text-align: center;
+        .footer-logo i {
+            color: var(--primary);
+            margin-right: 10px;
         }
 
-        .copyright {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #444;
-            color: #bbb;
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--secondary);
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 4px 0 0 4px;
             font-size: 14px;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .product-detail .container {
-                flex-direction: column;
-            }
+        .newsletter-form button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-            .thumbnail-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .newsletter-form button:hover {
+            background-color: #8a6543;
+        }
 
-            .action-buttons {
-                flex-direction: column;
-            }
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-            .btn-add-to-cart,
-            .btn-buy-now {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .header .container {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .navbar ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+        .footer-bottom p {
+            color: #aaa;
+            font-size: 14px;
         }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <img src="https://via.placeholder.com/120x50?text=Terasmu+Logo" alt="Terasmu Logo">
-            </a>
-            <nav class="navbar">
-                <ul>
-                    <li><a href="index.html">Beranda</a></li>
-                    <li><a href="katalog.html">Katalog</a></li>
-                    <li><a href="tentang.html">Tentang Kami</a></li>
-                    <li><a href="kontak.html">Kontak</a></li>
-                </ul>
-            </nav>
-            <div class="icons">
-                <a href="#"><i class="fas fa-search"></i></a>
-                <a href="#"><i class="fas fa-user"></i></a>
-                <a href="keranjang.html"><i class="fas fa-shopping-cart"></i></a>
-            </div>
-        </div>
-    </header>
-
     <!-- Breadcrumb Navigation -->
     <section class="breadcrumb">
         <div class="container">
@@ -693,11 +627,14 @@
                 </div>
 
                 <div class="action-buttons">
-                    <button class="btn-add-to-cart">
-                        <i class="fas fa-shopping-cart"></i> Tambah ke Keranjang
-                    </button>
+                <button class="btn-add-to-cart">
+                    <i class="fas fa-shopping-cart"></i> Tambah ke Keranjang
+                </button>
+                <a href="{{ route('payment') }}">
                     <button class="btn-buy-now">Beli Sekarang</button>
-                </div>
+                </a>
+            </div>
+
             </div>
         </div>
     </section>
@@ -736,31 +673,41 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-logo">
-                <img src="https://via.placeholder.com/120x50?text=Terasmu+Logo+Putih" alt="Terasmu Logo">
-                <p>Menghadirkan kenyamanan alam ke teras rumah Anda.</p>
+                <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <a href="#" class="footer-logo">
+                    <i class="fas fa-couch"></i>
+                    Terasmu
+                </a>
+                <p>Temukan furnitur modern yang sempurna untuk rumah Anda.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/p/SMK-Telkom-Sidoarjo-100047190761645/?locale=id_ID"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/smktelkomsda/reels/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/SMKTelkomSDA"><i class="fab fa-twitter"></i></a>
+                    <a href="https://id.pinterest.com/"><i class="fab fa-pinterest"></i></a>
+                </div>
             </div>
-            <div class="footer-links">
-                <h3>Tautan Cepat</h3>
-                <ul>
-                    <li><a href="index.html">Beranda</a></li>
-                    <li><a href="katalog.html">Katalog</a></li>
-                    <li><a href="tentang.html">Tentang Kami</a></li>
-                    <li><a href="kontak.html">Kontak</a></li>
-                </ul>
+
+            <div class="footer-column">
+                <h3>Informasi</h3>
+                <a href="{{ route('tentangkami') }}">Tentang Kami</a>
+                <a href="#">Kebijakan Privasi</a>
+                <a href="#">Syarat dan Ketentuan</a>
+                <a href="{{ route( 'kontak')}}">Kontak</a>
             </div>
-            <div class="footer-contact">
-                <h3>Hubungi Kami</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Jl. Kenangan Indah No. 123, Jakarta</p>
-                <p><i class="fas fa-phone"></i> +62 123 4567 890</p>
-                <p><i class="fas fa-envelope"></i> hello@terasmu.com</p>
+
+            <div class="footer-column">
+                <h3>Bantuan</h3>
+                <a href="#">FAQ</a>
+                <a href="#">Pengembalian</a>
+                <a href="#">Pengiriman</a>
             </div>
         </div>
-        <div class="copyright">
-            <p>&copy; 2025 Terasmu. All Rights Reserved.</p>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Terasmu. Semua hak dilindungi.</p>
         </div>
     </footer>
 
@@ -785,10 +732,6 @@
         // Fungsi untuk tombol beli/tambah ke keranjang (simulasi)
         document.querySelector('.btn-add-to-cart').addEventListener('click', function () {
             alert('Produk telah ditambahkan ke keranjang!');
-        });
-
-        document.querySelector('.btn-buy-now').addEventListener('click', function () {
-            alert('Redirect ke halaman checkout...');
         });
     </script>
 </body>
