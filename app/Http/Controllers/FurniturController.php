@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Furnitur;
@@ -8,13 +7,13 @@ class FurniturController extends Controller
 {
     public function index()
     {
-        $furniturs = Furnitur::all();
-
+        $furniturs = Furnitur::with('detail')->get();
         return view('katalog', compact('furniturs'));
     }
+
     public function show($id)
-{
-    $produk = Furnitur::findOrFail($id); // or use your actual model
-    return view('detailproduk', compact('produk'));
-}
+    {
+        $produk = Furnitur::with('detail')->findOrFail($id);
+        return view('detailproduk', compact('produk'));
+    }
 }

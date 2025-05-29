@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Furnitur extends Model
 {
@@ -12,5 +13,11 @@ class Furnitur extends Model
         'name', 'category', 'price', 'original_price', 'label',
         'rating', 'rating_count', 'image_path', 'is_available'
     ];
-    
+
+    // Add this relationship
+    public function detail(): HasOne
+    {
+        return $this->hasOne(FurniturDetail::class, 'furnitur_id');
+    }
+
 }

@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class FurniturDetail extends Model
 {
@@ -10,7 +11,7 @@ class FurniturDetail extends Model
         'furnitur_id','full_description','material','dimensi','berat','warna'
     ];
 
-    public function furnitur()
+    public function furnitur(): BelongsTo
     {
         return $this->belongsTo(Furnitur::class, 'furnitur_id');
     }

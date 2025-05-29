@@ -49,8 +49,4 @@ Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
 // Shortcut ke furnitur (bisa juga dihapus jika sudah ada katalog)
 Route::get('/furnitur', [FurniturController::class, 'index']);
 
-Route::get('/detailproduk/{id}', [App\Http\Controllers\FurniturController::class, 'show']);
-
-Route::get('/detail/{id}', function($id) {
-    return "Testing route - ID: ".$id;
-});
+    Route::get('/detailproduk/{id}', [FurniturController::class, 'show'])->name('produk.detail');

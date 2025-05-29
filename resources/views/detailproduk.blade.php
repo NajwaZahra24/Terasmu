@@ -9,9 +9,12 @@
     <style>
         /* Global Styles */
         :root {
-            --primary: #A67C52;  /* Warna elemen utama */
-            --secondary: #F7F3EE;  /* Warna latar utama */
-            --accent: #2E2E2E;  /* Warna aksen dan teks */
+            --primary: #A67C52;
+            /* Warna elemen utama */
+            --secondary: #F7F3EE;
+            /* Warna latar utama */
+            --accent: #2E2E2E;
+            /* Warna aksen dan teks */
             --light-gray: #e0e0e0;
             --white: #ffffff;
             --text-color: #2E2E2E;
@@ -430,7 +433,7 @@
             background-color: var(--primary);
         }
 
-        .footer-column p, 
+        .footer-column p,
         .footer-column a {
             color: #ddd;
             margin-bottom: 15px;
@@ -591,24 +594,22 @@
                     </span>
                     <span class="review-count">({{ $produk->rating_count }} ulasan)</span>
                 </div>
-
                 {{-- Description --}}
                 <div class="description">
                     <h3>Deskripsi Lengkap</h3>
-                    <p>{!! nl2br(e($detail->full_description ?? '—')) !!}</p>
+                    <p>{!! nl2br(e($produk->detail->full_description ?? '—')) !!}</p>
                 </div>
 
                 {{-- Specs --}}
                 <div class="specs">
                     <h3>Spesifikasi Produk</h3>
                     <ul>
-                        <li><strong>Material:</strong> {{ $detail->material ?? '—' }}</li>
-                        <li><strong>Dimensi:</strong> {{ $detail->dimensi ?? '—' }}</li>
-                        <li><strong>Berat:</strong> {{ $detail->berat ?? '—' }} kg</li>
-                        <li><strong>Warna:</strong> {{ $detail->warna ?? '—' }}</li>
+                        <li><strong>Material:</strong> {{ $produk->detail->material ?? '—' }}</li>
+                        <li><strong>Dimensi:</strong> {{ $produk->detail->dimensi ?? '—' }}</li>
+                        <li><strong>Berat:</strong> {{ $produk->detail->berat ?? '—' }} kg</li>
+                        <li><strong>Warna:</strong> {{ $produk->detail->warna ?? '—' }}</li>
                     </ul>
-                </div>
-
+                </div>  
                 {{-- Quantity --}}
                 <div class="quantity">
                     <h3>Jumlah:</h3>
@@ -627,13 +628,13 @@
                 </div>
 
                 <div class="action-buttons">
-                <button class="btn-add-to-cart">
-                    <i class="fas fa-shopping-cart"></i> Tambah ke Keranjang
-                </button>
-                <a href="{{ route('payment') }}">
-                    <button class="btn-buy-now">Beli Sekarang</button>
-                </a>
-            </div>
+                    <button class="btn-add-to-cart">
+                        <i class="fas fa-shopping-cart"></i> Tambah ke Keranjang
+                    </button>
+                    <a href="{{ route('payment') }}">
+                        <button class="btn-buy-now">Beli Sekarang</button>
+                    </a>
+                </div>
 
             </div>
         </div>
@@ -673,7 +674,7 @@
         </div>
     </section>
 
-                <!-- Footer Section -->
+    <!-- Footer Section -->
     <footer>
         <div class="footer-container">
             <div class="footer-column">
@@ -683,7 +684,8 @@
                 </a>
                 <p>Temukan furnitur modern yang sempurna untuk rumah Anda.</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/p/SMK-Telkom-Sidoarjo-100047190761645/?locale=id_ID"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/p/SMK-Telkom-Sidoarjo-100047190761645/?locale=id_ID"><i
+                            class="fab fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/smktelkomsda/reels/"><i class="fab fa-instagram"></i></a>
                     <a href="https://x.com/SMKTelkomSDA"><i class="fab fa-twitter"></i></a>
                     <a href="https://id.pinterest.com/"><i class="fab fa-pinterest"></i></a>
@@ -695,7 +697,7 @@
                 <a href="{{ route('tentangkami') }}">Tentang Kami</a>
                 <a href="#">Kebijakan Privasi</a>
                 <a href="#">Syarat dan Ketentuan</a>
-                <a href="{{ route( 'kontak')}}">Kontak</a>
+                <a href="{{ route('kontak')}}">Kontak</a>
             </div>
 
             <div class="footer-column">
