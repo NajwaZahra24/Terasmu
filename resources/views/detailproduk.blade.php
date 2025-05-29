@@ -9,14 +9,12 @@
     <style>
         /* Global Styles */
         :root {
-            --primary: #4a6f28;
-            /* Warna hijau alam */
-            --secondary: #d2b48c;
-            /* Warna kayu natural */
-            --dark: #333;
-            --light: #f9f9f9;
-            --gray: #e0e0e0;
-            --danger: #e74c3c;
+            --primary: #A67C52;  /* Warna elemen utama */
+            --secondary: #F7F3EE;  /* Warna latar utama */
+            --accent: #2E2E2E;  /* Warna aksen dan teks */
+            --light-gray: #e0e0e0;
+            --white: #ffffff;
+            --text-color: #2E2E2E;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -28,8 +26,8 @@
         }
 
         body {
-            background-color: #fff;
-            color: var(--dark);
+            background-color: var(--white);
+            color: var(--text-color);
             line-height: 1.6;
         }
 
@@ -42,7 +40,7 @@
 
         /* Header Styles */
         .header {
-            background-color: #fff;
+            background-color: var(--white);
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
@@ -72,7 +70,7 @@
 
         .navbar ul li a {
             text-decoration: none;
-            color: var(--dark);
+            color: var(--text-color);
             font-weight: 500;
             transition: color 0.3s;
         }
@@ -82,7 +80,7 @@
         }
 
         .icons a {
-            color: var(--dark);
+            color: var(--text-color);
             margin-left: 15px;
             font-size: 18px;
             transition: color 0.3s;
@@ -95,12 +93,12 @@
         /* Breadcrumb */
         .breadcrumb {
             padding: 15px 0;
-            background-color: #f5f5f5;
+            background-color: var(--secondary);
             font-size: 14px;
         }
 
         .breadcrumb a {
-            color: var(--dark);
+            color: var(--text-color);
             text-decoration: none;
         }
 
@@ -116,6 +114,7 @@
         /* Product Detail Section */
         .product-detail {
             padding: 40px 0;
+            background-color: var(--white);
         }
 
         .product-detail .container {
@@ -132,7 +131,7 @@
         .main-image {
             width: 100%;
             margin-bottom: 15px;
-            border: 1px solid var(--gray);
+            border: 1px solid var(--light-gray);
             border-radius: 8px;
             overflow: hidden;
         }
@@ -157,7 +156,7 @@
 
         .thumbnail-grid img {
             width: 100%;
-            border: 1px solid var(--gray);
+            border: 1px solid var(--light-gray);
             border-radius: 5px;
             cursor: pointer;
             transition: border 0.3s;
@@ -175,7 +174,7 @@
         .product-info h1 {
             font-size: 28px;
             margin-bottom: 5px;
-            color: var(--dark);
+            color: var(--accent);
         }
 
         .product-code {
@@ -228,7 +227,7 @@
         .description {
             margin: 20px 0;
             padding-bottom: 20px;
-            border-bottom: 1px solid var(--gray);
+            border-bottom: 1px solid var(--light-gray);
         }
 
         .specs {
@@ -306,7 +305,7 @@
         .qty-btn {
             width: 30px;
             height: 30px;
-            background-color: var(--gray);
+            background-color: var(--light-gray);
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -325,14 +324,14 @@
             width: 50px;
             height: 30px;
             text-align: center;
-            border: 1px solid var(--gray);
+            border: 1px solid var(--light-gray);
             border-radius: 4px;
         }
 
         .shipping-info {
             margin: 20px 0;
             padding: 15px;
-            background-color: #f9f9f9;
+            background-color: var(--secondary);
             border-radius: 8px;
         }
 
@@ -367,32 +366,33 @@
         }
 
         .btn-add-to-cart {
-            background-color: var(--secondary);
-            color: #333;
+            background-color: var(--light-gray);
+            color: var(--accent);
         }
 
         .btn-add-to-cart:hover {
-            background-color: #c4a574;
+            background-color: #d0d0d0;
         }
 
         .btn-buy-now {
             background-color: var(--primary);
-            color: white;
+            color: var(--white);
         }
 
         .btn-buy-now:hover {
-            background-color: #3a5a20;
+            background-color: #8c5d3a;
         }
 
         /* Reviews Section */
         .reviews {
             padding: 40px 0;
-            background-color: #f9f9f9;
+            background-color: var(--secondary);
         }
 
         .reviews h2 {
             margin-bottom: 20px;
             font-size: 24px;
+            color: var(--accent);
         }
 
         .review-summary {
@@ -421,7 +421,7 @@
         }
 
         .review-item {
-            background-color: white;
+            background-color: var(--white);
             padding: 20px;
             border-radius: 8px;
             box-shadow: var(--shadow);
@@ -449,8 +449,8 @@
 
         /* Footer Styles */
         .footer {
-            background-color: var(--dark);
-            color: white;
+            background-color: var(--accent);
+            color: var(--white);
             padding: 50px 0 20px;
         }
 
@@ -499,7 +499,7 @@
         }
 
         .footer-links ul li a:hover {
-            color: white;
+            color: var(--white);
         }
 
         .footer-contact {
@@ -717,7 +717,7 @@
             <div class="review-list">
                 <div class="review-item">
                     <div class="reviewer">
-                        <span class="name">Budi S.</span>
+                        <span class="name">{{$produk->name}}</span>
                         <span class="stars">★★★★★</span>
                     </div>
                     <p class="review-text">"Kursinya sangat nyaman dan kualitas kayunya bagus!"</p>
