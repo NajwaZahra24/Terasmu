@@ -661,7 +661,7 @@
                 {{-- Description --}}
                 <div class="description">
                     <h3>Deskripsi Lengkap</h3>
-                    <p>{!! nl2br(e($produk->detail->full_description ?? '—')) !!}</p>
+                    <p>{!! nl2br(e($detailFurniturs->full_description ?? '—')) !!}</p>
                 </div>
 
                 {{-- Specs --}}

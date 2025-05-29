@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FurniturDetailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FurniturController;
@@ -49,3 +50,5 @@ Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
 Route::get('/furnitur', [FurniturController::class, 'index']);
 
 Route::get('/detailproduk/{id}', [App\Http\Controllers\FurniturController::class, 'show']);
+
+Route::get('/fullproduk/{id}', [FurniturDetailController::class,'show']);

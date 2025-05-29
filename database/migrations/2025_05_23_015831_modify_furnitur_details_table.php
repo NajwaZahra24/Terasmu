@@ -15,15 +15,12 @@ return new class extends Migration
             // Modify columns to match your new schema
             
             // Example: change 'material' column to text and nullable
-            $table->text('material')->nullable()->change();
+            
+            $table->text('dimensi')->nullable();
 
-            $table->longText('full_description')->nullable()->change();
+            $table->integer('berat')->nullable();
 
-            $table->text('dimensi')->nullable()->change();
-
-            $table->integer('berat')->nullable()->change();
-
-            $table->text('warna')->nullable()->change();
+            $table->text('warna')->nullable();
         });
     }
 
