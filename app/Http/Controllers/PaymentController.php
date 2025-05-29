@@ -11,7 +11,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        return view('payment'); // Ini akan memanggil resources/views/payment.blade.php
     }
 
     /**

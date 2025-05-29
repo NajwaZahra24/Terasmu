@@ -207,6 +207,8 @@
             color: #B88E2F;
             text-decoration: none;
         }
+      
+        
     </style>
 </head>
 <body>
@@ -223,7 +225,7 @@
         <div class="banner-content">
             <h1>Checkout</h1>
             <div class="breadcrumb">
-                <a href="#">Home</a> > Checkout
+                <a href="#">Home</a> > Payment
             </div>
         </div>
     </div>
@@ -299,9 +301,6 @@
 
                 <button class="place-order-btn">Place order</button>
             </div>
-        </div>
-    </div>
-        </div>
     </div>
 </body>
 </html>
