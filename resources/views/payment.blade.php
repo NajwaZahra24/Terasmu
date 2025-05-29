@@ -26,30 +26,21 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
-        .logo {
-            font-weight: bold;
-            font-size: 24px;
+        .back-btn {
+            padding: 8px 16px;
+            background-color: #B88E2F;
             color: #333;
+            border: 1px solid #ddd;
+            border-radius: 4px;
             text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 30px;
-            margin-right: 10px;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-btn:hover {
+            background-color: #eee;
         }
 
         .header-icons {
@@ -216,119 +207,14 @@
             color: #B88E2F;
             text-decoration: none;
         }
-
-        /* Features Section */
-        .features {
-            background-color: #FAF4F4;
-            padding: 40px 0;
-            margin-top: 60px;
-        }
-
-        .features-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .feature-icon {
-            font-size: 30px;
-            color: #B88E2F;
-        }
-
-        .feature-text h3 {
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .feature-text p {
-            font-size: 14px;
-            color: #777;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #FAF4F4;
-            padding: 60px 0 20px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 40px;
-        }
-
-        .footer-column h3 {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .footer-column a, .footer-column p {
-            display: block;
-            margin-bottom: 10px;
-            color: #333;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .newsletter {
-            display: flex;
-        }
-
-        .newsletter input {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-right: none;
-            flex: 1;
-        }
-
-        .newsletter button {
-            padding: 0 15px;
-            background-color: #B88E2F;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            font-size: 14px;
-            color: #777;
-        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <a href="#" class="logo">
-            <img src="/api/placeholder/30/30" alt="Furniro Logo"> Furniro
+        <a href="javascript:history.back()" class="back-btn">
+            ← Kembali
         </a>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Shop</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-        </nav>
-        <div class="header-icons">
-            <a href="#">👤</a>
-            <a href="#">🔍</a>
-            <a href="#">❤️</a>
-            <a href="#">🛒</a>
-        </div>
     </header>
 
     <!-- Banner -->
@@ -350,57 +236,29 @@
             <form>
                 <div class="form-row-split">
                     <div class="form-row">
-                        <label for="first-name">First Name</label>
+                        <label for="first-name">Nama Depan</label>
                         <input type="text" id="first-name" required>
                     </div>
                     <div class="form-row">
-                        <label for="last-name">Last Name</label>
+                        <label for="last-name">Nama Belakang</label>
                         <input type="text" id="last-name" required>
                     </div>
                 </div>
                 <div class="form-row">
-                    <label for="company">Company Name (Optional)</label>
+                    <label for="company">Alamat Lengkap</label>
                     <input type="text" id="company">
                 </div>
                 <div class="form-row">
-                    <label for="country">Country / Region</label>
-                    <select id="country" required>
-                        <option value="sri-lanka">Sri Lanka</option>
-                        <option value="india">India</option>
-                        <option value="usa">USA</option>
-                    </select>
-                </div>
-                <div class="form-row">
-                    <label for="street">Street address</label>
-                    <input type="text" id="street" required>
-                </div>
-                <div class="form-row">
-                    <label for="city">Town / City</label>
-                    <input type="text" id="city" required>
-                </div>
-                <div class="form-row">
-                    <label for="province">Province</label>
-                    <select id="province" required>
-                        <option value="western">Western Province</option>
-                        <option value="central">Central Province</option>
-                        <option value="southern">Southern Province</option>
-                    </select>
-                </div>
-                <div class="form-row">
-                    <label for="zip">ZIP code</label>
-                    <input type="text" id="zip" required>
-                </div>
-                <div class="form-row">
-                    <label for="phone">Phone</label>
+                    <label for="phone">Nomor HP</label>
                     <input type="tel" id="phone" required>
                 </div>
                 <div class="form-row">
-                    <label for="email">Email address</label>
+                    <label for="email">Alamat Email</label>
                     <input type="email" id="email" required>
                 </div>
                 <div class="form-row">
-                    <label for="notes">Additional information</label>
-                    <textarea id="notes" rows="4"></textarea>
+                    <label for="notes">Tanggal Pemesanan</label>
+                    <input type="datetime-local" name="tanggal_jam">
                 </div>
             </form>
         </div>
@@ -443,74 +301,7 @@
             </div>
         </div>
     </div>
-
-    <!-- Features Section -->
-    <div class="features">
-        <div class="features-container">
-            <div class="feature">
-                <div class="feature-icon">🏆</div>
-                <div class="feature-text">
-                    <h3>High Quality</h3>
-                    <p>crafted from top materials</p>
-                </div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">✓</div>
-                <div class="feature-text">
-                    <h3>Warranty Protection</h3>
-                    <p>Over 2 years</p>
-                </div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🚚</div>
-                <div class="feature-text">
-                    <h3>Free Shipping</h3>
-                    <p>Order over 150 $</p>
-                </div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">📞</div>
-                <div class="feature-text">
-                    <h3>24 / 7 Support</h3>
-                    <p>Dedicated support</p>
-                </div>
-            </div>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-top">
-                <div class="footer-column">
-                    <h3>Furniro.</h3>
-                    <p>400 University Drive Suite 200 Coral Gables, FL 33134 USA</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Links</h3>
-                    <a href="#">Home</a>
-                    <a href="#">Shop</a>
-                    <a href="#">About</a>
-                    <a href="#">Contact</a>
-                </div>
-                <div class="footer-column">
-                    <h3>Help</h3>
-                    <a href="#">Payment Options</a>
-                    <a href="#">Returns</a>
-                    <a href="#">Privacy Policies</a>
-                </div>
-                <div class="footer-column">
-                    <h3>Newsletter</h3>
-                    <div class="newsletter">
-                        <input type="email" placeholder="Enter Your Email Address">
-                        <button>SUBSCRIBE</button>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>2023 furniro. All rights reserved</p>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
