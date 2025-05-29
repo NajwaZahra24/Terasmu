@@ -6,8 +6,10 @@ use App\Models\FurniturDetail;
 
 class FurniturDetailController extends Controller
 {
-    public function show($id);
-
-    $detailFurniturs = FurniturDetail::all();
-    return view('fulldetailproduk', compact('fullproduk'));
+    public function show($furnitur_id)
+    {
+        $detail = FurniturDetail::findOrFail($furnitur_id);
+        dd($detail);
+        return view('detailproduk', compact('detail'));
+    }
 }

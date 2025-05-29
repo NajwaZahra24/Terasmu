@@ -661,17 +661,17 @@
                 {{-- Description --}}
                 <div class="description">
                     <h3>Deskripsi Lengkap</h3>
-                    <p>{!! nl2br(e($detailFurniturs->full_description ?? '—')) !!}</p>
+                    <p>{!! nl2br(e($detail->full_description ?? '—')) !!}</p>
                 </div>
 
                 {{-- Specs --}}
                 <div class="specs">
                     <h3>Spesifikasi Produk</h3>
                     <ul>
-                        <li><strong>Material:</strong> {{ $produk->material }}</li>
-                        <li><strong>Dimensi:</strong> {{ $produk->dimensions }}</li>
-                        <li><strong>Berat:</strong> {{ $produk->weight }} kg</li>
-                        <li><strong>Warna:</strong> {{ $produk->colors }}</li>
+                        <li><strong>Material:</strong> {{ $detail->material ?? '—' }}</li>
+                        <li><strong>Dimensi:</strong> {{ $detail->dimensi ?? '—' }}</li>
+                        <li><strong>Berat:</strong> {{ $detail->berat ?? '—' }} kg</li>
+                        <li><strong>Warna:</strong> {{ $detail->warna ?? '—' }}</li>
                     </ul>
                 </div>
 

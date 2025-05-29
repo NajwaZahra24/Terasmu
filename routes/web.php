@@ -51,4 +51,6 @@ Route::get('/furnitur', [FurniturController::class, 'index']);
 
 Route::get('/detailproduk/{id}', [App\Http\Controllers\FurniturController::class, 'show']);
 
-Route::get('/fullproduk/{id}', [FurniturDetailController::class,'show']);
+Route::get('/detail/{id}', function($id) {
+    return "Testing route - ID: ".$id;
+});
