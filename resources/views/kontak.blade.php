@@ -413,7 +413,7 @@
 
             <div class="footer-column">
                 <h3>Informasi</h3>
-                <a href="#">Tentang Kami</a>
+                <a href="{{ route('tentangkami') }}">Tentang Kami</a>
                 <a href="#">Kebijakan Privasi</a>
                 <a href="#">Syarat dan Ketentuan</a>
                 <a href="#">Kontak</a>

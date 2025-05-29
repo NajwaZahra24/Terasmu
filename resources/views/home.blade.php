@@ -916,7 +916,7 @@
             <div class="hero-content">
                 <h1>Furniture Modern Untuk Rumah Anda</h1>
                 <p>Temukan koleksi furnitur dengan kualitas tinggi dan gaya pilihan anda yang dapat memadukan kenyamanan dan keindahan.</p>
-                <a href="#" class="btn">Beli Sekarang</a>
+                <a href="{{ route('katalog') }}" class="btn">Beli Sekarang</a>
             </div>
         </div>
     </section>
@@ -1160,10 +1160,10 @@
 
             <div class="footer-column">
                 <h3>Informasi</h3>
-                <a href="#">Tentang Kami</a>
+                <a href="{{ route('tentangkami') }}">Tentang Kami</a>
                 <a href="#">Kebijakan Privasi</a>
                 <a href="#">Syarat dan Ketentuan</a>
-                <a href="#">Kontak</a>
+                <a href="{{ route( 'kontak')}}">Kontak</a>
             </div>
 
             <div class="footer-column">
