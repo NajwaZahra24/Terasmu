@@ -9,11 +9,8 @@
     <style>
         :root {
             --primary: #A67C52;
-            /* Warna elemen utama */
             --secondary: #F7F3EE;
-            /* Warna latar utama */
             --accent: #2E2E2E;
-            /* Warna aksen dan teks */
             --light-gray: #e0e0e0;
             --white: #ffffff;
             --text-color: #2E2E2E;
@@ -298,6 +295,48 @@
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 2px rgba(166, 124, 82, 0.2);
+        }
+
+        /* Search Form Styles */
+        .search-form {
+            margin-right: auto;
+        }
+
+        .search-form .input-group {
+            display: flex;
+            gap: 5px;
+        }
+
+        .search-input {
+            padding: 10px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 6px;
+            width: 200px;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(166, 124, 82, 0.2);
+        }
+
+        .search-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-btn:hover {
+            background-color: #8a6543;
         }
 
         .view-options {
@@ -629,6 +668,20 @@
                 width: 100%;
                 flex-wrap: wrap;
             }
+
+            .search-form {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .search-form .input-group {
+                width: 100%;
+            }
+
+            .search-input {
+                flex: 1;
+                width: auto;
+            }
         }
 
         @media (max-width: 576px) {
@@ -689,41 +742,94 @@
     <!-- Catalog Section -->
     <section class="catalog-section">
         <div class="container">
+            <!-- Search Results Info -->
+            @if(request('keyword') || request('category'))
+            <div class="search-results-info" style="margin-bottom: 20px; padding: 10px; background: var(--secondary); border-radius: 5px;">
+                <p>
+                    @if(request('keyword'))
+                        Menampilkan hasil untuk: <strong>"{{ request('keyword') }}"</strong>
+                    @endif
+                    @if(request('category'))
+                        dalam kategori <strong>{{ ucfirst(request('category')) }}</strong>
+                    @endif
+                </p>
+                <p>Ditemukan {{ $furniturs->total() }} produk</p>
+            </div>
+            @endif
+
             <div class="filter-section">
+                <!-- Search Form -->
+                <form action="{{ route('katalog.search') }}" method="GET" class="search-form">
+                    <div class="input-group">
+                        <input type="text" 
+                               name="keyword" 
+                               class="search-input" 
+                               placeholder="Cari nama produk..." 
+                               value="{{ request('keyword') }}"
+                               minlength="2">
+                        <button type="submit" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        @if(request('keyword'))
+                        <a href="{{ route('katalog') }}" class="search-btn">
+                            <i class="fas fa-times"></i>
+                        </a>
+                        @endif
+                    </div>
+                    
+                    <!-- Hidden fields to maintain other filters when searching -->
+                    @if(request('category'))
+                        <input type="hidden" name="category" value="{{ request('category') }}">
+                    @endif
+                    @if(request('sort'))
+                        <input type="hidden" name="sort" value="{{ request('sort') }}">
+                    @endif
+                </form>
+
                 <div class="filter-group">
                     <span class="filter-label">Filter:</span>
-                    <select class="filter-select">
-                        <option value="">Kategori Produk</option>
-                        <option value="sofa">Nakas</option>
-                        <option value="kursi">Tempat Tidur</option>
-                        <option value="meja">Buffet</option>
-                        <option value="lemari">Meja</option>
-                        <option value="lemari">Kursi</option>
-                        <option value="lemari">Sofa</option>
+                    <select name="category" class="filter-select" onchange="this.form.submit()">
+                        <option value="">Semua Kategori</option>
+                        <option value="sofa" {{ request('category') == 'sofa' ? 'selected' : '' }}>Sofa</option>
+                        <option value="meja" {{ request('category') == 'meja' ? 'selected' : '' }}>Meja</option>
+                        <option value="kursi" {{ request('category') == 'kursi' ? 'selected' : '' }}>Kursi</option>
+                        <option value="nakas" {{ request('category') == 'nakas' ? 'selected' : '' }}>Nakas</option>
+                        <option value="tempat tidur" {{ request('category') == 'tempat tidur' ? 'selected' : '' }}>Tempat Tidur</option>
                     </select>
-                    <select class="filter-select">
-                        <option value="">Produk Kami</option>
-                        <option value="0-1">Baru</option>
-                        <option value="1-3">Diskon</option>
-                        <option value="3-5">Terbatas</option>
-                    </select>
-                    <select class="filter-select">
+                    
+                    <select class="filter-select" name="sort" onchange="this.form.submit()">
                         <option value="">Urutkan</option>
-                        <option value="terbaru">Terbaru</option>
-                        <option value="termurah">Harga Terendah</option>
-                        <option value="termahal">Harga Tertinggi</option>
-                        <option value="terlaris">Terlaris</option>
-                        <option value="rating">Rating Tertinggi</option>
+                        <option value="terbaru" {{ request('sort') == 'terbaru' ? 'selected' : '' }}>Terbaru</option>
+                        <option value="termurah" {{ request('sort') == 'termurah' ? 'selected' : '' }}>Harga Terendah</option>
+                        <option value="termahal" {{ request('sort') == 'termahal' ? 'selected' : '' }}>Harga Tertinggi</option>
+                        <option value="terlaris" {{ request('sort') == 'terlaris' ? 'selected' : '' }}>Terlaris</option>
                     </select>
                 </div>
+                
                 <div class="view-options">
                     <button class="view-btn active"><i class="fas fa-th-large"></i></button>
                     <button class="view-btn"><i class="fas fa-list"></i></button>
                 </div>
             </div>
 
+            @if((request('keyword') || request('category')) && $furniturs->isEmpty())
+            <div class="no-results" style="text-align: center; padding: 40px 0;">
+                <i class="fas fa-search" style="font-size: 48px; color: var(--primary); margin-bottom: 20px;"></i>
+                <h3 style="color: var(--accent); margin-bottom: 10px;">Produk tidak ditemukan</h3>
+                <p style="color: var(--accent);">
+                    @if(request('keyword'))
+                        Tidak ada produk dengan nama "{{ request('keyword') }}"
+                    @endif
+                    @if(request('category'))
+                        dalam kategori {{ ucfirst(request('category')) }}
+                    @endif
+                </p>
+                <a href="{{ route('katalog') }}" class="view-btn" style="margin-top: 20px; display: inline-block;">
+                    Kembali ke Katalog
+                </a>
+            </div>
+            @else
             <div class="products-grid">
-                <!-- Produk 1 -->
                 @foreach ($furniturs as $item)
                     <a href="{{ url('/detailproduk/' . $item->id) }}" class="no-underline">
                         <div class="product-card">
@@ -733,7 +839,6 @@
 
                             <div class="product-image-container">
                                 <img src="{{ asset($item->image_path) }}" alt="{{ $item->name }}" class="product-image">
-
                             </div>
 
                             <div class="product-info">
@@ -743,8 +848,7 @@
                                 <div class="product-price">
                                     <span class="current-price">Rp {{ number_format($item->price, 0, ',', '.') }}</span>
                                     @if ($item->original_price)
-                                        <span class="original-price">Rp
-                                            {{ number_format($item->original_price, 0, ',', '.') }}</span>
+                                        <span class="original-price">Rp {{ number_format($item->original_price, 0, ',', '.') }}</span>
                                     @endif
                                 </div>
 
@@ -778,6 +882,33 @@
                     </a>
                 @endforeach
             </div>
+            @endif
+
+            <!-- Pagination -->
+            @if($furniturs->hasPages())
+            <div class="pagination">
+                @if($furniturs->onFirstPage())
+                    <span class="page-link disabled">&laquo;</span>
+                @else
+                    <a href="{{ $furniturs->previousPageUrl() }}" class="page-link">&laquo;</a>
+                @endif
+
+                @foreach(range(1, $furniturs->lastPage()) as $i)
+                    @if($i == $furniturs->currentPage())
+                        <span class="page-link active">{{ $i }}</span>
+                    @else
+                        <a href="{{ $furniturs->url($i) }}" class="page-link">{{ $i }}</a>
+                    @endif
+                @endforeach
+
+                @if($furniturs->hasMorePages())
+                    <a href="{{ $furniturs->nextPageUrl() }}" class="page-link">&raquo;</a>
+                @else
+                    <span class="page-link disabled">&raquo;</span>
+                @endif
+            </div>
+            @endif
+        </div>
     </section>
 
     <!-- Footer Section -->
@@ -802,7 +933,7 @@
                 <a href="#">Tentang Kami</a>
                 <a href="#">Kebijakan Privasi</a>
                 <a href="#">Syarat dan Ketentuan</a>
-                <a href="{{ route( 'kontak')}}">Kontak</a>
+                <a href="{{ route('kontak') }}">Kontak</a>
             </div>
 
             <div class="footer-column">
@@ -843,7 +974,37 @@
                 }
             });
         });
+
+        // Auto submit filter select
+        document.querySelectorAll('.filter-select').forEach(select => {
+            select.addEventListener('change', function() {
+                // Get the form element
+                let form = this.closest('form');
+                if (!form) {
+                    // If no form found, create a new one
+                    form = document.createElement('form');
+                    form.method = 'GET';
+                    form.action = "{{ route('katalog') }}";
+                    
+                    // Add existing query parameters
+                    const urlParams = new URLSearchParams(window.location.search);
+                    urlParams.forEach((value, key) => {
+                        if (key !== this.name && key !== 'page') {
+                            const input = document.createElement('input');
+                            input.type = 'hidden';
+                            input.name = key;
+                            input.value = value;
+                            form.appendChild(input);
+                        }
+                    });
+                    
+                    // Add current select
+                    form.appendChild(this);
+                    document.body.appendChild(form);
+                }
+                form.submit();
+            });
+        });
     </script>
 </body>
-
 </html>

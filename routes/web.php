@@ -8,45 +8,54 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
-// Halaman detailproduk
-Route::get('/detailproduk', function () {
-    return view('detailproduk');
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+// Halaman Homepage
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Authentication Routes
+Route::controller(AuthController::class)->group(function () {
+    // Registration
+    Route::get('/regist', 'showRegister')->name('regist');
+    Route::post('/regist', 'register');
+    
+    // Login
+    Route::get('/login', 'showLogin')->name('login');
+    Route::post('/login', 'login');
+    
+    // Logout
+    Route::post('/logout', 'logout')->name('logout');
+    
+    // Dashboard (protected by auth middleware)
+    Route::get('/dashboard', 'dashboard')->middleware('auth')->name('dashboard');
 });
 
+// Furnitur Routes
+Route::controller(FurniturController::class)->group(function () {
+    // Katalog Produk
+    Route::get('/katalog', 'index')->name('katalog');
+    Route::get('/katalog/search', 'search')->name('katalog.search'); // Route untuk pencarian
+    
+    // Detail Produk (dua alternatif route untuk kompatibilitas)
+    Route::get('/produk/{id}', 'show')->name('produk.detail');
+    Route::get('/detailproduk/{id}', 'show'); // Alternatif route
+    
+    // Route alternatif furnitur
+    Route::get('/furnitur', 'index');
+});
 
-// Halaman form registrasi
-Route::get('/regist', [AuthController::class, 'showRegister'])->name('regist');
-Route::post('/regist', [AuthController::class, 'register']);
-
-// Halaman form login
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-
-// Dashboard setelah login, middleware auth supaya hanya user terautentikasi bisa akses
-Route::get('/dashboard', [AuthController::class, 'dashboard'])->middleware('auth')->name('dashboard');
-
-// Logout (gunakan method POST sesuai standar Laravel)
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-// Homepage
-Route::get('/', [HomeController::class, 'index']);
-
-// Halaman katalog
-Route::get('/katalog', [FurniturController::class, 'index'])->name('katalog');
-
-// Halaman detail produk
-Route::get('/produk/{id}', [FurniturController::class, 'show'])->name('produk.detail');
-
-// Halaman Kontak
+// Static Pages
 Route::view('/kontak', 'kontak')->name('kontak');
-
-// Halaman Tentang Kami
 Route::view('/tentangkami', 'tentangkami')->name('tentangkami');
 
-// Halaman payment
+// Payment Route
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
-
-// Shortcut ke furnitur (bisa juga dihapus jika sudah ada katalog)
-Route::get('/furnitur', [FurniturController::class, 'index']);
-
-    Route::get('/detailproduk/{id}', [FurniturController::class, 'show'])->name('produk.detail');
