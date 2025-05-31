@@ -59,3 +59,8 @@ Route::view('/tentangkami', 'tentangkami')->name('tentangkami');
 
 // Payment Route
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
+
+// riwayat pembelian
+Route::get('/riwayat', function () {
+    return view('riwayat');
+});

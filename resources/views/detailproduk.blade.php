@@ -628,9 +628,6 @@
                 </div>
 
                 <div class="action-buttons">
-                    <button class="btn-add-to-cart">
-                        <i class="fas fa-shopping-cart"></i> Tambah ke Keranjang
-                    </button>
                     <a href="{{ route('payment') }}">
                         <button class="btn-buy-now">Beli Sekarang</button>
                     </a>
