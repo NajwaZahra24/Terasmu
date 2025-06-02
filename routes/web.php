@@ -7,6 +7,7 @@ use App\Http\Controllers\FurniturController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CrproductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,9 @@ Route::controller(AuthController::class)->group(function () {
     // Dashboard (protected by auth middleware)
     Route::get('/dashboard', 'dashboard')->middleware('auth')->name('dashboard');
 });
+
+// Crproduct Routes (admin crud)
+Route::resource('crproduct', CrproductController::class)->except(['create', 'edit']);
 
 // Furnitur Routes
 Route::controller(FurniturController::class)->group(function () {
