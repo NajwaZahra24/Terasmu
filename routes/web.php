@@ -7,7 +7,6 @@ use App\Http\Controllers\FurniturController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\CrproductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +25,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Authentication Routes
 Route::controller(AuthController::class)->group(function () {
     // Registration
-    Route::get('/regist', 'showRegister')->name('regist');
+    Route::get('/regist', 'showRegister')->name('register');
     Route::post('/regist', 'register');
     
     // Login
@@ -36,23 +35,17 @@ Route::controller(AuthController::class)->group(function () {
     // Logout
     Route::post('/logout', 'logout')->name('logout');
     
-    // Dashboard (protected by auth middleware)
-    Route::get('/dashboard', 'dashboard')->middleware('auth')->name('dashboard');
+    // Dashboard (➡️ DIHAPUS middleware auth)
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
 });
 
-// Crproduct Routes (admin CRUD)
-Route::prefix('admin')->middleware('auth')->group(function () {
-    // Menampilkan semua produk
-    Route::get('crproduct', [CrproductController::class, 'index'])->name('admin.crproduct.index');
-
-    // Menambah produk baru
-    Route::post('crproduct', [CrproductController::class, 'store'])->name('admin.crproduct.store');
-
-    // Update produk
-    Route::put('crproduct/{id}', [CrproductController::class, 'update'])->name('admin.crproduct.update');
-
-    // Hapus produk
-    Route::delete('crproduct/{id}', [CrproductController::class, 'destroy'])->name('admin.crproduct.destroy');
+// Crproduct Routes (admin CRUD) ➡️ TANPA middleware auth
+Route::prefix('admin')->group(function () {
+    Route::get('crproduct', [FurniturController::class, 'adminIndex'])->name('admin.crproduct.index');
+    Route::post('crproduct', [FurniturController::class, 'store'])->name('admin.crproduct.store');
+    Route::get('crproduct/{id}/edit', [FurniturController::class, 'edit'])->name('admin.crproduct.edit');
+    Route::put('crproduct/{id}', [FurniturController::class, 'update'])->name('admin.crproduct.update');
+    Route::delete('crproduct/{id}', [FurniturController::class, 'destroy'])->name('admin.crproduct.destroy');
 });
 
 // Furnitur Routes
@@ -76,7 +69,7 @@ Route::view('/tentangkami', 'tentangkami')->name('tentangkami');
 // Payment Route
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
 
-// riwayat pembelian
+// Riwayat Pembelian (➡️ TANPA middleware auth)
 Route::get('/riwayat', function () {
     return view('riwayat');
 });

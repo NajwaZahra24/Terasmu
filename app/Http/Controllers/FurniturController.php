@@ -7,83 +7,103 @@ use Illuminate\Http\Request;
 
 class FurniturController extends Controller
 {
-    /**
-     * Menampilkan halaman katalog produk
-     *
-     * @param Request $request
-     * @return \Illuminate\View\View
-     */
+    // ==============================
+    // HALAMAN PENGUNJUNG / USER
+    // ==============================
+
     public function index(Request $request)
     {
-        // Query dasar dengan eager loading relasi detail
         $query = Furnitur::with('detail');
         
-        // Filter berdasarkan pencarian keyword (nama produk)
         if ($request->has('keyword') && !empty($request->keyword)) {
             $query->where('name', 'LIKE', '%'.$request->keyword.'%');
         }
-        
-        // Filter berdasarkan ID jika ada
+
         if ($request->has('id') && !empty($request->id)) {
             $query->where('id', $request->id);
         }
-        
-        // Filter berdasarkan kategori
+
         if ($request->has('category') && !empty($request->category)) {
             $query->where('category', $request->category);
         }
-        
-        // Pagination dengan 12 item per halaman
+
         $furniturs = $query->paginate(12);
-        
+
         return view('katalog', compact('furniturs'));
     }
 
-    /**
-     * Menampilkan hasil pencarian produk
-     *
-     * @param Request $request
-     * @return \Illuminate\View\View
-     */
     public function search(Request $request)
     {
-        // Validasi input
         $request->validate([
             'keyword' => 'required_without:id|string|min:2',
             'id' => 'required_without:keyword|numeric',
             'category' => 'nullable|string'
         ]);
-        
-        // Query pencarian
+
         $furniturs = Furnitur::with('detail')
-            ->when($request->keyword, function($query) use ($request) {
-                return $query->where('name', 'LIKE', '%'.$request->keyword.'%');
-            })
-            ->when($request->id, function($query) use ($request) {
-                return $query->where('id', $request->id);
-            })
-            ->when($request->category, function($query) use ($request) {
-                return $query->where('category', $request->category);
-            })
+            ->when($request->keyword, fn($q) => $q->where('name', 'LIKE', '%'.$request->keyword.'%'))
+            ->when($request->id, fn($q) => $q->where('id', $request->id))
+            ->when($request->category, fn($q) => $q->where('category', $request->category))
             ->paginate(12);
-        
-        // Jika hasil pencarian kosong
-        if($furniturs->isEmpty()) {
+
+        if ($furniturs->isEmpty()) {
             return back()->with('error', 'Produk tidak ditemukan');
         }
-        
+
         return view('katalog', compact('furniturs'));
     }
 
-    /**
-     * Menampilkan detail produk
-     *
-     * @param int $id
-     * @return \Illuminate\View\View
-     */
     public function show($id)
     {
         $produk = Furnitur::with('detail')->findOrFail($id);
         return view('detailproduk', compact('produk'));
+    }
+
+    // ==============================
+    // HALAMAN ADMIN / CRUD PRODUK
+    // ==============================
+
+    public function adminIndex()
+    {
+        $furniturs = Furnitur::all();
+        return view('admin.crproduct', compact('furniturs')); // <-- dikoreksi di sini
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'category' => 'nullable|string|max:100',
+            'description' => 'nullable|string',
+        ]);
+
+        Furnitur::create($request->all());
+
+        return redirect()->route('admin.crproduct.index')->with('success', 'Produk berhasil ditambahkan');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $produk = Furnitur::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'category' => 'nullable|string|max:100',
+            'description' => 'nullable|string',
+        ]);
+
+        $produk->update($request->all());
+
+        return redirect()->route('admin.crproduct.index')->with('success', 'Produk berhasil diupdate');
+    }
+
+    public function destroy($id)
+    {
+        $produk = Furnitur::findOrFail($id);
+        $produk->delete();
+
+        return redirect()->route('admin.crproduct.index')->with('success', 'Produk berhasil dihapus');
     }
 }
