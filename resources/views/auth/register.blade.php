@@ -144,6 +144,7 @@
             <p>Silakan masukkan data Anda yang sesuai yaa!</p>
 
             <form action="/register" method="POST">
+                @csrf
                 <div class="input-group">
                     <label for="nama">Nama Lengkap</label>
                     <input type="text" id="nama" name="nama" placeholder="Nama lengkap anda" required autocomplete="name" />
@@ -161,7 +162,7 @@
 
                 <button type="submit">Mendaftar</button>
             </form>
-
+            
             <div class="login-link">
                 <span>Sudah punya akun? <a href="{{ route('login') }}">Login</a>
 </span>

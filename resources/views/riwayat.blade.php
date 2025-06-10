@@ -134,7 +134,7 @@
         /* Purchase History Cards */
         .purchase-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 25px;
         }
 
@@ -148,6 +148,24 @@
 
         .purchase-card:hover {
             transform: translateY(-5px);
+        }
+
+        @media (max-width: 1200px) {
+            .purchase-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .purchase-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .purchase-cards {
+                grid-template-columns: 1fr;
+            }
         }
 
         .product-image {

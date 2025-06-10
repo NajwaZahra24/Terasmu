@@ -20,7 +20,7 @@ use App\Http\Controllers\Admin\CrproductController;
 |
 */
 
-// Halaman Homepage
+// Halaman Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Authentication Routes
@@ -40,8 +40,20 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/dashboard', 'dashboard')->middleware('auth')->name('dashboard');
 });
 
-// Crproduct Routes (admin crud)
-Route::resource('crproduct', CrproductController::class)->except(['create', 'edit']);
+// Crproduct Routes (admin CRUD)
+Route::prefix('admin')->middleware('auth')->group(function () {
+    // Menampilkan semua produk
+    Route::get('crproduct', [CrproductController::class, 'index'])->name('admin.crproduct.index');
+
+    // Menambah produk baru
+    Route::post('crproduct', [CrproductController::class, 'store'])->name('admin.crproduct.store');
+
+    // Update produk
+    Route::put('crproduct/{id}', [CrproductController::class, 'update'])->name('admin.crproduct.update');
+
+    // Hapus produk
+    Route::delete('crproduct/{id}', [CrproductController::class, 'destroy'])->name('admin.crproduct.destroy');
+});
 
 // Furnitur Routes
 Route::controller(FurniturController::class)->group(function () {
