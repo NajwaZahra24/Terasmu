@@ -39,6 +39,10 @@
             flex: 1;
         }
 
+        a {
+            text-decoration: none;
+        }
+
         /* Header/Navbar Styles */
         header {
             background-color: var(--white);
@@ -725,7 +729,7 @@
             <div class="products-grid">
                 <!-- Produk 1 -->
                 @foreach ($furniturs as $item)
-                    <a href="{{ url('/detailproduk/' . $item->id) }}" class="no-underline">
+                    <a href="{{ url('/detailproduk/' . $item->id) }}">
                         <div class="product-card">
                             @if ($item->label)
                                 <div class="product-badge">{{ $item->label }}</div>
