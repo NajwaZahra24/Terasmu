@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Furniro - Checkout</title>
+    <title>Terasmu - Cek Cok</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary: #B88E2F;
-            --secondary: #fff;
-            --accent: #2c2c2c;
+            --primary: #A67C52;  /* Warna elemen utama */
+            --secondary: #F7F3EE;  /* Warna latar utama */
+            --accent: #2E2E2E;  /* Warna aksen dan teks */
+            --light-gray: #e0e0e0;
+            --white: #ffffff;
+            --text-color: #2E2E2E;
         }
 
         * {
@@ -20,92 +23,32 @@
         }
 
         body {
-            color: #333;
+            color: var(--text-color);
+            background-color: var(--secondary);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        /* Header Styles */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 80px;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        .back-btn {
-            padding: 8px 16px;
-            background-color: #B88E2F;
-            color: #333;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .back-btn:hover {
-            background-color: #eee;
-        }
-
-        .header-icons {
-            display: flex;
-            gap: 20px;
-        }
-
-        .header-icons a {
-            color: #333;
-            text-decoration: none;
-        }
-
-        /* Hero Banner */
-        .banner {
-            height: 150px;
-            background-image: url('/api/placeholder/800/150');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #333;
-            text-align: center;
-            position: relative;
-        }
-
-        .banner-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.7);
-            z-index: 1;
-        }
-
-        .banner-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .banner h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-
+        /* Breadcrumb */
         .breadcrumb {
-            display: flex;
-            gap: 10px;
+            padding: 15px 0;
+            background-color: var(--secondary);
+            font-size: 14px;
         }
 
         .breadcrumb a {
-            color: #333;
+            color: var(--text-color);
             text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+
+        .breadcrumb span {
+            color: var(--primary);
+            font-weight: 500;
         }
 
         /* Main Content */
@@ -129,6 +72,7 @@
         h2 {
             font-size: 24px;
             margin-bottom: 30px;
+            color: var(--accent);
         }
 
         .form-row {
@@ -139,14 +83,16 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
+            color: var(--accent);
         }
 
         .form-row input, .form-row select, .form-row textarea {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--light-gray);
             border-radius: 4px;
             font-size: 15px;
+            background-color: var(--white);
         }
 
         .form-row-split {
@@ -163,48 +109,64 @@
             display: flex;
             justify-content: space-between;
             padding: 10px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--light-gray);
+            color: var(--accent);
         }
 
         .summary-total {
             font-weight: bold;
             font-size: 18px;
-            color: #B88E2F;
+            color: var(--primary);
             margin-top: 10px;
             padding-top: 10px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid var(--light-gray);
             display: flex;
             justify-content: space-between;
         }
 
         /* Payment Options */
-        .payment-option {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
+        .payment-method {
+            margin: 30px 0 20px;
         }
 
-        .payment-option input {
-            margin-right: 10px;
+        .payment-method label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .payment-method select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            font-size: 15px;
+            background-color: var(--white);
         }
 
         .payment-description {
             font-size: 14px;
             color: #777;
-            margin-top: 5px;
-            margin-left: 25px;
+            margin-top: 15px;
+            line-height: 1.5;
         }
 
         .place-order-btn {
             width: 100%;
             padding: 12px;
-            background-color: #B88E2F;
-            color: white;
+            background-color: var(--primary);
+            color: var(--white);
             border: none;
             border-radius: 4px;
             font-size: 16px;
             cursor: pointer;
             margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .place-order-btn:hover {
+            background-color: #8a6543;
         }
 
         .privacy-notice {
@@ -215,7 +177,7 @@
         }
 
         .privacy-notice a {
-            color: #B88E2F;
+            color: var(--primary);
             text-decoration: none;
         }
 
@@ -260,7 +222,7 @@
             margin-bottom: 15px;
             display: block;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s;
         }
 
         .footer-column a:hover {
@@ -317,6 +279,7 @@
             border: none;
             border-radius: 4px 0 0 4px;
             font-size: 14px;
+            background-color: var(--white);
         }
 
         .newsletter-form button {
@@ -344,33 +307,24 @@
             color: #aaa;
             font-size: 14px;
         }
-        
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <a href="javascript:history.back()" class="back-btn">
-            ← Kembali
-        </a>
-    </header>
 
-    <!-- Banner -->
-    <div class="banner">
-        <div class="banner-overlay"></div>
-        <div class="banner-content">
-            <h1>Payment</h1>
-            <div class="breadcrumb">
-                <a href="#">Home</a> > Payment
-            </div>
+    <!-- Breadcrumb Navigation -->
+    <section class="breadcrumb">
+        <div class="container">
+            <a href="/">Beranda</a> &gt;
+            <a href="/katalog">Katalog</a> &gt;
+            <a href="/payment">Payment</a>
         </div>
-    </div>
+    </section>
 
     <!-- Main Content -->
     <div class="container">
         <!-- Billing Section -->
         <div class="billing-section">
-            <h2>Billing details</h2>
+            <h2>Detail Pembayaran</h2>
             <form>
                 <div class="form-row-split">
                     <div class="form-row">
@@ -396,14 +350,14 @@
                 </div>
                 <div class="form-row">
                     <label for="notes">Tanggal Pemesanan</label>
-                    <input type="datetime-local" name="tanggal_jam">
+                    <input type="date" name="tanggal">
                 </div>
             </form>
         </div>
 
         <!-- Order Summary Section -->
         <div class="summary-section">
-            <h2>Product</h2>
+            <h2>Produk</h2>
             <div class="summary-item">
                 <div>Asgaard sofa × 1</div>
                 <div>Rp. 250,000.00</div>
@@ -417,26 +371,25 @@
                 <div>Rp. 250,000.00</div>
             </div>
 
-            <div style="margin-top: 30px;">
-                <div class="payment-option">
-                    <input type="radio" id="bank-transfer" name="payment" checked>
-                    <label for="bank-transfer">Direct Bank Transfer</label>
-                </div>
+            <div class="payment-method">
+                <label for="payment-select">Metode Pembayaran</label>
+                <select id="payment-select" name="payment">
+                    <option value="bank-transfer">Bank Transfer</option>
+                    <option value="dana">DANA</option>
+                    <option value="ovo">OVO</option>
+                    <option value="shopeepay">ShopeePay</option>
+                    <option value="gopay">GoPay</option>
+                </select>
                 <div class="payment-description">
-                    Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
+                    Pilih metode pembayaran yang Anda inginkan. Setelah memesan, Anda akan diarahkan ke halaman pembayaran yang sesuai.
                 </div>
-
-                <div class="payment-option">
-                    <input type="radio" id="cash" name="payment">
-                    <label for="cash">Cash On Delivery</label>
-                </div>
-
-                <div class="privacy-notice">
-                    Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="#">privacy policy</a>.
-                </div>
-
-                <button class="place-order-btn">Place order</button>
             </div>
+
+            <div class="privacy-notice">
+                Data pribadi Anda akan digunakan untuk mendukung pengalaman Anda di seluruh situs web ini, untuk mengelola akses ke akun Anda, dan untuk tujuan lain yang dijelaskan dalam <a href="#">kebijakan privasi</a> kami.
+            </div>
+
+            <button class="place-order-btn">Lakukan Pemesanan</button>
         </div>
     </div>
 

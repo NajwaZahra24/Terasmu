@@ -898,12 +898,7 @@
             </nav>            
 
             <div class="icons">
-                <a href="#" id="search-btn"><i class="fas fa-search"></i></a>
-                <a href="#" class="cart-count" id="cart-btn">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span id="cart-counter">0</span>
-                </a>
-                <a href="{{ route('regist')}}" id="user-btn"><i class="fas fa-user"></i></a>
+                <a href="{{ route('register')}}" id="user-btn"><i class="fas fa-user"></i></a>
                 <a href="#" id="menu-btn"><i class="fas fa-bars"></i></a>
             </div>
         </div>
@@ -1077,9 +1072,6 @@
                                 <i class="fas fa-star-half-alt"></i>
                                 <span>(24)</span>
                             </div>
-                            <div class="product-actions">
-                                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1105,9 +1097,6 @@
                                 <i class="far fa-star"></i>
                                 <span>(18)</span>
                             </div>
-                            <div class="product-actions">
-                                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1132,9 +1121,6 @@
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <span>(42)</span>
-                            </div>
-                            <div class="product-actions">
-                                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
                             </div>
                         </div>
                     </div>

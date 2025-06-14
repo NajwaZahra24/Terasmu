@@ -457,12 +457,7 @@
             </nav>            
 
             <div class="icons">
-                <a href="#" id="search-btn"><i class="fas fa-search"></i></a>
-                <a href="#" class="cart-count" id="cart-btn">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span id="cart-counter">0</span>
-                </a>
-                <a href="#" id="user-btn"><i class="fas fa-user"></i></a>
+                <a href="{{ route('register')}}" id="user-btn"><i class="fas fa-user"></i></a>
                 <a href="#" id="menu-btn"><i class="fas fa-bars"></i></a>
             </div>
         </div>
