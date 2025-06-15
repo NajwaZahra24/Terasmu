@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,7 +75,7 @@
             margin-bottom: 10px;
             font-weight: 600;
         }
-        
+
         p {
             color: #666;
             margin-bottom: 30px;
@@ -124,7 +124,7 @@
             height: 20px;
             margin-right: 10px;
         }
-        
+
         .checkbox-label {
             font-size: 14px;
             color: #333;
@@ -147,12 +147,12 @@
         button:hover {
             background-color: #a07958;
         }
-        
+
         .register-link {
             text-align: center;
             margin-top: 20px;
         }
-        
+
         .register-link a {
             color: #b08968;
             text-decoration: none;
@@ -167,6 +167,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="form-container">
@@ -174,38 +175,29 @@
                 ←
             </a>
             <h1>Login</h1>
-            
+
             <h2>Masuk ke akun kamu</h2>
             <p>Silahkan isi form sesuai dengan data diri anda!</p>
-            
-            <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Masukkan email anda">
-            </div>
-            
-            <div class="input-group">
-                <div class="input-group-header">
-                    <label for="password">Kata Sandi</label>
-                    <a href="#" class="forgot-password">Lupa Kata Sandi?</a>
-                </div>
-                <input type="password" id="password" placeholder="Masukkan password anda">
-            </div>
-            
-            <div class="checkbox-container">
-                <input type="checkbox" id="remember">
-                <label for="remember" class="checkbox-label">Ingat saya</label>
-            </div>
-            
-            <button type="submit">Masuk</button>
-            
-            <div class="register-link">
-                <span>Belum mempunyai akun? <a href="{{ route('register')}}">Regist sekarang!</a></span>
+
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <label>Email</label>
+                <input name="email" type="email" required>
+
+                <label>Password</label>
+                <input name="password" type="password" required>
+
+                <button type="submit">Login</button>
+            </form>
+
+            @if($errors->any())
+                <div class="error">{{ $errors->first() }}</div>
+            @endif
+
+            <div class="image-container">
+                <img src="{{ asset('images/loginregistpict.png') }}" alt="loginregist" class="loginregist" />
             </div>
         </div>
-        
-        <div class="image-container">
-            <img src="{{ asset('images/loginregistpict.png') }}" alt="loginregist" class="loginregist" />
-        </div>
-    </div>
 </body>
+
 </html>

@@ -1,28 +1,42 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class LoginController extends Controller
 {
     public function showLoginForm()
     {
-        return view('auth.login'); // Your Blade view
+        return view('auth.login');
     }
 
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        // Validate input
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
-        if (Auth::attempt($credentials)) {
-            // Login successful
-            return redirect()->intended('/dashboard');
+        // Grab user based on email
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return back()->withErrors(['email' => 'Email not registered']);
         }
 
-        return back()->withErrors([
-            'email' => 'Email atau password salah.',
-        ]);
+        // Check password
+        if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            return back()->withErrors(['password' => 'Password incorrect']);
+        }
+
+        // Login success, now check role
+        if ($user->role === 'admin') {
+            return redirect('/admin');
+        } else {
+            return redirect('/');
+        }
     }
 }

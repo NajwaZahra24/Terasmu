@@ -27,18 +27,24 @@ Route::controller(AuthController::class)->group(function () {
     // Registration
     Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register.form');
     Route::post('/register', [RegisterController::class, 'register'])->name('register');
-    
-    
+
+
     // Login
+
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
     Route::post('/login', [LoginController::class, 'login'])->name('login');
-    
+
+
     // Logout
     Route::post('/logout', 'logout')->name('logout');
-    
+
     // Dashboard (➡️ DIHAPUS middleware auth)
     Route::get('/dashboard', 'dashboard')->name('dashboard');
 });
+
+// Optional dashboard routes
+Route::get('/admin', fn() => 'Admin Page')->middleware('auth');
+Route::get('/home', fn() => 'User Page')->middleware('auth');
 
 // Crproduct Routes (admin CRUD) ➡️ TANPA middleware auth
 Route::prefix('admin')->group(function () {
@@ -54,11 +60,11 @@ Route::controller(FurniturController::class)->group(function () {
     // Katalog Produk
     Route::get('/katalog', 'index')->name('katalog');
     Route::get('/katalog/search', 'search')->name('katalog.search'); // Route untuk pencarian
-    
+
     // Detail Produk (dua alternatif route untuk kompatibilitas)
     Route::get('/produk/{id}', 'show')->name('produk.detail');
     Route::get('/detailproduk/{id}', 'show'); // Alternatif route
-    
+
     // Route alternatif furnitur
     Route::get('/furnitur', 'index');
 });
