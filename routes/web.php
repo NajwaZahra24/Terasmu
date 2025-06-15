@@ -8,6 +8,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,6 +69,10 @@ Route::view('/tentangkami', 'tentangkami')->name('tentangkami');
 
 // Payment Route
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
+
+// Proses pembelian: kirim data produk ke halaman payment
+Route::post('/payment', [PaymentController::class, 'show'])->name('payment.show');
+
 
 // Riwayat Pembelian (➡️ TANPA middleware auth)
 Route::get('/riwayat', function () {

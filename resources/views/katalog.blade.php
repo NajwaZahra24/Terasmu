@@ -789,6 +789,7 @@
                         <option value="meja" {{ request('category') == 'meja' ? 'selected' : '' }}>Meja</option>
                         <option value="kursi" {{ request('category') == 'kursi' ? 'selected' : '' }}>Kursi</option>
                         <option value="nakas" {{ request('category') == 'nakas' ? 'selected' : '' }}>Nakas</option>
+                        <option value="buffet" {{ request('category') == 'buffet' ? 'selected' : '' }}>Buffet</option>
                         <option value="tempat tidur" {{ request('category') == 'tempat tidur' ? 'selected' : '' }}>Tempat Tidur</option>
                     </select>
                     
