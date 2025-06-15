@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
     <style>
         * {
@@ -131,6 +132,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="form-container">
@@ -147,31 +149,49 @@
                 @csrf
                 <div class="input-group">
                     <label for="nama">Nama Lengkap</label>
-                    <input type="text" id="nama" name="nama" placeholder="Nama lengkap anda" required autocomplete="name" />
+                    <input type="text" id="nama" name="name" placeholder="Nama lengkap anda" required
+                        autocomplete="name" />
                 </div>
 
                 <div class="input-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="emailanda@gmail.com" required autocomplete="email" />
+                    <input type="email" id="email" name="email" placeholder="emailanda@gmail.com" required
+                        autocomplete="email" />
                 </div>
 
                 <div class="input-group">
                     <label for="password">Kata Sandi</label>
-                    <input type="password" id="password" name="password" placeholder="Masukkan kata sandi anda" required autocomplete="new-password" />
+                    <input type="password" id="password" name="password" placeholder="Masukkan kata sandi anda" required
+                        autocomplete="new-password" />
                 </div>
 
                 <button type="submit">Mendaftar</button>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
+                @if (session('registered'))
+                    <script>
+                        alert("{{ session('registered') }}");
+                    </script>
+                @endif
             </form>
-            
+
             <div class="login-link">
                 <span>Sudah punya akun? <a href="{{ route('login') }}">Login</a>
-</span>
+                </span>
             </div>
         </div>
 
         <div class="image-container">
-            <img src="https://images.unsplash.com/photo-1617104522578-cdb006395265?ixlib=rb-4.0.3&auto=format&fit=crop&w=987&q=80" alt="Wooden nightstand with lamp" class="nightstand" />
+            <img src="https://images.unsplash.com/photo-1617104522578-cdb006395265?ixlib=rb-4.0.3&auto=format&fit=crop&w=987&q=80"
+                alt="Wooden nightstand with lamp" class="nightstand" />
         </div>
     </div>
+
 </body>
+
 </html>

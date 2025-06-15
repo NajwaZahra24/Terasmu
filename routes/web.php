@@ -1,12 +1,11 @@
 <?php
 
-use App\Http\Controllers\FurniturDetailController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FurniturController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,12 +24,13 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Authentication Routes
 Route::controller(AuthController::class)->group(function () {
     // Registration
-    Route::get('/regist', 'showRegister')->name('register');
-    Route::post('/regist', 'register');
+    Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register.form');
+    Route::post('/register', [RegisterController::class, 'register'])->name('register');
+    
     
     // Login
-    Route::get('/login', 'showLogin')->name('login');
-    Route::post('/login', 'login');
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
     
     // Logout
     Route::post('/logout', 'logout')->name('logout');

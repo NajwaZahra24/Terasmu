@@ -22,6 +22,11 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
         body {
             background-color: var(--secondary);
             color: var(--text-color);
@@ -375,16 +380,16 @@
         </div>
         <div class="contact-info">
             <div class="contact-item">
-                <div class="WhatsApp"><i class="fa-brands fa-whatsapp"></i>  terasmu</div>
+                <div class="WhatsApp"><i class="fa-brands fa-whatsapp"></i><a href="web.whatsapp.com"> terasmu</a></div>
             </div>
             <div class="contact-item">
-                <div class="instagram"><i class="fab fa-instagram"></i> terasmu</div>
+                <div class="instagram"><i class="fab fa-instagram"></i><a href="https://www.instagram.com/smktelkomsda/"> terasmu</a></div>
             </div>
             <div class="contact-item">
-                <div class="Facebook"><i class="fa-brands fa-facebook-f"></i>  terasmu</div>
+                <div class="Facebook"><i class="fa-brands fa-facebook-f"></i><a href="https://www.facebook.com/p/SMK-Telkom-Sidoarjo-100047190761645/"> terasmu</a></div>
             </div>
             <div class="contact-item">
-                <div class="Email"><i class="fa-regular fa-envelope"></i>  terasmu</div>
+                <div class="Email"><i class="fa-regular fa-envelope"></i><a href="https://mail.google.com/mail/u/0/"> terasmu</a></div>
             </div>
         </div>
     </div>
