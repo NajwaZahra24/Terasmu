@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Furniro - Checkout</title>
+    <title>Terasmu - Cek Cok</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -316,7 +316,7 @@
         <div class="container">
             <a href="/">Beranda</a> &gt;
             <a href="/katalog">Katalog</a> &gt;
-            <a href="/payment">payment</a>
+            <a href="/payment">Payment</a>
         </div>
     </section>
 
@@ -350,7 +350,7 @@
                 </div>
                 <div class="form-row">
                     <label for="notes">Tanggal Pemesanan</label>
-                    <input type="datetime-local" name="tanggal_jam">
+                    <input type="date" name="tanggal">
                 </div>
             </form>
         </div>

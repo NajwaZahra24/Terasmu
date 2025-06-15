@@ -41,6 +41,10 @@
             padding: 0 15px;
         }
 
+        a {
+            text-decoration: none;
+        }
+
         /* Breadcrumb */
         .breadcrumb {
             padding: 15px 0;

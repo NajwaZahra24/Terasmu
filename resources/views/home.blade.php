@@ -1072,9 +1072,6 @@
                                 <i class="fas fa-star-half-alt"></i>
                                 <span>(24)</span>
                             </div>
-                            <div class="product-actions">
-                                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1100,9 +1097,6 @@
                                 <i class="far fa-star"></i>
                                 <span>(18)</span>
                             </div>
-                            <div class="product-actions">
-                                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1127,9 +1121,6 @@
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <span>(42)</span>
-                            </div>
-                            <div class="product-actions">
-                                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
                             </div>
                         </div>
                     </div>

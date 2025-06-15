@@ -36,6 +36,10 @@
             flex: 1;
         }
 
+        a {
+            text-decoration: none;
+        }
+
         /* Header/Navbar Styles */
         header {
             background-color: var(--white);
@@ -717,7 +721,7 @@
             </nav>
 
             <div class="icons">
-                <a href="" id="user-btn"><i class="fas fa-user"></i></a>
+                <a href="{{ route('register')}}" id="user-btn"><i class="fas fa-user"></i></a>
                 <a href="" id="menu-btn"><i class="fas fa-bars"></i></a>
             </div>
         </div>
@@ -825,9 +829,11 @@
                 </a>
             </div>
             @else
+
+            <!-- product card -->
             <div class="products-grid">
                 @foreach ($furniturs as $item)
-                    <a href="{{ url('/detailproduk/' . $item->id) }}" class="no-underline">
+                    <a href="{{ url('/detailproduk/' . $item->id) }}">
                         <div class="product-card">
                             @if ($item->label)
                                 <div class="product-badge">{{ $item->label }}</div>
@@ -867,10 +873,6 @@
                                         @endfor
 
                                         <span>({{ $item->rating_count }})</span>
-                                    </div>
-
-                                    <div class="product-actions">
-                                        <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
                                     </div>
                                 </div>
                             </div>
