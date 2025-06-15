@@ -362,7 +362,7 @@
             </nav>           
 
             <div class="icons">
-                <a href="{{ route('register')}}" id="user-btn"><i class="fas fa-user"></i></a>
+                <a href="{{ route('login')}}" id="user-btn"><i class="fas fa-user"></i></a>
                 <a href="#" id="menu-btn"><i class="fas fa-bars"></i></a>
             </div>
         </div>

@@ -166,10 +166,9 @@
 <body>
     <div class="container">
         <div class="form-container">
-            <button class="back-button">
+            <a href="{{ route('home') }}" class="back-button">
                 ←
-            </button>
-            
+            </a>
             <h1>Login</h1>
             
             <h2>Masuk ke akun kamu</h2>
@@ -196,7 +195,7 @@
             <button type="submit">Masuk</button>
             
             <div class="register-link">
-                <span>Belum punya akun? <a href="#">Daftar</a></span>
+                <span>Don't have an account? <a href="{{ route('register')}}">Regist Now!</a></span>
             </div>
         </div>
         

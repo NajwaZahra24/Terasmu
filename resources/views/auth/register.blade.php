@@ -134,9 +134,9 @@
 <body>
     <div class="container">
         <div class="form-container">
-            <button class="back-button" onclick="history.back()">
+            <a href="{{ route('home') }}" class="back-button">
                 ←
-            </button>
+            </a>
 
             <h1>Register</h1>
 
