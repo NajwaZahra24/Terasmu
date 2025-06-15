@@ -413,16 +413,16 @@
             <div class="footer-column">
                 <h3>Informasi</h3>
                 <a href="{{ route('tentangkami') }}">Tentang Kami</a>
-                <a href="#">Kebijakan Privasi</a>
-                <a href="#">Syarat dan Ketentuan</a>
+                <a href="{{ route( 'kebijakanprivasi')}}">Kebijakan Privasi</a>
+                <a href="{{ route( 'snk')}}">Syarat dan Ketentuan</a>
                 <a href="{{ route( 'kontak')}}">Kontak</a>
             </div>
 
             <div class="footer-column">
                 <h3>Bantuan</h3>
-                <a href="#">FAQ</a>
-                <a href="#">Pengembalian</a>
-                <a href="#">Pengiriman</a>
+                <a href="{{ route('faq') }}">FAQ</a>
+                <a href="{{ route('pengembalian') }}">Pengembalian</a>
+                <a href="{{ route('pengiriman') }}">Pengiriman</a>
             </div>
         </div>
 

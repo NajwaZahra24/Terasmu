@@ -35,7 +35,6 @@
             flex: 1;
         }
 
-        /* Header/Navbar Styles - Diambil dari kode Anda */
         header {
             background-color: var(--white);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -281,7 +280,7 @@
             color: var(--accent);
         }
 
-        /* Footer Styles - Diambil dari kode Anda */
+        /* Footer Styles*/
         footer {
             background-color: var(--accent);
             color: var(--secondary);
@@ -530,7 +529,7 @@
         </section>
     </div>
 
-    <!-- Footer Section - Diambil dari kode Anda -->
+    <!-- Footer Section -->
     <footer>
         <div class="footer-container">
             <div class="footer-column">
