@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog Produk - Terasmu</title>
+    <title>Kontak Kami - Terasmu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #A67C52;  /* Warna elemen utama */
-            --secondary: #F7F3EE;  /* Warna latar utama */
-            --accent: #2E2E2E;  /* Warna aksen dan teks */
+            --primary: #A67C52;  
+            --secondary: #F7F3EE;  
+            --accent: #2E2E2E;  
             --light-gray: #e0e0e0;
             --white: #ffffff;
             --text-color: #2E2E2E;
@@ -33,14 +33,13 @@
             line-height: 1.6;
         }
 
-        /* Header/Navbar Styles */
         header {
             background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
             padding: 1rem 5%;
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
         }
 
         .header-container {
@@ -145,7 +144,7 @@
             cursor: pointer;
         }
 
-        /* Kontak Kami Section */
+        /* Enhanced Kontak Kami Section */
         .contact-container {
             max-width: 800px;
             margin: 50px auto;
@@ -153,6 +152,12 @@
             background: var(--white);
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
 
         .contact-header {
@@ -167,10 +172,15 @@
             font-weight: 600;
         }
 
+        .contact-header p {
+            color: var(--accent);
+            opacity: 0.8;
+        }
+
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 15px;
         }
 
         .contact-item {
@@ -179,35 +189,40 @@
             padding: 20px 30px;
             background: var(--white);
             border-radius: 12px;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(166, 124, 82, 0.1);
         }
 
         .contact-item:hover {
             transform: translateX(10px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(166, 124, 82, 0.15);
+            border-color: rgba(166, 124, 82, 0.3);
+            background-color: rgba(166, 124, 82, 0.03);
         }
 
-        .phone-number {
+        .contact-item:active {
+            transform: translateX(10px) scale(0.98);
+        }
+
+        .contact-item i {
             font-size: 1.8em;
+            margin-right: 20px;
             color: var(--primary);
-            font-weight: 500;
+            width: 40px;
+            text-align: center;
         }
 
-        .social-media {
-            font-size: 1.4em;
+        .contact-item a {
+            font-size: 1.2em;
             color: var(--accent);
-            position: relative;
-            padding-left: 40px;
+            transition: color 0.3s;
+            flex-grow: 1;
         }
 
-        .social-media::before {
-            content: '@';
-            position: absolute;
-            left: 0;
+        .contact-item:hover a {
             color: var(--primary);
-            font-weight: 600;
         }
 
         /* Footer Styles */
@@ -345,13 +360,39 @@
 
             .contact-container {
                 margin: 20px;
-                padding: 30px;
+                padding: 25px;
+            }
+            
+            .contact-item {
+                padding: 15px 20px;
+            }
+            
+            .contact-item i {
+                font-size: 1.5em;
+                margin-right: 15px;
+            }
+            
+            .contact-item a {
+                font-size: 1em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .contact-item i {
+                margin-right: 0;
+                margin-bottom: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header with Enhanced Navbar -->
+    <!-- Header with Navbar (Tanpa bayangan) -->
     <header>
         <div class="header-container">
             <a href="#" class="logo">
@@ -373,23 +414,28 @@
         </div>
     </header>
 
-    <!-- Kontak Kami Section -->
+    <!-- Kontak Kami Section - Enhanced -->
     <div class="contact-container">
         <div class="contact-header">
             <h1>Kontak Kami</h1>
+            <p>Hubungi kami melalui berbagai platform berikut</p>
         </div>
         <div class="contact-info">
-            <div class="contact-item">
-                <div class="WhatsApp"><i class="fa-brands fa-whatsapp"></i><a href="web.whatsapp.com"> terasmu</a></div>
+            <div class="contact-item" onclick="window.location.href='https://web.whatsapp.com'">
+                <i class="fa-brands fa-whatsapp"></i>
+                <a href="https://web.whatsapp.com">WhatsApp: +62 123 456 789</a>
             </div>
-            <div class="contact-item">
-                <div class="instagram"><i class="fab fa-instagram"></i><a href="https://www.instagram.com/smktelkomsda/"> terasmu</a></div>
+            <div class="contact-item" onclick="window.location.href='https://www.instagram.com/smktelkomsda/'">
+                <i class="fab fa-instagram"></i>
+                <a href="https://www.instagram.com/smktelkomsda/">Instagram: @terasmu.id</a>
             </div>
-            <div class="contact-item">
-                <div class="Facebook"><i class="fa-brands fa-facebook-f"></i><a href="https://www.facebook.com/p/SMK-Telkom-Sidoarjo-100047190761645/"> terasmu</a></div>
+            <div class="contact-item" onclick="window.location.href='https://www.facebook.com/p/SMK-Telkom-Sidoarjo-100047190761645/'">
+                <i class="fa-brands fa-facebook-f"></i>
+                <a href="https://www.facebook.com/p/SMK-Telkom-Sidoarjo-100047190761645/">Facebook: @terasmu.id</a>
             </div>
-            <div class="contact-item">
-                <div class="Email"><i class="fa-regular fa-envelope"></i><a href="https://mail.google.com/mail/u/0/"> terasmu</a></div>
+            <div class="contact-item" onclick="window.location.href='https://mail.google.com/mail/u/0/'">
+                <i class="fa-regular fa-envelope"></i>
+                <a href="https://mail.google.com/mail/u/0/">Email: terasmu@gmail.com</a>
             </div>
         </div>
     </div>
@@ -404,26 +450,26 @@
                 </a>
                 <p>Temukan furnitur modern yang sempurna untuk rumah Anda.</p>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/smktelkomsda/"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/smktelkomsda/"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.instagram.com/smktelkomsda/"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/smktelkomsda/"><i class="fab fa-pinterest"></i></a>
+                    <a href="https://www.facebook.com/p/SMK-Telkom-Sidoarjo-100047190761645/?locale=id_ID"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/smktelkomsda/reels/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/SMKTelkomSDA"><i class="fab fa-twitter"></i></a>
+                    <a href="https://id.pinterest.com/"><i class="fab fa-pinterest"></i></a>
                 </div>
             </div>
 
             <div class="footer-column">
                 <h3>Informasi</h3>
                 <a href="{{ route('tentangkami') }}">Tentang Kami</a>
-                <a href="#">Kebijakan Privasi</a>
-                <a href="#">Syarat dan Ketentuan</a>
-                <a href="#">Kontak</a>
+                <a href="{{ route( 'kebijakanprivasi')}}">Kebijakan Privasi</a>
+                <a href="{{ route( 'snk')}}">Syarat dan Ketentuan</a>
+                <a href="{{ route( 'kontak')}}">Kontak</a>
             </div>
 
             <div class="footer-column">
                 <h3>Bantuan</h3>
-                <a href="#">FAQ</a>
-                <a href="#">Pengembalian</a>
-                <a href="#">Pengiriman</a>
+                <a href="{{ route('faq') }}">FAQ</a>
+                <a href="{{ route('pengembalian') }}">Pengembalian</a>
+                <a href="{{ route('pengiriman') }}">Pengiriman</a>
             </div>
         </div>
 
@@ -439,6 +485,16 @@
 
         menuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+        });
+        
+        // Make entire contact items clickable
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const link = this.querySelector('a');
+                if (link) {
+                    window.location.href = link.href;
+                }
+            });
         });
     </script>
 </body>

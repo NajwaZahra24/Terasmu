@@ -685,8 +685,7 @@
                 </a>
                 <p>Temukan furnitur modern yang sempurna untuk rumah Anda.</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/p/SMK-Telkom-Sidoarjo-100047190761645/?locale=id_ID"><i
-                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/p/SMK-Telkom-Sidoarjo-100047190761645/?locale=id_ID"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/smktelkomsda/reels/"><i class="fab fa-instagram"></i></a>
                     <a href="https://x.com/SMKTelkomSDA"><i class="fab fa-twitter"></i></a>
                     <a href="https://id.pinterest.com/"><i class="fab fa-pinterest"></i></a>
@@ -696,16 +695,16 @@
             <div class="footer-column">
                 <h3>Informasi</h3>
                 <a href="{{ route('tentangkami') }}">Tentang Kami</a>
-                <a href="#">Kebijakan Privasi</a>
-                <a href="#">Syarat dan Ketentuan</a>
-                <a href="{{ route('kontak')}}">Kontak</a>
+                <a href="{{ route( 'kebijakanprivasi')}}">Kebijakan Privasi</a>
+                <a href="{{ route( 'snk')}}">Syarat dan Ketentuan</a>
+                <a href="{{ route( 'kontak')}}">Kontak</a>
             </div>
 
             <div class="footer-column">
                 <h3>Bantuan</h3>
-                <a href="#">FAQ</a>
-                <a href="#">Pengembalian</a>
-                <a href="#">Pengiriman</a>
+                <a href="{{ route('faq') }}">FAQ</a>
+                <a href="{{ route('pengembalian') }}">Pengembalian</a>
+                <a href="{{ route('pengiriman') }}">Pengiriman</a>
             </div>
         </div>
 

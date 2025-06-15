@@ -78,3 +78,28 @@ Route::post('/payment', [PaymentController::class, 'show'])->name('payment.show'
 Route::get('/riwayat', function () {
     return view('riwayat');
 });
+
+// Halaman Pengiriman
+Route::get('/pengiriman', function () {
+    return view('pengiriman');
+})->name('pengiriman');
+
+//Halaman Pengemblian
+Route::get('/pengembalian', function () {
+    return view('pengembalian');
+})->name('pengembalian');
+
+//Halaman snk
+Route::get('/snk', function () {
+    return view('snk');
+})->name('snk');
+
+//Halaman kebijakanprivasi
+Route::get('/kebijakanprivasi', function () {
+    return view('kebijakanprivasi');
+})->name('kebijakanprivasi');
+
+//Halaman Faq
+Route::get('/faq', function () {
+    return view('faq');
+})->name('faq');
