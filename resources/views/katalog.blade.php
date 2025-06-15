@@ -721,7 +721,7 @@
             </nav>
 
             <div class="icons">
-                <a href="{{ route('register')}}" id="user-btn"><i class="fas fa-user"></i></a>
+                <a href="{{ route('login')}}" id="user-btn"><i class="fas fa-user"></i></a>
                 <a href="" id="menu-btn"><i class="fas fa-bars"></i></a>
             </div>
         </div>
@@ -793,15 +793,14 @@
                         <option value="meja" {{ request('category') == 'meja' ? 'selected' : '' }}>Meja</option>
                         <option value="kursi" {{ request('category') == 'kursi' ? 'selected' : '' }}>Kursi</option>
                         <option value="nakas" {{ request('category') == 'nakas' ? 'selected' : '' }}>Nakas</option>
+                        <option value="buffet" {{ request('category') == 'buffet' ? 'selected' : '' }}>Buffet</option>
                         <option value="tempat tidur" {{ request('category') == 'tempat tidur' ? 'selected' : '' }}>Tempat Tidur</option>
                     </select>
                     
                     <select class="filter-select" name="sort" onchange="this.form.submit()">
                         <option value="">Urutkan</option>
                         <option value="terbaru" {{ request('sort') == 'terbaru' ? 'selected' : '' }}>Terbaru</option>
-                        <option value="termurah" {{ request('sort') == 'termurah' ? 'selected' : '' }}>Harga Terendah</option>
-                        <option value="termahal" {{ request('sort') == 'termahal' ? 'selected' : '' }}>Harga Tertinggi</option>
-                        <option value="terlaris" {{ request('sort') == 'terlaris' ? 'selected' : '' }}>Terlaris</option>
+                        <option value="diskon" {{ request('sort') == 'diskon' ? 'selected' : '' }}>Harga Diskon</option>
                     </select>
                 </div>
                 

@@ -3,62 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Furnitur; // Pastikan ini sesuai nama model kamu (misal: Product atau Furniture)
 
 class PaymentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // Menampilkan halaman payment kosong (jika dibutuhkan)
     public function index()
     {
-        return view('payment'); // Ini akan memanggil resources/views/payment.blade.php
+        return view('payment');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    // Menampilkan halaman payment berdasarkan produk yang dibeli
+    public function showPayment(Request $request)
     {
-        //
-    }
+        // Validasi data request
+        $request->validate([
+            'produk_id' => 'required|exists:furniturs,id', // pastikan 'furniturs' adalah nama tabelmu
+            'jumlah' => 'required|integer|min:1',
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        // Ambil data produk berdasarkan ID
+        $produk = Furnitur::findOrFail($request->produk_id);
+        $jumlah = $request->jumlah;
+        $subtotal = $produk->harga * $jumlah;
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        // Kirim data ke view
+        return view('payment', compact('produk', 'jumlah', 'subtotal'));
     }
 }

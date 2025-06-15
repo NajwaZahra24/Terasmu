@@ -124,7 +124,7 @@
             font-weight: 500;
         }
 
-        .nightstand {
+        .loginregist {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -136,9 +136,9 @@
 <body>
     <div class="container">
         <div class="form-container">
-            <button class="back-button" onclick="history.back()">
+            <a href="{{ route('home') }}" class="back-button">
                 ←
-            </button>
+            </a>
 
             <h1>Register</h1>
 
@@ -182,13 +182,12 @@
 
             <div class="login-link">
                 <span>Sudah punya akun? <a href="{{ route('login') }}">Login</a>
-                </span>
+                        </span>
             </div>
         </div>
 
         <div class="image-container">
-            <img src="https://images.unsplash.com/photo-1617104522578-cdb006395265?ixlib=rb-4.0.3&auto=format&fit=crop&w=987&q=80"
-                alt="Wooden nightstand with lamp" class="nightstand" />
+            <img src="{{ asset('images/loginregistpict.png') }}" alt="loginregist" class="loginregist" />
         </div>
     </div>
 
