@@ -155,7 +155,7 @@
             font-weight: 500;
         }
 
-        .nightstand {
+        .loginregist {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -195,12 +195,12 @@
             <button type="submit">Masuk</button>
             
             <div class="register-link">
-                <span>Don't have an account? <a href="{{ route('register')}}">Regist Now!</a></span>
+                <span>Belum mempunyai akun? <a href="{{ route('register')}}">Regist sekarang!</a></span>
             </div>
         </div>
         
         <div class="image-container">
-            <img src="https://images.unsplash.com/photo-1617104522578-cdb006395265?ixlib=rb-4.0.3&auto=format&fit=crop&w=987&q=80" alt="Wooden nightstand with lamp" class="nightstand">
+            <img src="{{ asset('images/loginregistpict.png') }}" alt="loginregist" class="loginregist" />
         </div>
     </div>
 </body>
