@@ -338,11 +338,11 @@
                             <p>Anda dapat memesan produk dengan mudah melalui website kami:</p>
                             <ol>
                                 <li>Pilih produk yang ingin dibeli</li>
-                                <li>Klik "Tambahkan ke Keranjang"</li>
-                                <li>Pergi ke halaman keranjang belanja</li>
-                                <li>Klik "Lanjut ke Pembayaran"</li>
-                                <li>Isi data pengiriman dan pilih metode pembayaran</li>
+                                <li>Klik "beli sekarang"</li>
+                                <li>Isi form "detail pembayaran"</li>
+                                <li>Pilih metode pembayaran</li>
                                 <li>Selesaikan pembayaran</li>
+                                <li>Klik "Lakukan Pemesanan"</li>
                             </ol>
                         </div>
                     </div>
@@ -354,9 +354,8 @@
                         <div class="faq-answer-content">
                             <p>Kami menerima berbagai metode pembayaran:</p>
                             <ul>
-                                <li>Transfer Bank (BCA, Mandiri, BRI, BNI, dll)</li>
-                                <li>E-Wallet (OVO, Dana, Gopay, LinkAja)</li>
-                                <li>Kartu Kredit (Visa, Mastercard, JCB)</li>
+                                <li>Transfer Bank (BCA, Mandiri, BRI, BNI.)</li>
+                                <li>E-Wallet (OVO, Dana, Gopay, Shopeepay)</li>
                                 <li>Pembayaran di Tempat (COD) untuk area tertentu</li>
                             </ul>
                         </div>
@@ -484,7 +483,7 @@
                             <ol>
                                 <li>Segera reset password</li>
                                 <li>Periksa riwayat transaksi</li>
-                                <3>Hubungi Customer Service jika ada transaksi mencurigakan</li>
+                                <li>Hubungi Customer Service jika ada transaksi mencurigakan</li>
                                 <li>Laporkan ke authorities jika diperlukan</li>
                             </ol>
                             <p>Kami tidak pernah meminta password atau OTP melalui telepon/email.</p>
@@ -586,4 +585,4 @@
         });
     </script>
 </body>
-</html>
+</html>                                                                                                                                                                                               

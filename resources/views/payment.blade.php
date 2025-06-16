@@ -410,6 +410,9 @@
                     <option value="ovo">OVO</option>
                     <option value="shopeepay">ShopeePay</option>
                     <option value="gopay">GoPay</option>
+                    <option value="bca">BCA</option>
+                    <option value="bni">BNI</option>
+                    <option value="mandiri">Mandiri</option>
                 </select>
                 <div class="payment-description">
                     Pilih metode pembayaran yang Anda inginkan. Setelah memesan, Anda akan diarahkan ke halaman
