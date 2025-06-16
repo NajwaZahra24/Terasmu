@@ -34,7 +34,10 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            justify-content: center;
             background-color: white;
+            max-width: 600px;
+            margin: 0 auto;
             max-width: 600px;
             margin: 0 auto;
         }
@@ -198,15 +201,30 @@
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf
-                <label>Email</label>
-                <input name="email" type="email" required>
-
-                <label>Password</label>
-                <input name="password" type="password" required>
-
+                
+                <div class="input-group">
+                    <label>Email</label>
+                    <p class="input-hint">Masukkan email anda</p>
+                    <input name="email" type="email" required>
+                </div>
+                
+                <div class="input-group">
+                    <div class="input-group-header">
+                        <label>Kata Sandi</label>
+                        <a href="#" class="forgot-password">Lupa Kata Sandi?</a>
+                    </div>
+                    <p class="input-hint">Masukkan password anda</p>
+                    <input name="password" type="password" required>
+                </div>
+                
+                <div class="checkbox-container">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember" class="checkbox-label">Ingat saya</label>
+                </div>
+                
                 <input type="checkbox" name="remember"> Ingat saya
 
-                <button type="submit">Login</button>
+                <button type="submit">Masuk</button>
                 
                 <div class="input-group">
                     <label>Email</label>
