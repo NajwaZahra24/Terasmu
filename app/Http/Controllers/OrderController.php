@@ -46,6 +46,6 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::latest()->get();
-        return view('payment', compact('orders'));
+        return view('katalog', compact('orders'));
     }
 }
