@@ -6,6 +6,7 @@ use App\Http\Controllers\FurniturController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 
 
 /*
@@ -71,6 +72,11 @@ Route::controller(FurniturController::class)->group(function () {
     // Route alternatif furnitur
     Route::get('/furnitur', 'index');
 });
+
+//Order Pages
+Route::get('/order', [OrderController::class, 'create'])->name('order.form');
+Route::post('/order', [OrderController::class, 'store'])->name('order.store');
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index'); // optional for admin viewing
 
 // Static Pages
 Route::view('/kontak', 'kontak')->name('kontak');
