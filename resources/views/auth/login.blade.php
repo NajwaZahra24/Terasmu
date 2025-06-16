@@ -33,7 +33,10 @@
             padding: 40px;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             background-color: white;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .image-container {
@@ -96,6 +99,14 @@
         label {
             display: block;
             font-weight: 500;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .input-hint {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
         }
 
         .forgot-password {
@@ -165,6 +176,12 @@
             object-fit: cover;
             object-position: center;
         }
+
+        .error {
+            color: #ff3333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -177,7 +194,7 @@
             <h1>Login</h1>
 
             <h2>Masuk ke akun kamu</h2>
-            <p>Silahkan isi form sesuai dengan data diri anda!</p>
+            <p>Silahkan isi form sesuai dengan data diri anda</p>
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf
@@ -190,16 +207,45 @@
                 <input type="checkbox" name="remember"> Ingat saya
 
                 <button type="submit">Login</button>
+                
+                <div class="input-group">
+                    <label>Email</label>
+                    <p class="input-hint">Masukkan email anda</p>
+                    <input name="email" type="email" required>
+                </div>
+                
+                <div class="input-group">
+                    <div class="input-group-header">
+                        <label>Kata Sandi</label>
+                        <a href="#" class="forgot-password">Lupa Kata Sandi?</a>
+                    </div>
+                    <p class="input-hint">Masukkan password anda</p>
+                    <input name="password" type="password" required>
+                </div>
+                
+                <div class="checkbox-container">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember" class="checkbox-label">Ingat saya</label>
+                </div>
+                
+                <button type="submit">Masuk</button>
+>>>>>>> f732358 (done footer)
             </form>
 
             @if($errors->any())
                 <div class="error">{{ $errors->first() }}</div>
             @endif
 
-            <div class="image-container">
-                <img src="{{ asset('images/loginregistpict.png') }}" alt="loginregist" class="loginregist" />
+            <div class="register-link">
+                <span>Belum punya akun? </span>
+                <a href="#">Daftar</a>
             </div>
         </div>
+        
+        <div class="image-container">
+            <img src="{{ asset('images/loginregistpict.png') }}" alt="loginregist" class="loginregist" />
+        </div>
+    </div>
 </body>
 
 </html>
