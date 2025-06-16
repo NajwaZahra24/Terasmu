@@ -7,7 +7,6 @@
     <title>Kursi Teras Minimalis - Terasmu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Global Styles */
         :root {
             --primary: #A67C52;
             /* Warna elemen utama */
