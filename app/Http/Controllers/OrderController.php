@@ -40,7 +40,7 @@ class OrderController extends Controller
 
         Order::create($request->all());
 
-        return redirect()->route(route: 'payment.page')->with('success', 'Pesanan berhasil dikirim!');
+        return redirect()->route(route: 'katalog')->with('success', 'Pesanan berhasil dikirim!');
     }
 
     public function index()

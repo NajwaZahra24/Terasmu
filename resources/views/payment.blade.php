@@ -367,10 +367,11 @@
                 </div>
 
                 <!-- Example hidden product fields -->
-                <input type="hidden" name="product_name" value="{{ $produk->nama }}">
+                <input type="hidden" name="product_name" value="{{ $furnitur->name }}">
                 <input type="hidden" name="quantity" value="{{ $quantity }}">
-                <input type="hidden" name="subtotal" value="{{ $produk->harga * $quantity }}">
-                <input type="hidden" name="total" value="{{ $produk->harga * $quantity }}">
+                <input type="hidden" name="subtotal" value="{{ $furnitur->price * $quantity }}">
+                <input type="hidden" name="total" value="{{ $furnitur->price * $quantity }}">
+
 
                 <div class="form-row">
                     <label for="payment-method">Metode Pembayaran</label>
@@ -380,8 +381,20 @@
                         <option value="Credit Card">Credit Card</option>
                     </select>
                 </div>
-
-                <button type="submit">Lakukan Pemesanan</button>
+                <div class="payment-description">
+                    Pilih metode pembayaran yang Anda inginkan. Setelah memesan, Anda akan diarahkan ke halaman
+                    pembayaran yang sesuai.
+                </div>
+                <button class="place-order-btn">Lakukan Pemesanan</button>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </form>
 
         </div>
@@ -390,43 +403,30 @@
         <div class="summary-section">
             <h2>Produk</h2>
             <div class="summary-item">
-                <div>Asgaard sofa × 1</div>
-                <div>Rp. 250,000.00</div>
+                <div>{{ $furnitur->name }} × {{ $quantity }}</div>
+                <div>Rp. {{ number_format($furnitur->price, 0, ',', '.') }},00</div>
             </div>
             <div class="summary-item">
                 <div>Subtotal</div>
-                <div>Rp. 250,000.00</div>
+                <div>Rp. {{ number_format($furnitur->price * $quantity, 0, ',', '.') }},00</div>
             </div>
             <div class="summary-total">
                 <div>Total</div>
-                <div>Rp. 250,000.00</div>
+                <div>Rp. {{ number_format($furnitur->price * $quantity, 0, ',', '.') }},00</div>
             </div>
 
-            <div class="payment-method">
-                <label for="payment-select">Metode Pembayaran</label>
-                <select id="payment-select" name="payment">
-                    <option value="bank-transfer">Bank Transfer</option>
-                    <option value="dana">DANA</option>
-                    <option value="ovo">OVO</option>
-                    <option value="shopeepay">ShopeePay</option>
-                    <option value="gopay">GoPay</option>
-                    <option value="bca">BCA</option>
-                    <option value="bni">BNI</option>
-                    <option value="mandiri">Mandiri</option>
-                </select>
-                <div class="payment-description">
-                    Pilih metode pembayaran yang Anda inginkan. Setelah memesan, Anda akan diarahkan ke halaman
-                    pembayaran yang sesuai.
-                </div>
-            </div>
 
             <div class="privacy-notice">
                 Data pribadi Anda akan digunakan untuk mendukung pengalaman Anda di seluruh situs web ini, untuk
                 mengelola akses ke akun Anda, dan untuk tujuan lain yang dijelaskan dalam <a href="#">kebijakan
                     privasi</a> kami.
             </div>
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
 
-            <button class="place-order-btn">Lakukan Pemesanan</button>
         </div>
     </div>
 
