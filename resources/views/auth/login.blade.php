@@ -232,7 +232,7 @@
 
             <div class="register-link">
                 <span>Belum punya akun? </span>
-                <a href="#">Daftar</a>
+                <a href="{{ route('register') }}">Daftar</a>
             </div>
         </div>
         

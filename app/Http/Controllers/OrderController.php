@@ -1,19 +1,26 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use App\Models\Order;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request;    
+
 
 class OrderController extends Controller
 {
     public function create(Request $request)
-{
-    $furnitur = \App\Models\Furnitur::findOrFail($request->product_id);
+    {
+        if (!$request->has(['product_id', 'quantity'])) {
+            return redirect()->back()->with('error', 'Data produk tidak lengkap.');
+        }
 
-    return view('payment', [
-        'furnitur' => $furnitur,
-        'quantity' => $request->quantity
-    ]);
-}
+        $produk = \App\Models\Furnitur::findOrFail($request->product_id);
+
+        return view('payment', [
+            'furnitur' => $produk,
+            'quantity' => $request->quantity
+        ]);
+    }
 
     public function store(Request $request)
     {
@@ -33,12 +40,12 @@ class OrderController extends Controller
 
         Order::create($request->all());
 
-        return redirect()->route('order.form')->with('success', 'Pesanan berhasil dikirim!');
+        return redirect()->route(route: 'payment.page')->with('success', 'Pesanan berhasil dikirim!');
     }
 
     public function index()
     {
         $orders = Order::latest()->get();
-        return view('order.index', compact('orders'));
+        return view('payment', compact('orders'));
     }
 }

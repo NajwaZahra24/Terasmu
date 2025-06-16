@@ -39,7 +39,7 @@ Route::controller(AuthController::class)->group(function () {
     // Logout
     Route::post('/logout', 'logout')->name('logout');
 
-    // Dashboard (➡️ DIHAPUS middleware auth)
+    // Dashboard (DIHAPUS middleware auth)
     Route::get('/dashboard', 'dashboard')->name('dashboard');
 });
 
@@ -74,19 +74,22 @@ Route::controller(FurniturController::class)->group(function () {
 });
 
 //Order Pages
-Route::get('/order', [OrderController::class, 'create'])->name('order.form');
+Route::get('/order', [OrderController::class, 'create'])->name('payment.page');
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index'); // optional for admin viewing
+
+Route::get('/payment', [OrderController::class, 'create'])->name('payment');
+
 
 // Static Pages
 Route::view('/kontak', 'kontak')->name('kontak');
 Route::view('/tentangkami', 'tentangkami')->name('tentangkami');
 
-// Payment Route
-Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
+// // Payment Route
+// Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
 
-// Proses pembelian: kirim data produk ke halaman payment
-Route::post('/payment', [PaymentController::class, 'show'])->name('payment.show');
+// // Proses pembelian: kirim data produk ke halaman payment
+// Route::post('/payment', [PaymentController::class, 'show'])->name('payment.show');
 
 
 // Riwayat Pembelian (➡️ TANPA middleware auth)

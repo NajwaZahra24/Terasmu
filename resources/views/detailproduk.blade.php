@@ -632,9 +632,8 @@
                 </div>
 
                 <div class="action-buttons">
-                    <a href="{{ route('payment') }}">
-                        <button class="btn-buy-now">Beli Sekarang</button>
-                    </a>
+                <a href="{{ route('payment.page', ['product_id' => $produk->id, 'quantity' => 1]) }}">Beli Sekarang</a>
+
                 </div>
 
             </div>

@@ -367,10 +367,10 @@
                 </div>
 
                 <!-- Example hidden product fields -->
-                <input type="hidden" name="product_name" value="{{ $furnitur->nama }}">
+                <input type="hidden" name="product_name" value="{{ $produk->nama }}">
                 <input type="hidden" name="quantity" value="{{ $quantity }}">
-                <input type="hidden" name="subtotal" value="{{ $furnitur->harga * $quantity }}">
-                <input type="hidden" name="total" value="{{ $furnitur->harga * $quantity }}">
+                <input type="hidden" name="subtotal" value="{{ $produk->harga * $quantity }}">
+                <input type="hidden" name="total" value="{{ $produk->harga * $quantity }}">
 
                 <div class="form-row">
                     <label for="payment-method">Metode Pembayaran</label>
