@@ -15,37 +15,24 @@
 
         body {
             background-color: #f5f5f5;
-            display: flex;
             min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         a {
             text-decoration: none;
         }
 
-        .container {
-            display: flex;
-            width: 100%;
-        }
-
         .form-container {
-            flex: 1;
+            width: 100%;
+            max-width: 500px;
             padding: 40px;
-            display: flex;
-            flex-direction: column;
             background-color: white;
-        }
-
-        .image-container {
-            flex: 1;
-            background-color: #333;
-            display: none;
-        }
-
-        @media (min-width: 768px) {
-            .image-container {
-                display: block;
-            }
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 20px;
         }
 
         .back-button {
@@ -112,10 +99,11 @@
             width: 100%;
             margin-top: 10px;
             margin-bottom: 20px;
+            transition: background-color 0.3s;
         }
 
         button[type="submit"]:hover {
-            background-color: #a07958;
+            background-color: #9a7556;
         }
 
         .login-link {
@@ -128,73 +116,66 @@
             font-weight: 500;
         }
 
-        .loginregist {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
+        .alert-danger {
+            color: #ff3333;
+            margin-bottom: 20px;
+            text-align: center;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="form-container">
-            <a href="{{ route('home') }}" class="back-button">
-                ←
-            </a>
+    <div class="form-container">
+        <a href="{{ route('home') }}" class="back-button">
+            ←
+        </a>
 
-            <h1>Register</h1>
+        <h1>Register</h1>
 
-            <h2>Bikin akun baru</h2>
-            <p>Silakan masukkan data Anda yang sesuai yaa!</p>
+        <h2>Bikin akun baru</h2>
+        <p>Silakan masukkan data Anda yang sesuai yaa!</p>
 
-            <form action="/register" method="POST">
-                @csrf
-                <div class="input-group">
-                    <label for="nama">Nama Lengkap</label>
-                    <input type="text" id="nama" name="name" placeholder="Nama lengkap anda" required
-                        autocomplete="name" />
-                </div>
-
-                <div class="input-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="emailanda@gmail.com" required
-                        autocomplete="email" />
-                </div>
-
-                <div class="input-group">
-                    <label for="password">Kata Sandi</label>
-                    <input type="password" id="password" name="password" placeholder="Masukkan kata sandi anda" required
-                        autocomplete="new-password" />
-                </div>
-
-                <button type="submit">Mendaftar</button>
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        @foreach ($errors->all() as $error)
-                            <p>{{ $error }}</p>
-                        @endforeach
-                    </div>
-                @endif
-                @if (session('registered'))
-                    <script>
-                        alert("{{ session('registered') }}");
-                    </script>
-                @endif
-            </form>
-
-            <div class="login-link">
-                <span>Sudah punya akun? <a href="{{ route('login') }}">Login</a>
-                        </span>
+        <form action="/register" method="POST">
+            @csrf
+            <div class="input-group">
+                <label for="nama">Nama Lengkap</label>
+                <input type="text" id="nama" name="name" placeholder="Nama lengkap anda" required
+                    autocomplete="name" />
             </div>
-        </div>
 
-        <div class="image-container">
-            <img src="{{ asset('images/loginregistpict.png') }}" alt="loginregist" class="loginregist" />
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="emailanda@gmail.com" required
+                    autocomplete="email" />
+            </div>
+
+            <div class="input-group">
+                <label for="password">Kata Sandi</label>
+                <input type="password" id="password" name="password" placeholder="Masukkan kata sandi anda" required
+                    autocomplete="new-password" />
+            </div>
+
+            <button type="submit">Mendaftar</button>
+            
+            @if ($errors->any())
+                <div class="alert-danger">
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
+            
+            @if (session('registered'))
+                <script>
+                    alert("{{ session('registered') }}");
+                </script>
+            @endif
+        </form>
+
+        <div class="login-link">
+            <span>Sudah punya akun? <a href="{{ route('login') }}">Login</a></span>
         </div>
     </div>
-
 </body>
 
 </html>

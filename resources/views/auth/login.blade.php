@@ -15,43 +15,24 @@
 
         body {
             background-color: #f5f5f5;
-            display: flex;
             min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         a {
             text-decoration: none;
         }
 
-        .container {
-            display: flex;
-            width: 100%;
-        }
-
         .form-container {
-            flex: 1;
+            width: 100%;
+            max-width: 500px;
             padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            justify-content: center;
             background-color: white;
-            max-width: 600px;
-            margin: 0 auto;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .image-container {
-            flex: 1;
-            background-color: #333;
-            display: none;
-        }
-
-        @media (min-width: 768px) {
-            .image-container {
-                display: block;
-            }
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 20px;
         }
 
         .back-button {
@@ -156,10 +137,11 @@
             width: 100%;
             margin-top: 10px;
             margin-bottom: 20px;
+            transition: background-color 0.3s;
         }
 
         button:hover {
-            background-color: #a07958;
+            background-color: #9a7556;
         }
 
         .register-link {
@@ -173,13 +155,6 @@
             font-weight: 500;
         }
 
-        .loginregist {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
         .error {
             color: #ff3333;
             margin-bottom: 20px;
@@ -189,55 +164,45 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="form-container">
-            <a href="{{ route('home') }}" class="back-button">
-                ←
-            </a>
-            <h1>Login</h1>
+    <div class="form-container">
+        <a href="{{ route('home') }}" class="back-button">
+            ←
+        </a>
+        <h1>Login</h1>
 
-            <h2>Masuk ke akun kamu</h2>
-            <p>Silahkan isi form sesuai dengan data diri anda</p>
+        <h2>Masuk ke akun kamu</h2>
+        <p>Silahkan isi form sesuai dengan data diri anda</p>
 
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
-                
-                <div class="input-group">
-                    <label>Email</label>
-                    <p class="input-hint">Masukkan email anda</p>
-                    <input name="email" type="email" required>
-                </div>
-                
-                <div class="input-group">
-                    <div class="input-group-header">
-                        <label>Kata Sandi</label>
-                        <a href="#" class="forgot-password">Lupa Kata Sandi?</a>
-                    </div>
-                    <p class="input-hint">Masukkan password anda</p>
-                    <input name="password" type="password" required>
-                </div>
-                
-                <div class="checkbox-container">
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember" class="checkbox-label">Ingat saya</label>
-                </div>
-
-                <button type="submit">Masuk</button>
-
-            </form>
-
-            @if($errors->any())
-                <div class="error">{{ $errors->first() }}</div>
-            @endif
-
-            <div class="register-link">
-                <span>Belum punya akun? </span>
-                <a href="{{ route('register') }}">Daftar</a>
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+            
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="emailanda@gmail.com" required
+                    autocomplete="email" />
             </div>
-        </div>
-        
-        <div class="image-container">
-            <img src="{{ asset('images/loginregistpict.png') }}" alt="loginregist" class="loginregist" />
+            
+            <div class="input-group">
+                <label for="password">Kata Sandi</label>
+                <input type="password" id="password" name="password" placeholder="Masukkan kata sandi anda" required
+                    autocomplete="new-password" />
+            </div>
+            
+            <div class="checkbox-container">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember" class="checkbox-label">Ingat saya</label>
+            </div>
+            
+            <button type="submit">Masuk</button>
+        </form>
+
+        @if($errors->any())
+            <div class="error">{{ $errors->first() }}</div>
+        @endif
+
+        <div class="register-link">
+            <span>Belum punya akun? </span>
+            <a href="{{ route('register') }}">Daftar</a>
         </div>
     </div>
 </body>
