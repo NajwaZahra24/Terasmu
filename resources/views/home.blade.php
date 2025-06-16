@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #A67C52;  /* Warna elemen utama */
-            --secondary: #F7F3EE;  /* Warna latar utama */
-            --accent: #2E2E2E;  /* Warna aksen dan teks */
+            --primary: #A67C52;
+            /* Warna elemen utama */
+            --secondary: #F7F3EE;
+            /* Warna latar utama */
+            --accent: #2E2E2E;
+            /* Warna aksen dan teks */
             --light-gray: #e0e0e0;
             --white: #ffffff;
             --text-color: #2E2E2E;
@@ -38,7 +42,7 @@
         /* Header/Navbar Styles */
         header {
             background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -157,7 +161,7 @@
                 flex-direction: column;
                 background: var(--white);
                 padding: 1rem 0;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
                 transform: translateY(-150%);
                 opacity: 0;
                 transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -207,7 +211,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(46, 46, 46, 0.6); /* Overlay dengan warna aksen */
+            background: rgba(46, 46, 46, 0.6);
+            /* Overlay dengan warna aksen */
         }
 
         .hero-container {
@@ -226,14 +231,14 @@
             font-size: 48px;
             margin-bottom: 20px;
             line-height: 1.2;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
             font-size: 20px;
             margin-bottom: 30px;
             line-height: 1.6;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .btn {
@@ -307,13 +312,13 @@
             background: var(--white);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
         .product-image {
@@ -392,7 +397,7 @@
             background: var(--white);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
             margin-top: 40px;
         }
@@ -485,13 +490,13 @@
             background: var(--secondary);
             border-radius: 10px;
             padding: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .review-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
         .user-profile {
@@ -605,7 +610,7 @@
             background-color: var(--primary);
         }
 
-        .footer-column p, 
+        .footer-column p,
         .footer-column a {
             color: #ddd;
             margin-bottom: 15px;
@@ -779,7 +784,8 @@
             gap: 10px;
         }
 
-        .wishlist-btn, .cart-btn {
+        .wishlist-btn,
+        .cart-btn {
             background: none;
             border: none;
             color: var(--accent);
@@ -788,7 +794,8 @@
             transition: color 0.3s;
         }
 
-        .wishlist-btn:hover, .cart-btn:hover {
+        .wishlist-btn:hover,
+        .cart-btn:hover {
             color: var(--primary);
         }
 
@@ -797,7 +804,7 @@
             .hero h1 {
                 font-size: 36px;
             }
-            
+
             .reviews-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -830,7 +837,7 @@
                 flex: 0 0 85%;
                 margin-right: 15px;
             }
-            
+
             .reviews-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -881,6 +888,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header with Enhanced Navbar -->
     <header>
@@ -893,10 +901,9 @@
             <nav class="nav-links">
                 <a href="/" class="nav-item">Beranda</a>
                 <a href="{{ route('katalog') }}" class="nav-item">Katalog</a>
-                <a href="{{ route('tentangkami') }}"class="nav-item">Tentang kami</a>
-                <a href="{{ route( 'kontak')}}"  class="nav-item">Kontak</a>
-            </nav>            
-
+                <a href="{{ route('tentangkami') }}" class="nav-item">Tentang kami</a>
+                <a href="{{ route('kontak')}}" class="nav-item">Kontak</a>
+            </nav>
             <div class="icons">
                 <a href="{{ route('login')}}" id="user-btn"><i class="fas fa-user"></i></a>
                 <a href="#" id="menu-btn"><i class="fas fa-bars"></i></a>
@@ -904,13 +911,32 @@
         </div>
     </header>
 
+    @if (session('success'))
+        <div id="toast" style="position: fixed; top: 1.5rem; right: 1.5rem; background-color: #38bdf8; color: white;
+                    padding: 1rem 1.5rem; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    font-weight: 600; text-align: center; z-index: 9999; width: 250px; font-size: large;">
+            {{ session('success') }}
+        </div>
+
+        <script>
+            setTimeout(() => {
+                const toast = document.getElementById('toast');
+                if (toast) {
+                    toast.style.opacity = '0';
+                    toast.style.transition = 'opacity 0.5s ease';
+                    setTimeout(() => toast.remove(), 500);
+                }
+            }, 3000); // hides after 3 seconds
+        </script>
+    @endif
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-background"></div>
         <div class="hero-container">
             <div class="hero-content">
                 <h1>Furniture Modern Untuk Rumah Anda</h1>
-                <p>Temukan koleksi furnitur dengan kualitas tinggi dan gaya pilihan anda yang dapat memadukan kenyamanan dan keindahan.</p>
+                <p>Temukan koleksi furnitur dengan kualitas tinggi dan gaya pilihan anda yang dapat memadukan kenyamanan
+                    dan keindahan.</p>
                 <a href="{{ route('katalog') }}" class="btn">Beli Sekarang</a>
             </div>
         </div>
@@ -929,9 +955,9 @@
                 <div class="best-seller-info">
                     <h2 class="best-seller-name">Kursi Santai Ruang Tamu</h2>
                     <p class="best-seller-description">
-                        Kursi kayu berkualitas premium dengan desain yang elegan. 
-                        Dibuat dari kayu jati pilihan dan dilapisi dengan busa yang nyaman, 
-                        kursi ini akan menjadi tambahan sempurna untuk ruang tamu Anda. 
+                        Kursi kayu berkualitas premium dengan desain yang elegan.
+                        Dibuat dari kayu jati pilihan dan dilapisi dengan busa yang nyaman,
+                        kursi ini akan menjadi tambahan sempurna untuk ruang tamu Anda.
                         Desainnya yang minimalis cocok untuk berbagai dekorasi interior.
                     </p>
                     <div class="best-seller-price">Rp 2.499.000</div>
@@ -950,7 +976,7 @@
             <div class="section-title-container">
                 <h2 class="section-title">Review Pembeli</h2>
             </div>
-            
+
             <div class="reviews-grid">
                 <!-- User 1 Review -->
                 <div class="review-card">
@@ -972,15 +998,15 @@
                     </div>
                     <p class="review-date">Dibeli pada: 15 April 2025</p>
                     <p class="review-text">
-                        Kursi ini luar biasa nyaman dan kuat! Warna dan finishingnya persis seperti di foto. 
-                        Sudah saya gunakan selama sebulan dan sangat puas dengan kualitasnya. 
+                        Kursi ini luar biasa nyaman dan kuat! Warna dan finishingnya persis seperti di foto.
+                        Sudah saya gunakan selama sebulan dan sangat puas dengan kualitasnya.
                         Proses pengirimannya juga sangat cepat.
                     </p>
                     <div class="verified-buyer">
                         <i class="fas fa-check-circle"></i> Pembeli Terverifikasi
                     </div>
                 </div>
-                
+
                 <!-- User 2 Review -->
                 <div class="review-card">
                     <div class="user-profile">
@@ -1001,15 +1027,16 @@
                     </div>
                     <p class="review-date">Dibeli pada: 3 April 2025</p>
                     <p class="review-text">
-                        Desain kursinya sangat elegan dan cocok dengan interior rumah saya. 
-                        Perakitannya juga mudah, hanya butuh waktu 15 menit. 
-                        Satu bintang berkurang karena ada sedikit goresan di bagian kaki kursi, tapi overall sangat bagus.
+                        Desain kursinya sangat elegan dan cocok dengan interior rumah saya.
+                        Perakitannya juga mudah, hanya butuh waktu 15 menit.
+                        Satu bintang berkurang karena ada sedikit goresan di bagian kaki kursi, tapi overall sangat
+                        bagus.
                     </p>
                     <div class="verified-buyer">
                         <i class="fas fa-check-circle"></i> Pembeli Terverifikasi
                     </div>
                 </div>
-                
+
                 <!-- User 3 Review -->
                 <div class="review-card">
                     <div class="user-profile">
@@ -1030,9 +1057,9 @@
                     </div>
                     <p class="review-date">Dibeli pada: 20 Maret 2025</p>
                     <p class="review-text">
-                        Saya beli kursi ini untuk ruang kerja saya dan sangat cocok! 
-                        Bahan kayunya berkualitas tinggi dan terasa solid. 
-                        Bantalannya juga nyaman untuk duduk berjam-jam. 
+                        Saya beli kursi ini untuk ruang kerja saya dan sangat cocok!
+                        Bahan kayunya berkualitas tinggi dan terasa solid.
+                        Bantalannya juga nyaman untuk duduk berjam-jam.
                         Cashback yang diberikan juga langsung masuk ke akun saya.
                     </p>
                     <div class="verified-buyer">
@@ -1054,7 +1081,8 @@
                 <div class="product-card">
                     <div class="product-badge">Terlaris</div>
                     <div class="product-image-container">
-                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Sofa Minimalis" class="product-image">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Sofa Minimalis" class="product-image">
                     </div>
                     <div class="product-info">
                         <span class="product-category">Sofa</span>
@@ -1080,7 +1108,8 @@
                 <div class="product-card">
                     <div class="product-badge">Baru</div>
                     <div class="product-image-container">
-                        <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Meja Makan" class="product-image">
+                        <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Meja Makan" class="product-image">
                     </div>
                     <div class="product-info">
                         <span class="product-category">Meja</span>
@@ -1104,7 +1133,8 @@
                 <!-- Produk 3 -->
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kursi Kantor" class="product-image">
+                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Kursi Kantor" class="product-image">
                     </div>
                     <div class="product-info">
                         <span class="product-category">Kursi</span>
@@ -1125,9 +1155,9 @@
                         </div>
                     </div>
                 </div>
-            </section>
+    </section>
 
-            <!-- Footer Section -->
+    <!-- Footer Section -->
     <footer>
         <div class="footer-container">
             <div class="footer-column">
@@ -1137,7 +1167,8 @@
                 </a>
                 <p>Temukan furnitur modern yang sempurna untuk rumah Anda.</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/p/SMK-Telkom-Sidoarjo-100047190761645/?locale=id_ID"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/p/SMK-Telkom-Sidoarjo-100047190761645/?locale=id_ID"><i
+                            class="fab fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/smktelkomsda/reels/"><i class="fab fa-instagram"></i></a>
                     <a href="https://x.com/SMKTelkomSDA"><i class="fab fa-twitter"></i></a>
                     <a href="https://id.pinterest.com/"><i class="fab fa-pinterest"></i></a>
@@ -1147,9 +1178,9 @@
             <div class="footer-column">
                 <h3>Informasi</h3>
                 <a href="{{ route('tentangkami') }}">Tentang Kami</a>
-                <a href="{{ route( 'kebijakanprivasi')}}">Kebijakan Privasi</a>
-                <a href="{{ route( 'snk')}}">Syarat dan Ketentuan</a>
-                <a href="{{ route( 'kontak')}}">Kontak</a>
+                <a href="{{ route('kebijakanprivasi')}}">Kebijakan Privasi</a>
+                <a href="{{ route('snk')}}">Syarat dan Ketentuan</a>
+                <a href="{{ route('kontak')}}">Kontak</a>
             </div>
 
             <div class="footer-column">
@@ -1166,4 +1197,5 @@
     </footer>
 
 </body>
+
 </html>

@@ -43,7 +43,10 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 // Optional dashboard routes
-Route::get('/admin', fn() => 'Admin Page')->middleware('auth');
+Route::get('/admin', function () {
+    return view('admin.dashboard');
+})->middleware(['auth', 'admin']);
+
 Route::get('/home', fn() => 'User Page')->middleware('auth');
 
 // Crproduct Routes (admin CRUD) ➡️ TANPA middleware auth

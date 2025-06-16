@@ -187,6 +187,8 @@
                 <label>Password</label>
                 <input name="password" type="password" required>
 
+                <input type="checkbox" name="remember"> Ingat saya
+
                 <button type="submit">Login</button>
             </form>
 

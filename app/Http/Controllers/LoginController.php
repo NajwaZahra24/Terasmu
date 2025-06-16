@@ -20,6 +20,9 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
+        $credentials = $request->only('email', 'password');
+        $remember = $request->has('remember');
+
         // Grab user based on email
         $user = User::where('email', $request->email)->first();
 
@@ -32,11 +35,17 @@ class LoginController extends Controller
             return back()->withErrors(['password' => 'Password incorrect']);
         }
 
+        if (Auth::attempt($credentials, $remember)) {
+            // success logic...
+        }
+
+
         // Login success, now check role
         if ($user->role === 'admin') {
-            return redirect('/admin');
+            return redirect('/admin')->with('success', 'Selamat datang, Admin!');
         } else {
-            return redirect('/');
+            return redirect()->route('home')->with('success', 'Login successful!');
+
         }
     }
 }
