@@ -198,17 +198,6 @@
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf
-<<<<<<< HEAD
-                <label>Email</label>
-                <input name="email" type="email" required>
-
-                <label>Password</label>
-                <input name="password" type="password" required>
-
-                <input type="checkbox" name="remember"> Ingat saya
-
-                <button type="submit">Login</button>
-=======
                 
                 <div class="input-group">
                     <label>Email</label>
@@ -231,7 +220,6 @@
                 </div>
                 
                 <button type="submit">Masuk</button>
->>>>>>> f732358b25575c58895e125493ffb8d01860d345
             </form>
 
             @if($errors->any())
