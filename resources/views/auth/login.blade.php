@@ -34,7 +34,10 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            justify-content: center;
             background-color: white;
+            max-width: 600px;
+            margin: 0 auto;
             max-width: 600px;
             margin: 0 auto;
         }
@@ -220,6 +223,7 @@
                 </div>
                 
                 <button type="submit">Masuk</button>
+
             </form>
 
             @if($errors->any())
