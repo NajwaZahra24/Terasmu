@@ -7,6 +7,7 @@
     <title>Kursi Teras Minimalis - Terasmu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Global Styles */
         :root {
             --primary: #A67C52;
             /* Warna elemen utama */
@@ -546,17 +547,17 @@
             {{-- Gallery --}}
             <div class="product-gallery">
                 <div class="main-image">
-                    <img src="{{ asset($produk->image_path) }}" alt="{{ $produk->name }}" id="mainImg">
+                    <img src="{{ Storage::url($produk->image_path) }}" alt="{{ $produk->name }}" id="mainImg">
                 </div>
                 <div class="thumbnail-grid">
                     @if($produk->images && $produk->images->count())
                         @foreach($produk->images as $img)
-                            <img src="{{ asset($img->url) }}" alt="Thumbnail {{ $loop->iteration }}"
+                            <img src="{{ Storage::url($img->url) }}" alt="Thumbnail {{ $loop->iteration }}"
                                 onclick="changeImage(this)">
                         @endforeach
                     @else
                         {{-- fallback to main image --}}
-                        <img src="{{ asset($produk->image_path) }}" alt="{{ $produk->name }}" onclick="changeImage(this)">
+                        <img src="{{ Storage::url($produk->image_path) }}" alt="{{ $produk->name }}" onclick="changeImage(this)">
                     @endif
                 </div>
             </div>

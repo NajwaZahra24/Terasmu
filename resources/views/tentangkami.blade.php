@@ -440,27 +440,7 @@
     </style>
 </head>
 <body>
-    <!-- Header with Enhanced Navbar - Diambil dari kode Anda -->
-    <header>
-        <div class="header-container">
-            <a href="#" class="logo">
-                <i class="fas fa-couch"></i>
-                Terasmu
-            </a>
-
-            <nav class="nav-links">
-                <a href="/" class="nav-item">Beranda</a>
-                <a href="{{ route('katalog') }}" class="nav-item">Katalog</a>
-                <a href="#" class="nav-item active">Tentang kami</a>
-                <a href="{{ route('kontak') }}" class="nav-item">Kontak</a>
-            </nav>            
-
-            <div class="icons">
-                <a href="{{ route('login')}}" id="user-btn"><i class="fas fa-user"></i></a>
-                <a href="#" id="menu-btn"><i class="fas fa-bars"></i></a>
-            </div>
-        </div>
-    </header>
+        <x-nav/>
 
     <!-- About Us Hero Section -->
     <section class="about-hero">

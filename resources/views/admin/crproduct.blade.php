@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,26 +14,32 @@
             object-fit: cover;
             border-radius: 4px;
         }
+
         .availability-badge {
             font-size: 0.8rem;
             padding: 4px 8px;
         }
+
         .rating-stars {
             color: #ffc107;
             font-size: 0.9rem;
         }
+
         .action-buttons .btn {
             padding: 0.25rem 0.5rem;
             font-size: 0.8rem;
             margin-right: 2px;
         }
+
         .table-responsive {
             overflow-x: auto;
         }
+
         .label-badge {
             font-size: 0.75rem;
             padding: 3px 6px;
         }
+
         /* Preview gambar di modal */
         #imagePreview {
             width: 120px;
@@ -44,6 +51,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container-fluid py-4">
         <div class="row mb-4">
@@ -51,7 +59,8 @@
                 <h2><i class="fas fa-couch me-2"></i>Manajemen Produk Furniture</h2>
             </div>
             <div class="col-md-6 text-end">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal" id="addProductBtn">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal"
+                    id="addProductBtn">
                     <i class="fas fa-plus me-1"></i>Tambah Produk
                 </button>
             </div>
@@ -95,94 +104,104 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($products as $product)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $product->id }}</td>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->category }}</td>
-                                <td>{{ formatRupiah($product->price) }}</td>
-                                <td>{{ $product->original_price > 0 ? formatRupiah($product->original_price) : '-' }}</td>
-                                <td>
-                                    <span class="badge 
-                                        @if($product->label === 'Best Seller') bg-success
+                            @foreach ($furniturs as $product)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $product->id }}</td>
+                                    <td>{{ $product->name }}</td>
+                                    <td>{{ $product->category }}</td>
+                                    <td>{{ number_format($product->price) }}</td>
+                                    <td>{{ $product->original_price > 0 ? number_format($product->original_price) : '-' }}
+                                    </td>
+                                    <td>
+                                        <span
+                                            class="badge
+                                        @if ($product->label === 'Best Seller') bg-success
                                         @elseif($product->label === 'New') bg-primary
                                         @elseif($product->label === 'Sale') bg-danger
                                         @elseif($product->label === 'Limited') bg-warning
                                         @else bg-secondary @endif
                                         label-badge">
-                                        {{ $product->label ?: '-' }}
-                                    </span>
-                                </td>
-                                <td class="rating-stars">
-                                    @php
-                                        $fullStars = floor($product->rating);
-                                        $halfStar = $product->rating - $fullStars >= 0.5;
-                                        $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
-                                    @endphp
-                                    @for($i = 0; $i < $fullStars; $i++)
-                                        <i class="fas fa-star"></i>
-                                    @endfor
-                                    @if($halfStar)
-                                        <i class="fas fa-star-half-alt"></i>
-                                    @endif
-                                    @for($i = 0; $i < $emptyStars; $i++)
-                                        <i class="far fa-star"></i>
-                                    @endfor
-                                </td>
-                                <td>{{ $product->rating_count }}</td>
-                                <td>
-                                    @if($product->image)
-                                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-img-thumbnail">
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>
-                                    <span class="badge {{ $product->available ? 'bg-success' : 'bg-danger' }} availability-badge">
-                                        {{ $product->available ? 'Tersedia' : 'Habis' }}
-                                    </span>
-                                </td>
-                                <td>{{ $product->created_at->format('d/m/Y H:i') }}</td>
-                                <td>{{ $product->updated_at->format('d/m/Y H:i') }}</td>
-                                <td class="action-buttons">
-                                    <button class="btn btn-sm btn-warning" title="Edit Produk" onclick="editProduct({{ $product->id }})">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger" title="Hapus Produk" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini?')">
-                                            <i class="fas fa-trash-alt"></i>
+                                            {{ $product->label ?: '-' }}
+                                        </span>
+                                    </td>
+                                    <td class="rating-stars">
+                                        @php
+                                            $fullStars = floor($product->rating);
+                                            $halfStar = $product->rating - $fullStars >= 0.5;
+                                            $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
+                                        @endphp
+                                        @for ($i = 0; $i < $fullStars; $i++)
+                                            <i class="fas fa-star"></i>
+                                        @endfor
+                                        @if ($halfStar)
+                                            <i class="fas fa-star-half-alt"></i>
+                                        @endif
+                                        @for ($i = 0; $i < $emptyStars; $i++)
+                                            <i class="far fa-star"></i>
+                                        @endfor
+                                    </td>
+                                    <td>{{ $product->rating_count }}</td>
+                                    <td>
+                                        @if ($product->image)
+                                            <img src="{{ asset('storage/' . $product->image) }}"
+                                                alt="{{ $product->name }}" class="product-img-thumbnail">
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <span
+                                            class="badge {{ $product->available ? 'bg-success' : 'bg-danger' }} availability-badge">
+                                            {{ $product->available ? 'Tersedia' : 'Habis' }}
+                                        </span>
+                                    </td>
+                                    <td>{{ $product->created_at->format('d/m/Y H:i') }}</td>
+                                    <td>{{ $product->updated_at->format('d/m/Y H:i') }}</td>
+                                    <td class="action-buttons">
+                                        <button class="btn btn-sm btn-warning" title="Edit Produk"
+                                            onclick="editProduct({{ $product->id }})">
+                                            <i class="fas fa-edit"></i>
                                         </button>
-                                    </form>
-                                </td>
-                            </tr>
+                                        <form action="{{ route('admin.crproduct.destroy', $product->id) }}"
+                                            method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" title="Hapus Produk"
+                                                onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini?')">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
 
                 <!-- Pagination -->
-                <nav aria-label="Page navigation">
+                {{-- <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center mt-3">
-                        {{ $products->links() }}
+                        {{ $furniturs->links() }}
                     </ul>
-                </nav>
+                </nav> --}}
             </div>
         </div>
     </div>
 
     <!-- Modal Tambah/Edit Produk -->
-    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title" id="addProductModalLabel">Tambah Produk Baru</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="productForm" action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data" novalidate>
+                    <form id="productForm" action="{{ route('admin.crproduct.store') }}" method="POST"
+                        enctype="multipart/form-data" novalidate>
                         @csrf
                         <input type="hidden" id="editProductId" name="id" value="" />
                         <div class="row g-3">
@@ -205,51 +224,48 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="productPrice" class="form-label">Harga</label>
-                                <input type="number" class="form-control" id="productPrice" name="price" min="0" required />
+                                <input type="number" class="form-control" id="productPrice" name="price"
+                                    min="0" required />
                                 <div class="invalid-feedback">Harga harus diisi dan tidak negatif.</div>
                             </div>
                             <div class="col-md-6">
                                 <label for="productOriginalPrice" class="form-label">Harga Asli</label>
-                                <input type="number" class="form-control" id="productOriginalPrice" name="original_price" min="0" />
+                                <input type="number" class="form-control" id="productOriginalPrice"
+                                    name="original_price" min="0" />
                             </div>
                             <div class="col-md-6">
                                 <label for="productLabel" class="form-label">Label</label>
                                 <select class="form-select" id="productLabel" name="label">
                                     <option value="">Tidak ada label</option>
-                                    <option value="Best Seller">Best Seller</option>
-                                    <option value="New">New</option>
-                                    <option value="Sale">Sale</option>
-                                    <option value="Limited">Limited</option>
+                                    <option value="Terlaku">Terlaku</option>
+                                    <option value="Baru">Baru</option>
+                                    <option value="Diskon">Diskon</option>
+                                    <option value="Terbatas">Terbatas</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label for="productRating" class="form-label">Rating</label>
-                                <input
-                                    type="number"
-                                    class="form-control"
-                                    id="productRating"
-                                    name="rating"
-                                    min="0"
-                                    max="5"
-                                    step="0.1"
-                                    oninput="checkRatingValue(this)"
-                                />
+                                <input type="number" class="form-control" id="productRating" name="rating"
+                                    min="0" max="5" step="0.1" oninput="checkRatingValue(this)" />
                                 <div class="invalid-feedback">Rating harus antara 0 dan 5.</div>
                             </div>
                             <div class="col-md-6">
                                 <label for="productRatingCount" class="form-label">Jumlah Rating</label>
-                                <input type="number" class="form-control" id="productRatingCount" name="rating_count" min="0" />
+                                <input type="number" class="form-control" id="productRatingCount"
+                                    name="rating_count" min="0" />
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Ketersediaan</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="productAvailable" name="available" checked />
+                                    <input class="form-check-input" type="checkbox" id="productAvailable"
+                                        name="available" checked />
                                     <label class="form-check-label" for="productAvailable">Tersedia</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <label for="productImage" class="form-label">Gambar Produk</label>
-                                <input class="form-control" type="file" id="productImage" name="image" accept="image/*" />
+                                <input class="form-control" type="file" id="productImage" name="image"
+                                    accept="image/*" />
                                 <img id="imagePreview" src="#" alt="Preview Gambar" style="display:none" />
                             </div>
                         </div>
@@ -257,7 +273,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" form="productForm" class="btn btn-primary" id="saveProductBtn">Simpan Produk</button>
+                    <button type="submit" form="productForm" class="btn btn-primary" id="saveProductBtn">Simpan
+                        Produk</button>
                 </div>
             </div>
         </div>
@@ -266,7 +283,10 @@
     <script>
         // Format harga ke Rupiah
         function formatRupiah(number) {
-            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(number);
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR'
+            }).format(number);
         }
 
         // Preview gambar saat pilih file
@@ -306,7 +326,7 @@
                     document.getElementById('productRating').value = product.rating;
                     document.getElementById('productRatingCount').value = product.rating_count;
                     document.getElementById('productAvailable').checked = product.available;
-                    
+
                     // Update form action untuk method PUT
                     const form = document.getElementById('productForm');
                     form.action = `/products/${product.id}`;
@@ -315,10 +335,10 @@
                     methodInput.name = '_method';
                     methodInput.value = 'PUT';
                     form.appendChild(methodInput);
-                    
+
                     // Update modal title
                     document.getElementById('addProductModalLabel').textContent = 'Edit Produk';
-                    
+
                     // Show modal
                     new bootstrap.Modal(document.getElementById('addProductModal')).show();
                 });
@@ -327,7 +347,7 @@
         // Reset form saat modal tambah dibuka
         document.getElementById('addProductBtn').addEventListener('click', function() {
             document.getElementById('productForm').reset();
-            document.getElementById('productForm').action = "{{ route('products.store') }}";
+            document.getElementById('productForm').action = "{{ route('admin.crproduct.store') }}";
             document.getElementById('editProductId').value = '';
             document.getElementById('imagePreview').style.display = 'none';
             document.getElementById('imagePreview').src = '#';
@@ -337,4 +357,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

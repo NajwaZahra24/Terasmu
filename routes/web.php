@@ -1,11 +1,43 @@
 <?php
-
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FurniturController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    if (Auth::user()->role == "admin") {
+        return redirect()->route("admin.crproduct.index");
+    } else {
+        return view('dashboard');
+
+    }
+
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+Route::prefix("admin")->middleware(['role:admin'])->group(function () {
+    Route::get('crproduct', [FurniturController::class, 'adminIndex'])->name('admin.crproduct.index');
+    Route::post('crproduct', [FurniturController::class, 'store'])->name('admin.crproduct.store');
+    Route::get('crproduct/{id}/edit', [FurniturController::class, 'edit'])->name('admin.crproduct.edit');
+    Route::put('crproduct/{id}', [FurniturController::class, 'update'])->name('admin.crproduct.update');
+    Route::delete('crproduct/{id}', [FurniturController::class, 'destroy'])->name('admin.crproduct.destroy');
+});
+
+
+
+require __DIR__ . '/auth.php';
 
 
 /*
@@ -22,41 +54,6 @@ use App\Http\Controllers\LoginController;
 // Halaman Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Authentication Routes
-Route::controller(AuthController::class)->group(function () {
-    // Registration
-    Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register.form');
-    Route::post('/register', [RegisterController::class, 'register'])->name('register');
-
-
-    // Login
-
-    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
-    Route::post('/login', [LoginController::class, 'login'])->name('login');
-
-
-    // Logout
-    Route::post('/logout', 'logout')->name('logout');
-
-    // Dashboard (➡️ DIHAPUS middleware auth)
-    Route::get('/dashboard', 'dashboard')->name('dashboard');
-});
-
-// Optional dashboard routes
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'admin']);
-
-Route::get('/home', fn() => 'User Page')->middleware('auth');
-
-// Crproduct Routes (admin CRUD) ➡️ TANPA middleware auth
-Route::prefix('admin')->group(function () {
-    Route::get('crproduct', [FurniturController::class, 'adminIndex'])->name('admin.crproduct.index');
-    Route::post('crproduct', [FurniturController::class, 'store'])->name('admin.crproduct.store');
-    Route::get('crproduct/{id}/edit', [FurniturController::class, 'edit'])->name('admin.crproduct.edit');
-    Route::put('crproduct/{id}', [FurniturController::class, 'update'])->name('admin.crproduct.update');
-    Route::delete('crproduct/{id}', [FurniturController::class, 'destroy'])->name('admin.crproduct.destroy');
-});
 
 // Furnitur Routes
 Route::controller(FurniturController::class)->group(function () {
@@ -84,9 +81,9 @@ Route::post('/payment', [PaymentController::class, 'show'])->name('payment.show'
 
 
 // Riwayat Pembelian (➡️ TANPA middleware auth)
-Route::get('/riwayat', function () {
-    return view('riwayat');
-});
+// Route::get('/riwayat', function () {
+//     return view('riwayat');
+// });
 
 // Halaman Pengiriman
 Route::get('/pengiriman', function () {
@@ -112,3 +109,14 @@ Route::get('/kebijakanprivasi', function () {
 Route::get('/faq', function () {
     return view('faq');
 })->name('faq');
+
+
+// Halaman profile user
+Route::get('/profile', function () {
+    return view('profileuser');
+})->middleware(['auth'])->name('profileuser');
+
+// Halaman edit profile user
+Route::get('/profile/edit', function () {
+    return view('edit-profile');
+})->middleware('auth')->name('profile.edit');

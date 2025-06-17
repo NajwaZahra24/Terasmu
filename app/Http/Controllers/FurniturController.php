@@ -14,9 +14,9 @@ class FurniturController extends Controller
     public function index(Request $request)
     {
         $query = Furnitur::with('detail');
-        
+
         if ($request->has('keyword') && !empty($request->keyword)) {
-            $query->where('name', 'LIKE', '%'.$request->keyword.'%');
+            $query->where('name', 'LIKE', '%' . $request->keyword . '%');
         }
 
         if ($request->has('id') && !empty($request->id)) {
@@ -41,7 +41,7 @@ class FurniturController extends Controller
         ]);
 
         $furniturs = Furnitur::with('detail')
-            ->when($request->keyword, fn($q) => $q->where('name', 'LIKE', '%'.$request->keyword.'%'))
+            ->when($request->keyword, fn($q) => $q->where('name', 'LIKE', '%' . $request->keyword . '%'))
             ->when($request->id, fn($q) => $q->where('id', $request->id))
             ->when($request->category, fn($q) => $q->where('category', $request->category))
             ->paginate(12);
@@ -71,14 +71,28 @@ class FurniturController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'category' => 'nullable|string|max:100',
-            'description' => 'nullable|string',
+            'category' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'original_price' => 'nullable|numeric|min:0',
+            'label' => 'nullable|in:Terlaku,Baru,Diskon,Terbatas',
+            'rating' => 'required|integer|min:0|max:5',
+            'rating_count' => 'required|integer|min:0',
+            'available' => 'required|boolean',
         ]);
 
-        Furnitur::create($request->all());
+
+        if ($request->hasFile("image")) {
+            $imagePath = $request->file("image")->store("images", "public");
+            $validated["image_path"] = $imagePath;
+            // dd($imagePath);
+        } else {
+            dd("ayam");
+        }
+
+        // dd($validated);
+        Furnitur::create($validated);
 
         return redirect()->route('admin.crproduct.index')->with('success', 'Produk berhasil ditambahkan');
     }
