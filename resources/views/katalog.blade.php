@@ -710,7 +710,7 @@
         <div class="header-container">
             <a href="#" class="logo">
                 <i class="fas fa-couch"></i>
-                Terasmu
+                TerasMu
             </a>
 
             <nav class="nav-links">

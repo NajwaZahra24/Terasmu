@@ -14,12 +14,12 @@ class IsAdmin
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle($request, Closure $next)
-{
-    if (auth()->check() && auth()->user()->role === 'admin') {
-        return $next($request);
-    }
+    {
+        if (Auth::check() && Auth::user()->role === 'admin') {
+            return $next($request);
+        }
 
-    abort(403, 'Akses tidak diizinkan.');
-}
+        abort(403, 'Unauthorized');
+    }
 
 }

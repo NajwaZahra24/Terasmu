@@ -4,9 +4,11 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FurniturController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Admin\ProductController;
 
 
 /*
@@ -50,14 +52,6 @@ Route::get('/admin', function () {
 
 Route::get('/home', fn() => 'User Page')->middleware('auth');
 
-// Crproduct Routes (admin CRUD) ➡️ TANPA middleware auth
-Route::prefix('admin')->group(function () {
-    Route::get('crproduct', [FurniturController::class, 'adminIndex'])->name('admin.crproduct.index');
-    Route::post('crproduct', [FurniturController::class, 'store'])->name('admin.crproduct.store');
-    Route::get('crproduct/{id}/edit', [FurniturController::class, 'edit'])->name('admin.crproduct.edit');
-    Route::put('crproduct/{id}', [FurniturController::class, 'update'])->name('admin.crproduct.update');
-    Route::delete('crproduct/{id}', [FurniturController::class, 'destroy'])->name('admin.crproduct.destroy');
-});
 
 // Furnitur Routes
 Route::controller(FurniturController::class)->group(function () {
@@ -121,3 +115,27 @@ Route::get('/kebijakanprivasi', function () {
 Route::get('/faq', function () {
     return view('faq');
 })->name('faq');
+
+
+
+// =====================================================
+// SEGALA ROUTING TENTANG ADMIN
+// =====================================================
+
+// Crproduct Routes (admin CRUD) ➡️ TANPA middleware auth
+Route::prefix('admin')->group(function () {
+    Route::get('crproduct', [FurniturController::class, 'adminIndex'])->name('admin.crproduct.index');
+    Route::post('crproduct', [FurniturController::class, 'store'])->name('admin.crproduct.store');
+    Route::get('crproduct/{id}/edit', [FurniturController::class, 'edit'])->name('admin.crproduct.edit');
+    Route::put('crproduct/{id}', [FurniturController::class, 'update'])->name('admin.crproduct.update');
+    Route::delete('crproduct/{id}', [FurniturController::class, 'destroy'])->name('admin.crproduct.destroy');
+});
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('products', ProductController::class);
+});
+
+// Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+//     Route::get('crproduct', [FurniturController::class, 'adminIndex'])->name('admin.crproduct.index');
+//     // ...route admin lainnya
+// });

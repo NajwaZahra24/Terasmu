@@ -14,6 +14,8 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+
+        // dd('LoginController reached'); // this should appear if it's working
         // Validate input
         $request->validate([
             'email' => 'required|email',
@@ -23,29 +25,23 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
         $remember = $request->has('remember');
 
-        // Grab user based on email
-        $user = User::where('email', $request->email)->first();
-
-        if (!$user) {
-            return back()->withErrors(['email' => 'Email not registered']);
-        }
-
-        // Check password
-        if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return back()->withErrors(['password' => 'Password incorrect']);
-        }
-
+        // Attempt login langsung
         if (Auth::attempt($credentials, $remember)) {
-            // success logic...
+            $user = Auth::user();
+
+            // Cek role
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.products.index')->with('success', 'Selamat datang, Admin!');
+            } else {
+                return redirect()->route('home')->with('success', 'Login successful!');
+            }
+            
         }
 
-
-        // Login success, now check role
-        if ($user->role === 'admin') {
-            return redirect('/admin')->with('success', 'Selamat datang, Admin!');
-        } else {
-            return redirect()->route('home')->with('success', 'Login successful!');
-
-        }
+        // Kalau gagal login
+        return back()->withErrors([
+            'email' => 'Email or password is incorrect',
+        ]);
     }
+
 }

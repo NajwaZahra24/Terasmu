@@ -65,7 +65,7 @@ class FurniturController extends Controller
 
     public function adminIndex()
     {
-        $furniturs = Furnitur::all();
+        $furniturs = Furnitur::paginate(10);
         return view('admin.crproduct', compact('furniturs')); // <-- dikoreksi di sini
     }
 
