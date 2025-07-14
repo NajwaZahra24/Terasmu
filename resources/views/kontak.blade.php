@@ -392,27 +392,7 @@
     </style>
 </head>
 <body>
-    <!-- Header with Navbar (Tanpa bayangan) -->
-    <header>
-        <div class="header-container">
-            <a href="#" class="logo">
-                <i class="fas fa-couch"></i>
-                TerasMu
-            </a>
-
-            <nav class="nav-links">
-                <a href="/" class="nav-item">Beranda</a>
-                <a href="{{ route('katalog') }}" class="nav-item">Katalog</a>
-                <a href="{{ route('tentangkami') }}"class="nav-item">Tentang kami</a>
-                <a href="{{ route( 'kontak')}}"  class="nav-item">Kontak</a>
-            </nav>           
-
-            <div class="icons">
-                <a href="{{ route('login')}}" id="user-btn"><i class="fas fa-user"></i></a>
-                <a href="#" id="menu-btn"><i class="fas fa-bars"></i></a>
-            </div>
-        </div>
-    </header>
+        <x-nav/>
 
     <!-- Kontak Kami Section - Enhanced -->
     <div class="contact-container">

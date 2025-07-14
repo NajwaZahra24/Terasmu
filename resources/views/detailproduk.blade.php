@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $produk->name }} - Terasmu</title>
+    <title>Kursi Teras Minimalis - Terasmu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Global Styles */
@@ -547,17 +547,17 @@
             {{-- Gallery --}}
             <div class="product-gallery">
                 <div class="main-image">
-                    <img src="{{ asset($produk->image_path) }}" alt="{{ $produk->name }}" id="mainImg">
+                    <img src="{{ Storage::url($produk->image_path) }}" alt="{{ $produk->name }}" id="mainImg">
                 </div>
                 <div class="thumbnail-grid">
                     @if($produk->images && $produk->images->count())
                         @foreach($produk->images as $img)
-                            <img src="{{ asset($img->url) }}" alt="Thumbnail {{ $loop->iteration }}"
+                            <img src="{{ Storage::url($img->url) }}" alt="Thumbnail {{ $loop->iteration }}"
                                 onclick="changeImage(this)">
                         @endforeach
                     @else
                         {{-- fallback to main image --}}
-                        <img src="{{ asset($produk->image_path) }}" alt="{{ $produk->name }}" onclick="changeImage(this)">
+                        <img src="{{ Storage::url($produk->image_path) }}" alt="{{ $produk->name }}" onclick="changeImage(this)">
                     @endif
                 </div>
             </div>
@@ -613,34 +613,29 @@
                         <li><strong>Berat:</strong> {{ $produk->detail->berat ?? '—' }} kg</li>
                         <li><strong>Warna:</strong> {{ $produk->detail->warna ?? '—' }}</li>
                     </ul>
+                </div>  
+                {{-- Quantity --}}
+                <div class="quantity">
+                    <h3>Jumlah:</h3>
+                    <div class="qty-selector">
+                        <button class="qty-btn minus">-</button>
+                        <input type="number" value="1" min="1" max="10">
+                        <button class="qty-btn plus">+</button>
+                    </div>
                 </div>
-                
-                <form method="GET" action="{{ route('payment.page') }}">
-                    <input type="hidden" name="product_id" value="{{ $produk->id }}">
 
-                    {{-- Quantity --}}
-                    <div class="quantity">
-                        <h3>Jumlah:</h3>
-                        <div class="qty-selector">
-                            <button type="button" class="qty-btn minus">-</button>
-                            <input type="number" name="quantity" value="1" min="1" max="10">
-                            <button type="button" class="qty-btn plus">+</button>
-                        </div>
-                    </div>
+                {{-- Shipping & Actions --}}
+                <div class="shipping-info">
+                    <p><i class="fas fa-truck"></i> <strong>Gratis Ongkir</strong> (Jabodetabek, min. Rp 500.000)</p>
+                    <p><i class="fas fa-bolt"></i> <strong>Pengiriman Cepat</strong> (1–3 hari kerja)</p>
+                    <p><i class="fas fa-store"></i> <strong>Ambil di Toko</strong> (Outlet Terasmu terdekat)</p>
+                </div>
 
-                    {{-- Shipping Info --}}
-                    <div class="shipping-info">
-                        <p><i class="fas fa-truck"></i> <strong>Gratis Ongkir</strong> (Jabodetabek, min. Rp 500.000)
-                        </p>
-                        <p><i class="fas fa-bolt"></i> <strong>Pengiriman Cepat</strong> (1–3 hari kerja)</p>
-                        <p><i class="fas fa-store"></i> <strong>Ambil di Toko</strong> (Outlet Terasmu terdekat)</p>
-                    </div>
-
-                    {{-- Buy Now Button --}}
-                    <div class="action-buttons">
-                        <button type="submit" class="btn-buy-now">Beli Sekarang</button>
-                    </div>
-                </form>
+                <div class="action-buttons">
+                    <a href="{{ route('payment') }}">
+                        <button class="btn-buy-now">Beli Sekarang</button>
+                    </a>
+                </div>
 
             </div>
         </div>
@@ -690,8 +685,7 @@
                 </a>
                 <p>Temukan furnitur modern yang sempurna untuk rumah Anda.</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/p/SMK-Telkom-Sidoarjo-100047190761645/?locale=id_ID"><i
-                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/p/SMK-Telkom-Sidoarjo-100047190761645/?locale=id_ID"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/smktelkomsda/reels/"><i class="fab fa-instagram"></i></a>
                     <a href="https://x.com/SMKTelkomSDA"><i class="fab fa-twitter"></i></a>
                     <a href="https://id.pinterest.com/"><i class="fab fa-pinterest"></i></a>
@@ -701,9 +695,9 @@
             <div class="footer-column">
                 <h3>Informasi</h3>
                 <a href="{{ route('tentangkami') }}">Tentang Kami</a>
-                <a href="{{ route('kebijakanprivasi')}}">Kebijakan Privasi</a>
-                <a href="{{ route('snk')}}">Syarat dan Ketentuan</a>
-                <a href="{{ route('kontak')}}">Kontak</a>
+                <a href="{{ route( 'kebijakanprivasi')}}">Kebijakan Privasi</a>
+                <a href="{{ route( 'snk')}}">Syarat dan Ketentuan</a>
+                <a href="{{ route( 'kontak')}}">Kontak</a>
             </div>
 
             <div class="footer-column">

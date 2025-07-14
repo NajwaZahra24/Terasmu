@@ -101,60 +101,32 @@
 <body>
     <div class="container">
         <h1>Akun Saya</h1>
-        
+
         <div class="profile-info">
             <div class="info-row">
                 <div class="info-label">Nama Lengkap</div>
-                <div class="info-value" id="fullname">John Doe</div>
+                <div class="info-value" id="fullname">{{ Auth::user()->name }}</div>
             </div>
-            
+
             <div class="info-row">
                 <div class="info-label">Alamat Email</div>
-                <div class="info-value" id="email">john.doe@example.com</div>
+                <div class="info-value" id="email">{{ Auth::user()->email }}</div>
             </div>
         </div>
-        
+
         <div class="btn-group">
             <button class="btn btn-secondary" onclick="goBack()">Kembali</button>
-            <button class="btn btn-primary" onclick="editProfile()">Edit Profil</button>
+
+            <form method="POST" action="{{ route('logout') }}">
+        @csrf
+            <button type="submit" class="btn btn-primary">Log Out</button>
+            </form>
         </div>
     </div>
 
     <script>
-        // Data pengguna (biasanya ini akan diambil dari database/API)
-        const userData = {
-            fullname: "John Doe",
-            email: "john.doe@example.com"
-        };
-
-        // Fungsi untuk mengisi data pengguna
-        function loadUserData() {
-            document.getElementById('fullname').textContent = userData.fullname;
-            document.getElementById('email').textContent = userData.email;
-        }
-
-        // Fungsi untuk edit profil (contoh sederhana)
-        function editProfile() {
-            const newName = prompt("Masukkan nama baru:", userData.fullname);
-            if (newName) {
-                userData.fullname = newName;
-            }
-            
-            const newEmail = prompt("Masukkan email baru:", userData.email);
-            if (newEmail) {
-                userData.email = newEmail;
-            }
-            
-            loadUserData();
-        }
-
-        // Fungsi untuk tombol kembali
         function goBack() {
             window.history.back();
         }
-
-        // Memuat data saat halaman dimuat
-        window.onload = loadUserData;
     </script>
 </body>
-</html>

@@ -705,27 +705,7 @@
 </head>
 
 <body>
-    <!-- Header with Enhanced Navbar -->
-    <header>
-        <div class="header-container">
-            <a href="#" class="logo">
-                <i class="fas fa-couch"></i>
-                TerasMu
-            </a>
-
-            <nav class="nav-links">
-                <a href="/" class="nav-item">Beranda</a>
-                <a href="{{ route('katalog') }}" class="nav-item">Katalog</a>
-                <a href="{{ route('tentangkami') }}" class="nav-item">Tentang kami</a>
-                <a href="{{ route('kontak') }}" class="nav-item">Kontak</a>
-            </nav>
-
-            <div class="icons">
-                <a href="{{ route('login')}}" id="user-btn"><i class="fas fa-user"></i></a>
-                <a href="" id="menu-btn"><i class="fas fa-bars"></i></a>
-            </div>
-        </div>
-    </header>
+    <x-nav/>
 
     <!-- Page Header -->
     <section class="page-header">
@@ -838,7 +818,7 @@
                             @endif
 
                             <div class="product-image-container">
-                                <img src="{{ asset($item->image_path) }}" alt="{{ $item->name }}" class="product-image">
+                                <img src="{{ Storage::url($item->image_path) }}" alt="{{ $item->name }}" class="product-image">
                             </div>
 
                             <div class="product-info">
@@ -906,7 +886,6 @@
             @endif
         </div>
     </section>
-
     <!-- Footer Section -->
     <footer>
         <div class="footer-container">

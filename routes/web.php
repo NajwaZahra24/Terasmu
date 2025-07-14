@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FurniturController;
@@ -7,7 +6,39 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    if (Auth::user()->role == "admin") {
+        return redirect()->route("admin.crproduct.index");
+    } else {
+        return view('dashboard');
+
+    }
+
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+Route::prefix("admin")->middleware(['role:admin'])->group(function () {
+    Route::get('crproduct', [FurniturController::class, 'adminIndex'])->name('admin.crproduct.index');
+    Route::post('crproduct', [FurniturController::class, 'store'])->name('admin.crproduct.store');
+    Route::get('crproduct/{id}/edit', [FurniturController::class, 'edit'])->name('admin.crproduct.edit');
+    Route::put('crproduct/{id}', [FurniturController::class, 'update'])->name('admin.crproduct.update');
+    Route::delete('crproduct/{id}', [FurniturController::class, 'destroy'])->name('admin.crproduct.destroy');
+});
+
+
+
+require __DIR__ . '/auth.php';
 use App\Http\Controllers\Admin\ProductController;
 
 
@@ -67,29 +98,21 @@ Route::controller(FurniturController::class)->group(function () {
     Route::get('/furnitur', 'index');
 });
 
-//Order Pages
-Route::get('/order', [OrderController::class, 'create'])->name('payment.page');
-Route::post('/order', [OrderController::class, 'store'])->name('order.store');
-Route::get('/orders', [OrderController::class, 'index'])->name('orders.index'); // optional for admin viewing
-
-Route::get('/payment', [OrderController::class, 'create'])->name('payment');
-
-
 // Static Pages
 Route::view('/kontak', 'kontak')->name('kontak');
 Route::view('/tentangkami', 'tentangkami')->name('tentangkami');
 
-// // Payment Route
-// Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
+// Payment Route
+Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
 
-// // Proses pembelian: kirim data produk ke halaman payment
-// Route::post('/payment', [PaymentController::class, 'show'])->name('payment.show');
+// Proses pembelian: kirim data produk ke halaman payment
+Route::post('/payment', [PaymentController::class, 'show'])->name('payment.show');
 
 
 // Riwayat Pembelian (➡️ TANPA middleware auth)
-Route::get('/riwayat', function () {
-    return view('riwayat');
-});
+// Route::get('/riwayat', function () {
+//     return view('riwayat');
+// });
 
 // Halaman Pengiriman
 Route::get('/pengiriman', function () {
@@ -115,6 +138,18 @@ Route::get('/kebijakanprivasi', function () {
 Route::get('/faq', function () {
     return view('faq');
 })->name('faq');
+
+
+// Halaman profile user
+Route::get('/profile', function () {
+    return view('profileuser');
+})->middleware(['auth'])->name('profileuser');
+
+// Halaman edit profile user
+Route::get('/profile/edit', function () {
+    return view('edit-profile');
+})->middleware('auth')->name('profile.edit');
+
 
 
 

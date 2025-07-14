@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terasmu - Payment</title>
+    <title>Terasmu - Cek Cok</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary: #A67C52;
-            /* Warna elemen utama */
-            --secondary: #F7F3EE;
-            /* Warna latar utama */
-            --accent: #2E2E2E;
-            /* Warna aksen dan teks */
+            --primary: #A67C52;  /* Warna elemen utama */
+            --secondary: #F7F3EE;  /* Warna latar utama */
+            --accent: #2E2E2E;  /* Warna aksen dan teks */
             --light-gray: #e0e0e0;
             --white: #ffffff;
             --text-color: #2E2E2E;
@@ -90,9 +86,7 @@
             color: var(--accent);
         }
 
-        .form-row input,
-        .form-row select,
-        .form-row textarea {
+        .form-row input, .form-row select, .form-row textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid var(--light-gray);
@@ -106,7 +100,7 @@
             gap: 20px;
         }
 
-        .form-row-split>div {
+        .form-row-split > div {
             flex: 1;
         }
 
@@ -222,7 +216,7 @@
             background-color: var(--primary);
         }
 
-        .footer-column p,
+        .footer-column p, 
         .footer-column a {
             color: #ddd;
             margin-bottom: 15px;
@@ -315,7 +309,6 @@
         }
     </style>
 </head>
-
 <body>
 
     <!-- Breadcrumb Navigation -->
@@ -332,101 +325,74 @@
         <!-- Billing Section -->
         <div class="billing-section">
             <h2>Detail Pembayaran</h2>
-            <form action="{{ route('order.store') }}" method="POST">
-                @csrf
-
+            <form>
                 <div class="form-row-split">
                     <div class="form-row">
                         <label for="first-name">Nama Depan</label>
-                        <input type="text" id="first-name" name="first_name" required>
+                        <input type="text" id="first-name" required>
                     </div>
                     <div class="form-row">
                         <label for="last-name">Nama Belakang</label>
-                        <input type="text" id="last-name" name="last_name" required>
+                        <input type="text" id="last-name" required>
                     </div>
                 </div>
-
                 <div class="form-row">
                     <label for="company">Alamat Lengkap</label>
-                    <input type="text" id="company" name="address" required>
+                    <input type="text" id="company">
                 </div>
-
                 <div class="form-row">
                     <label for="phone">Nomor HP</label>
-                    <input type="tel" id="phone" name="phone" required>
+                    <input type="tel" id="phone" required>
                 </div>
-
                 <div class="form-row">
                     <label for="email">Alamat Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" required>
                 </div>
-
                 <div class="form-row">
                     <label for="notes">Tanggal Pemesanan</label>
-                    <input type="date" name="order_date" required>
+                    <input type="date" name="tanggal">
                 </div>
-
-                <!-- Example hidden product fields -->
-                <input type="hidden" name="product_name" value="{{ $furnitur->name }}">
-                <input type="hidden" name="quantity" value="{{ $quantity }}">
-                <input type="hidden" name="subtotal" value="{{ $furnitur->price * $quantity }}">
-                <input type="hidden" name="total" value="{{ $furnitur->price * $quantity }}">
-
-
-                <div class="form-row">
-                    <label for="payment-method">Metode Pembayaran</label>
-                    <select name="payment_method" id="payment-method" required>
-                        <option value="Bank Transfer">Bank Transfer</option>
-                        <option value="COD">COD</option>
-                        <option value="Credit Card">Credit Card</option>
-                    </select>
-                </div>
-                <div class="payment-description">
-                    Pilih metode pembayaran yang Anda inginkan. Setelah memesan, Anda akan diarahkan ke halaman
-                    pembayaran yang sesuai.
-                </div>
-                <button class="place-order-btn">Lakukan Pemesanan</button>
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
             </form>
-
         </div>
 
         <!-- Order Summary Section -->
         <div class="summary-section">
             <h2>Produk</h2>
             <div class="summary-item">
-                <div>{{ $furnitur->name }} × {{ $quantity }}</div>
-                <div>Rp. {{ number_format($furnitur->price, 0, ',', '.') }},00</div>
+                <div>Asgaard sofa × 1</div>
+                <div>Rp. 250,000.00</div>
             </div>
             <div class="summary-item">
                 <div>Subtotal</div>
-                <div>Rp. {{ number_format($furnitur->price * $quantity, 0, ',', '.') }},00</div>
+                <div>Rp. 250,000.00</div>
             </div>
             <div class="summary-total">
                 <div>Total</div>
-                <div>Rp. {{ number_format($furnitur->price * $quantity, 0, ',', '.') }},00</div>
+                <div>Rp. 250,000.00</div>
             </div>
 
+            <div class="payment-method">
+                <label for="payment-select">Metode Pembayaran</label>
+                <select id="payment-select" name="payment">
+                    <option value="bank-transfer">Bank Transfer</option>
+                    <option value="dana">DANA</option>
+                    <option value="ovo">OVO</option>
+                    <option value="shopeepay">ShopeePay</option>
+                    <option value="gopay">GoPay</option>
+                    <option value="bca">BCA</option>
+                    <option value="bni">BNI</option>
+                    <option value="mandiri">Mandiri</option>
+                </select>
+                <div class="payment-description">
+                    Pilih metode pembayaran yang Anda inginkan. Setelah memesan, Anda akan diarahkan ke halaman pembayaran yang sesuai.
+                </div>
+            </div>
 
             <div class="privacy-notice">
-                Data pribadi Anda akan digunakan untuk mendukung pengalaman Anda di seluruh situs web ini, untuk
-                mengelola akses ke akun Anda, dan untuk tujuan lain yang dijelaskan dalam <a href="#">kebijakan
-                    privasi</a> kami.
+                Data pribadi Anda akan digunakan untuk mendukung pengalaman Anda di seluruh situs web ini, untuk mengelola akses ke akun Anda, dan untuk tujuan lain yang dijelaskan dalam <a href="#">kebijakan privasi</a> kami.
             </div>
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
 
+            <button class="place-order-btn">Lakukan Pemesanan</button>
         </div>
     </div>
 
@@ -440,8 +406,7 @@
                 </a>
                 <p>Temukan furnitur modern yang sempurna untuk rumah Anda.</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/p/SMK-Telkom-Sidoarjo-100047190761645/?locale=id_ID"><i
-                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/p/SMK-Telkom-Sidoarjo-100047190761645/?locale=id_ID"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/smktelkomsda/reels/"><i class="fab fa-instagram"></i></a>
                     <a href="https://x.com/SMKTelkomSDA"><i class="fab fa-twitter"></i></a>
                     <a href="https://id.pinterest.com/"><i class="fab fa-pinterest"></i></a>
@@ -451,9 +416,9 @@
             <div class="footer-column">
                 <h3>Informasi</h3>
                 <a href="{{ route('tentangkami') }}">Tentang Kami</a>
-                <a href="{{ route('kebijakanprivasi')}}">Kebijakan Privasi</a>
-                <a href="{{ route('snk')}}">Syarat dan Ketentuan</a>
-                <a href="{{ route('kontak')}}">Kontak</a>
+                <a href="{{ route( 'kebijakanprivasi')}}">Kebijakan Privasi</a>
+                <a href="{{ route( 'snk')}}">Syarat dan Ketentuan</a>
+                <a href="{{ route( 'kontak')}}">Kontak</a>
             </div>
 
             <div class="footer-column">
@@ -469,5 +434,4 @@
         </div>
     </footer>
 </body>
-
 </html>

@@ -30,7 +30,7 @@ class FurniturSeeder extends Seeder
                 "label" => "Baru",
                 "rating" => 5,
                 "rating_count" => 98,
-                "image_path" => "public/images/nakas_minimalis_2.jpg",
+                "image_path" => "images/nakas_minimalis_2.jpg",
                 "is_available" => false,
                 "created_at" => "2025-05-15 01:22:04",
                 "updated_at" => "2025-05-15 01:22:04"
@@ -43,7 +43,7 @@ class FurniturSeeder extends Seeder
                 "label" => null,
                 "rating" => 1,
                 "rating_count" => 170,
-                "image_path" => "public/images/meja belajar_jepang_3.jpg",
+                "image_path" => "images/meja belajar_jepang_3.jpg",
                 "is_available" => false,
                 "created_at" => "2025-05-15 01:22:04",
                 "updated_at" => "2025-05-15 01:22:04"
@@ -56,7 +56,7 @@ class FurniturSeeder extends Seeder
                 "label" => "Terlaku",
                 "rating" => 3,
                 "rating_count" => 67,
-                "image_path" => "public/images/buffet_industri_4.jpg",
+                "image_path" => "images/buffet_industri_4.jpg",
                 "is_available" => true,
                 "created_at" => "2025-05-15 01:22:04",
                 "updated_at" => "2025-05-15 01:22:04"
@@ -69,7 +69,7 @@ class FurniturSeeder extends Seeder
                 "label" => "Baru",
                 "rating" => 4,
                 "rating_count" => 11,
-                "image_path" => "public/images/nakas_klasik_5.jpg",
+                "image_path" => "images/nakas_klasik_5.jpg",
                 "is_available" => false,
                 "created_at" => "2025-05-15 01:22:04",
                 "updated_at" => "2025-05-15 01:22:04"
@@ -82,7 +82,7 @@ class FurniturSeeder extends Seeder
                 "label" => null,
                 "rating" => 3,
                 "rating_count" => 143,
-                "image_path" => "public/images/rak_klasik_6.jpg",
+                "image_path" => "images/rak_klasik_6.jpg",
                 "is_available" => false,
                 "created_at" => "2025-05-15 01:22:04",
                 "updated_at" => "2025-05-15 01:22:04"
